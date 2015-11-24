@@ -127,7 +127,7 @@ class Personaje{
 
 	public $arma;
 
-	function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
+	/*function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
 		$this->nombre = $Nombre;
 		$this->clase = $Clase;
 		$this->nivel = $Nivel;
@@ -146,7 +146,7 @@ class Personaje{
 		$this->resistenciaMagica = $ResistenciaMagica;
 		$this->reduccionDano = $ReduccionDano;
 		$this->arma = $Arma;
-	}
+	}*/
 
 	public function aplicar_efecto($fuente, $efecto, $bonus = 0){
 		if($fuente == "Ataque"){

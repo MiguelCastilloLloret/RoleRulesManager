@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="vPersonaje", schema="reglasv")
+ * @ORM\Table(name="vPlantilla", schema="reglasv")
  */
 
-class vPersonaje{
+class vPlantilla{
 
 	/**
      * @ORM\Column(type="integer")
@@ -151,7 +151,7 @@ class vPersonaje{
 
 	public $habilidades;
 
-	/*function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
+	function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
 		$this->nombre = $Nombre;
 		$this->clan = $Clan;
 		$this->generacion = $Generacion;
@@ -174,26 +174,6 @@ class vPersonaje{
 		$this->sangre = $Sangre;
 		$this->arma = $Arma;
 		$this->habilidades = $Habilidades;
-	}*/
-
-	public function aplicar_efecto($fuente, $efecto, $arma){
-		if($fuente == "Ataque"){
-			if($arma->tipo=="Agravado") $dados = $this->habilidades["Fortaleza"];
-			else $dados = $this->habilidades["Fortaleza"]+$this->bonusResistencia;
-			$var = 0;
-			for($i = 0; $i<$dados; $i++){
-				$tirada = rand(1,10);
-				if($tirada>=$executor->CD){
-					$var++;
-				}
-				else if($tirada==1) $var--;
-			}
-			if($var<0) $var = 0;
-			$efecto = $efecto + $var;
-			if($efecto>0) $efecto = 0;
-			$this->puntosVida = $this->puntosVida+$efecto;
-		}
-		return $efecto;
 	}
 
 }

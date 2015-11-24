@@ -38,7 +38,7 @@ class SistemaReglas{
 		}
 		else if($executor->action == "Ataque" && !is_null($executor->pj2)) return $this->subsistema_combate($executor);
 
-		else return "Faltó por especificar algun elemento necesario.";
+		else return "Faltó por especificar algún elemento necesario.";
 	}
 
 	public function subsistema_tiradas($executor){

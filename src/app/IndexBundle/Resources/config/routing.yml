@@ -1,3 +1,15 @@
-app_index_homepage:
+app_select_screen:
     path:     /
+    defaults: { _controller: appIndexBundle:Index:select }
+
+app_index_homepage:
+    path:     /reglas
     defaults: { _controller: appIndexBundle:Index:index }
+
+app_DD35Master_screen:
+    path:     /DD35Master
+    defaults: { _controller: appIndexBundle:Index:DD35 }
+
+app_VampiroMaster_screen:
+    path:     /VampiroMaster
+    defaults: { _controller: appIndexBundle:Index:Vampiro }

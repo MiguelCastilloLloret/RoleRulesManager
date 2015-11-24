@@ -1,4 +1,4 @@
-{# app/Resources/views/lucky/index.html.twig #}
+{# app/Resources/views/lucky/select.html.twig #}
 
 {% extends 'base.html.twig' %}
 
@@ -10,7 +10,7 @@
 	<div class="inicial">
 	    <h1>Sistema intérprete de reglas Rol</h1>
 	    <div class="bloque">
-	    	<form action="./reglas" method="post" {{ form_enctype(form) }}>
+	    	<form action="./" method="post" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	   			<input type="submit" class="submit" />
 			</form>
