@@ -3,20 +3,35 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-       <link href="{{ asset('/css/main.css') }}" type="text/css" rel="stylesheet" />
+		<link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/css/main.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
-	<div class="inicial">
-	    <h1>Sistema intérprete de reglas Rol</h1>
+	{% include './views/index/header.html' %}
+	<div class="container contenedor">
+	    <div class="block bloque">
+	    	<h1>Sistema intérprete de reglas Rol</h1>
+	    	<form action="./DD35Master" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
+	    		{{ form_widget(plantilla) }}
+	   			<input type="submit" class="btn btn-success" value="Importar Plantilla" />
+			</form>
+		</div>
 	    <div class="bloque">
 	    	<form action="./DD35Master" method="post" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
-	   			<input type="submit" class="submit" />
+	   			<input type="submit" class="btn btn-success" value="Enviar" />
 			</form>
 		</div>
 		<div class="bloque">
 			{{ hola }}
 		</div>
+		<div class="bloque contenedor">
+			<button class="btn btn-primary" href="./reglas">Ir al Intérprete de Reglas</button>
+		</div>
 	</div>
+	<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 {% endblock %}

@@ -28,6 +28,10 @@ class game{
     public $game;
 }
 
+class idPlantilla{
+    public $id;
+}
+
 
 class IndexController extends Controller{
     /**
@@ -91,6 +95,19 @@ class IndexController extends Controller{
 
     public function DD35Action(Request $request){ 
         $hola = "";
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
 
         $pj = new Personaje();
         $var = $this->createFormBuilder($pj)
@@ -115,22 +132,50 @@ class IndexController extends Controller{
             ->getForm();
 
         if ($request->isMethod('POST')) {
-            $var->bind($request);
-            if($var->isValid()){
-                $em = $this->get('doctrine.orm.default_entity_manager');
-                $em->persist($pj);
-                $nombrePlantilla = $em->createQuery("SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p WHERE p.nombre = '".$pj->nombre."'")->getResult();
-                if(empty($nombrePlantilla)){
-                    $pl= new Plantilla($pj->nombre, $pj->clase, $pj->nivel, $pj->puntosVida, $pj->claseArmadura, $pj->bonusFuerza, $pj->bonusDestreza, $pj->bonusConstitucion, $pj->bonusInteligencia, $pj->bonusSabiduria, $pj->bonusCarisma, $pj->salvacionVoluntad, $pj->salvacionFortaleza, $pj->salvacionReflejos, $pj->estado, $pj->resistenciaMagica, $pj->reduccionDano, $pj->arma);
-                    $em->persist($pl);
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                if($plantilla->isValid()){
+                    $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Plantilla')->find($id->id);
+                    $pj = $personajePlantilla;
+                    $var = $this->createFormBuilder($pj)
+                        ->add('nombre')
+                        ->add('clase')
+                        ->add('nivel')
+                        ->add('puntosVida')
+                        ->add('claseArmadura')
+                        ->add('bonusFuerza')
+                        ->add('bonusDestreza')
+                        ->add('bonusConstitucion')
+                        ->add('bonusInteligencia')
+                        ->add('bonusSabiduria')
+                        ->add('bonusCarisma')
+                        ->add('salvacionFortaleza')
+                        ->add('salvacionVoluntad')
+                        ->add('salvacionReflejos')
+                        ->add('estado')
+                        ->add('resistenciaMagica')
+                        ->add('reduccionDano')
+                        ->add('arma')
+                        ->getForm();
+                    }
+            }
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $em->persist($pj);
+                    $nombrePlantilla = $em->createQuery("SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p WHERE p.nombre = '".$pj->nombre."'")->getResult();
+                    if(empty($nombrePlantilla)){
+                        $pl= new Plantilla($pj->nombre, $pj->clase, $pj->nivel, $pj->puntosVida, $pj->claseArmadura, $pj->bonusFuerza, $pj->bonusDestreza, $pj->bonusConstitucion, $pj->bonusInteligencia, $pj->bonusSabiduria, $pj->bonusCarisma, $pj->salvacionVoluntad, $pj->salvacionFortaleza, $pj->salvacionReflejos, $pj->estado, $pj->resistenciaMagica, $pj->reduccionDano, $pj->arma);
+                        $em->persist($pl);
+                    }
+                    $em->flush();
+                    $hola = "Se introdujo correctamente el personaje en la BD";
                 }
-                $em->flush();
-                $hola = "Se introdujo correctamente el personaje en la BD";
             }
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('form' => $var->createView(), 'hola' => $hola)
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola)
         );
 
         return new Response($html);
@@ -138,6 +183,19 @@ class IndexController extends Controller{
 
     public function VampiroAction(Request $request){ 
         $hola = "";
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPlantilla p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
 
         $pj = new vPersonaje();
         $var = $this->createFormBuilder($pj)
@@ -166,9 +224,39 @@ class IndexController extends Controller{
             ->getForm();
 
         if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                if($plantilla->isValid()){
+                    $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPlantilla')->find($id->id);
+                    $pj = $personajePlantilla;
+                    $var = $this->createFormBuilder($pj)
+                        ->add('nombre')
+                        ->add('clan')
+                        ->add('generacion')
+                        ->add('puntosVida')
+                        ->add('armadura')
+                        ->add('bonusFuerza')
+                        ->add('bonusDestreza')
+                        ->add('bonusResistencia')
+                        ->add('bonusInteligencia')
+                        ->add('bonusManipulacion')
+                        ->add('bonusApariencia')
+                        ->add('bonusPercepcion')
+                        ->add('bonusAstucia')
+                        ->add('bonusCarisma')
+                        ->add('conciencia')
+                        ->add('autocontrol')
+                        ->add('coraje')
+                        ->add('estado')
+                        ->add('fuerzaVoluntad')
+                        ->add('sangre')
+                        ->add('arma')
+                        ->add('habilidades', 'text')
+                        ->getForm();
+                    }
+            }
             $var->bind($request);
             if($var->isValid()){
-                $ev = $this->get('doctrine.orm.vamp_entity_manager');
                 $ev->persist($pj);
                 $nombrePlantilla = $ev->createQuery("SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPlantilla p WHERE p.nombre = '".$pj->nombre."'")->getResult();
                 if(empty($nombrePlantilla)){
@@ -181,7 +269,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterVampiro.html.twig', array('form' => $var->createView(), 'hola' => $hola)
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(), 'form' => $var->createView(), 'hola' => $hola)
         );
 
         return new Response($html);
