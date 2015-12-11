@@ -6,10 +6,30 @@ app_index_homepage:
     path:     /reglas
     defaults: { _controller: appIndexBundle:Index:index }
 
-app_DD35Master_screen:
+app_rolManageDD35_screen:
     path:     /DD35Master
     defaults: { _controller: appIndexBundle:Index:DD35 }
 
-app_VampiroMaster_screen:
+app_rolManageVampiro_screen:
     path:     /VampiroMaster
     defaults: { _controller: appIndexBundle:Index:Vampiro }
+
+app_DD35Create_screen:
+    path:     /DD35Master/crear
+    defaults: { _controller: appIndexBundle:Index:DD35Create }
+
+app_DD35Change_screen:
+    path:     /DD35Master/modificar
+    defaults: { _controller: appIndexBundle:Index:DD35Change }
+
+app_DD35Delete_screen:
+    path:     /DD35Master/eliminar
+    defaults: { _controller: appIndexBundle:Index:DD35Delete }
+
+app_VampiroCreate_screen:
+    path:     /VampiroMaster/crear
+    defaults: { _controller: appIndexBundle:Index:VampiroCreate }
+
+app_VampiroChange_screen:
+    path:     /VampiroMaster/modificar
+    defaults: { _controller: appIndexBundle:Index:VampiroChange }

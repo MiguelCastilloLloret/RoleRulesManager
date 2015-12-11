@@ -12,13 +12,13 @@
 	<div class="container contenedor">
 	    <div class="block bloque">
 	    	<h1>Sistema intérprete de reglas Rol</h1>
-	    	<form action="./VampiroMaster" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
+	    	<form action="./{{ link }}" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
 	    		{{ form_widget(plantilla) }}
 	   			<input type="submit" class="btn btn-success" value="Importar Plantilla" />
 			</form>
 		</div>
-	    <div class="bloque">
-	    	<form action="./VampiroMaster" method="post" {{ form_enctype(form) }}>
+	    <div class="bloque {{ tipo }}">
+	    	<form action="./{{ link }}" method="post" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar" />
 			</form>
