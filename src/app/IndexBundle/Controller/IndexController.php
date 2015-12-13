@@ -198,7 +198,7 @@ class IndexController extends Controller{
         $link = "modificar";
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p ORDER BY p.ID ASC')->getResult();
+        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
 
         for($i=0;$i<count($List);$i++){
             $aux = $List[$i]['nombre'];
@@ -236,7 +236,7 @@ class IndexController extends Controller{
             if(isset($request->request->all()['form']['id'])){
                 $plantilla->bind($request);
                 if($plantilla->isValid()){
-                    $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Plantilla')->find($id->id);
+                    $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($id->id);
                     $pj = $personajePlantilla;
                     $tipo = "";
                     $var = $this->createFormBuilder($pj)
