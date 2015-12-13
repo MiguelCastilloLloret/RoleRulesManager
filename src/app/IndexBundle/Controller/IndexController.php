@@ -210,8 +210,9 @@ class IndexController extends Controller{
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
             ->getForm();
 
-        $pj = new Personaje();
-        $var = $this->createFormBuilder($pj)
+        $personajePlantilla = new Personaje();
+        $var = $this->createFormBuilder($personajePlantilla)
+            ->add('ID', 'hidden')
             ->add('nombre')
             ->add('clase')
             ->add('nivel')
@@ -237,9 +238,10 @@ class IndexController extends Controller{
                 $plantilla->bind($request);
                 if($plantilla->isValid()){
                     $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($id->id);
-                    $pj = $personajePlantilla;
+                    var_dump($personajePlantilla);
                     $tipo = "";
-                    $var = $this->createFormBuilder($pj)
+                    $var = $this->createFormBuilder($personajePlantilla)
+                        ->add('ID', 'hidden')
                         ->add('nombre')
                         ->add('clase')
                         ->add('nivel')
@@ -264,6 +266,7 @@ class IndexController extends Controller{
             else{
                 $var->bind($request);
                 if($var->isValid()){
+                    $em->merge($personajePlantilla);
                     $em->flush();
                     $hola = "Se modificó correctamente el personaje en la BD";
                 }
@@ -297,6 +300,7 @@ class IndexController extends Controller{
 
         $pj = new Personaje();
         $var = $this->createFormBuilder($pj)
+            ->add('ID', 'hidden')
             ->add('nombre')
             ->add('clase')
             ->add('nivel')
@@ -457,8 +461,9 @@ class IndexController extends Controller{
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
             ->getForm();
 
-        $pj = new vPersonaje();
-        $var = $this->createFormBuilder($pj)
+        $personajePlantilla = new vPersonaje();
+        $var = $this->createFormBuilder($personajePlantilla)
+            ->add('ID', 'hidden')
             ->add('nombre')
             ->add('clan')
             ->add('generacion')
@@ -488,9 +493,9 @@ class IndexController extends Controller{
                 $plantilla->bind($request);
                 if($plantilla->isValid()){
                     $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPlantilla')->find($id->id);
-                    $pj = $personajePlantilla;
                     $tipo = "";
-                    $var = $this->createFormBuilder($pj)
+                    $var = $this->createFormBuilder($personajePlantilla)
+                        ->add('ID', 'hidden')
                         ->add('nombre')
                         ->add('clan')
                         ->add('generacion')
@@ -525,6 +530,68 @@ class IndexController extends Controller{
 
         $html = $this->container->get('templating')->render(
             'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(), 'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+        );
+
+        return new Response($html);
+    }
+
+    public function VampiroDeleteAction(Request $request){ 
+        $hola = "";
+        $tipo = "oculto";
+        $link = "eliminar";
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPersonaje p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
+
+        $pj = new Personaje();
+        $var = $this->createFormBuilder($pj)
+            ->add('ID', 'hidden')
+            ->add('nombre')
+            ->add('clan')
+            ->add('generacion')
+            ->add('puntosVida')
+            ->add('armadura')
+            ->add('bonusFuerza')
+            ->add('bonusDestreza')
+            ->add('bonusResistencia')
+            ->add('bonusInteligencia')
+            ->add('bonusManipulacion')
+            ->add('bonusApariencia')
+            ->add('bonusPercepcion')
+            ->add('bonusAstucia')
+            ->add('bonusCarisma')
+            ->add('conciencia')
+            ->add('autocontrol')
+            ->add('coraje')
+            ->add('estado')
+            ->add('fuerzaVoluntad')
+            ->add('sangre')
+            ->add('arma')
+            ->add('habilidades', 'text')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($id->id);
+                $ev->remove($personajePlantilla);
+                $ev->flush();
+                $hola = "El personaje se borró correctamente";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
         );
 
         return new Response($html);
