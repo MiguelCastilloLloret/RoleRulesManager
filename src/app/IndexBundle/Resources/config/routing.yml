@@ -33,3 +33,7 @@ app_VampiroCreate_screen:
 app_VampiroChange_screen:
     path:     /VampiroMaster/modificar
     defaults: { _controller: appIndexBundle:Index:VampiroChange }
+
+app_VampiroDelete_screen:
+    path:     /VampiroMaster/eliminar
+    defaults: { _controller: appIndexBundle:Index:VampiroDelete }
