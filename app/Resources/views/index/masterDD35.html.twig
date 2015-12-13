@@ -14,7 +14,7 @@
 	    	<h1>Sistema intérprete de reglas Rol</h1>
 	    	<form action="./{{ link }}" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
 	    		{{ form_widget(plantilla) }}
-	   			<input type="submit" class="btn btn-success" value="Importar" />
+	   			<input type="submit" class="btn btn-success" value="{{ inputValue }}" />
 			</form>
 		</div>
 	    <div class="bloque {{ tipo }}">

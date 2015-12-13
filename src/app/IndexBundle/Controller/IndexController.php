@@ -106,6 +106,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "";
         $link = "crear";
+        $inputValue = "Importar";
         $em = $this->get('doctrine.orm.default_entity_manager');
 
         $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p ORDER BY p.ID ASC')->getResult();
@@ -186,7 +187,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
@@ -196,6 +197,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "oculto";
         $link = "modificar";
+        $inputValue = "Importar";
         $em = $this->get('doctrine.orm.default_entity_manager');
 
         $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
@@ -274,7 +276,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
@@ -284,6 +286,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "oculto";
         $link = "eliminar";
+        $inputValue = "Eliminar";
         $em = $this->get('doctrine.orm.default_entity_manager');
 
         $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
@@ -332,7 +335,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
@@ -351,6 +354,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "";
         $link = "crear";
+        $inputValue = "Importar";
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
 
         $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPlantilla p ORDER BY p.ID ASC')->getResult();
@@ -437,7 +441,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(), 'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
@@ -447,6 +451,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "oculto";
         $link = "modificar";
+        $inputValue = "Importar";
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
 
         $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPlantilla p ORDER BY p.ID ASC')->getResult();
@@ -529,7 +534,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(), 'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
@@ -539,6 +544,7 @@ class IndexController extends Controller{
         $hola = "";
         $tipo = "oculto";
         $link = "eliminar";
+        $inputValue = "Eliminar";
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
 
         $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPersonaje p ORDER BY p.ID ASC')->getResult();
@@ -591,7 +597,7 @@ class IndexController extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link)
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
