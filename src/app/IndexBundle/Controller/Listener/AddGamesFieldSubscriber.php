@@ -40,11 +40,11 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
 
         if($game=="DD35"){
-            $List = $this->em->createQuery('SELECT p.ID FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
+            $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['ID'];
-                $pjList["$aux"] = $aux;
+                $pjList["$aux"] = $List[$i]['nombre'];
             }
 
             $List = $this->em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Hechizo p ORDER BY p.ID ASC')->getResult();
@@ -65,11 +65,11 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         }
 
         if($game=="Vampiro"){
-            $List = $this->ev->createQuery('SELECT p.ID FROM app\IndexBundle\Entity\Vampiro\vPersonaje p ORDER BY p.ID ASC')->getResult();
+            $List = $this->ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\vPersonaje p ORDER BY p.ID ASC')->getResult();
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['ID'];
-                $pjList["$aux"] = $aux;
+                $pjList["$aux"] = $List[$i]['nombre'];
             }
 
             $List = $this->ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\vHabilidad p ORDER BY p.ID ASC')->getResult();
