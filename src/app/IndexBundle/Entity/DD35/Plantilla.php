@@ -127,7 +127,7 @@ class Plantilla{
 
 	public $arma;
 
-     function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
+     /*function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
           $this->nombre = $Nombre;
           $this->clase = $Clase;
           $this->nivel = $Nivel;
@@ -146,6 +146,6 @@ class Plantilla{
           $this->resistenciaMagica = $ResistenciaMagica;
           $this->reduccionDano = $ReduccionDano;
           $this->arma = $Arma;
-     }
+     }*/
 }
 ?>

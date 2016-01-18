@@ -18,6 +18,10 @@ app_DD35Create_screen:
     path:     /DD35Master/crear
     defaults: { _controller: appIndexBundle:DD35:DD35Create }
 
+app_DD35CreateP_screen:
+    path:     /DD35Master/crearPlantilla
+    defaults: { _controller: appIndexBundle:DD35:DD35CreateP }
+
 app_DD35Change_screen:
     path:     /DD35Master/modificar
     defaults: { _controller: appIndexBundle:DD35:DD35Change }
@@ -26,9 +30,17 @@ app_DD35Delete_screen:
     path:     /DD35Master/eliminar
     defaults: { _controller: appIndexBundle:DD35:DD35Delete }
 
+app_DD35DeleteP_screen:
+    path:     /DD35Master/eliminarPlantilla
+    defaults: { _controller: appIndexBundle:DD35:DD35Delete }
+
 app_VampiroCreate_screen:
     path:     /VampiroMaster/crear
     defaults: { _controller: appIndexBundle:Vampiro:VampiroCreate }
+
+app_VampiroCreateP_screen:
+    path:     /VampiroMaster/crearPlantilla
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroCreateP }
 
 app_VampiroChange_screen:
     path:     /VampiroMaster/modificar
@@ -37,3 +49,7 @@ app_VampiroChange_screen:
 app_VampiroDelete_screen:
     path:     /VampiroMaster/eliminar
     defaults: { _controller: appIndexBundle:Vampiro:VampiroDelete }
+
+app_VampiroDeleteP_screen:
+    path:     /VampiroMaster/eliminarPlantilla
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteP }

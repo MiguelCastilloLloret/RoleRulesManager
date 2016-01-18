@@ -151,7 +151,7 @@ class vPlantilla{
 
 	public $habilidades;
 
-	function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
+	/*function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
 		$this->nombre = $Nombre;
 		$this->clan = $Clan;
 		$this->generacion = $Generacion;
@@ -174,7 +174,7 @@ class vPlantilla{
 		$this->sangre = $Sangre;
 		$this->arma = $Arma;
 		$this->habilidades = $Habilidades;
-	}
+	}*/
 
 }
 

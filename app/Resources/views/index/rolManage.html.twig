@@ -12,9 +12,15 @@
 	<div class="container contenedor">
 	    <div class="block bloque">
 	    	<h1>Sistema intérprete de reglas Rol</h1>
-	    	<a class="btn btn-primary" href="./{{ juego }}/crear">Crear Personaje</a>
-	    	<a class="btn btn-primary" href="./{{ juego }}/modificar">Modificar Personaje</a>
-	    	<a class="btn btn-primary" href="./{{ juego }}/eliminar">Eliminar Personaje</a>
+	    	<div class="row" id="plantilla">
+		    	<a class="btn btn-primary" href="./{{ juego }}/crear">Crear Personaje</a>
+		    	<a class="btn btn-primary" href="./{{ juego }}/modificar">Modificar Personaje</a>
+		    	<a class="btn btn-primary" href="./{{ juego }}/eliminar">Eliminar Personaje</a>
+	    	</div>
+	    	<div class="row">
+		    	<a class="btn btn-primary" href="./{{ juego }}/crearPlantilla">Crear Plantilla</a>
+		    	<a class="btn btn-primary" href="./{{ juego }}/eliminarPlantilla">Eliminar Plantilla</a>
+		    </div>
 		</div>
 		<div class="block">
 			{{ hola }}

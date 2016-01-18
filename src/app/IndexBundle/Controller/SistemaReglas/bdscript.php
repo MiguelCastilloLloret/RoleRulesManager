@@ -28,10 +28,10 @@ use app\IndexBundle\Entity\Vampiro\vArma;
 
 	$hechizos = array(new Hechizo("Bola de Fuego", 3, 6, 0, true, false, "", "Reflejos", "Mitad"), new Hechizo("Manos Ardientes", 1, 4, 0, true, false, "", "Reflejos", "Mitad"), new Hechizo("Comprension Idiomatica", 1, 0, 0, false, false, "Comprender Lenguajes", "", ""), new Hechizo("Curar Heridas Leves", 1, 8, 1, false, true, "", "", ""));
 
-	$armas = array(new Arma("Espada Bastarda", 10, 1, "Fuerza"), new Arma("Baston", 6, 1, "Fuerza"), new Arma("Maza Pesada", 8, 1, "Fuerza"));
+	$armas = array(new Arma("Espada Bastarda", 10, 1, "Fuerza"), new Arma("Baston", 6, 1, "Fuerza"), new Arma("Maza Pesada", 8, 1, "Fuerza"));/*
 
 
-	$em->persist($pj1);
+	/*$em->persist($pj1);
 	$em->persist($pj2);
 	$em->persist($pj3);
 	$em->persist($hechizos[0]);
