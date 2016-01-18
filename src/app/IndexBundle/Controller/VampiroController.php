@@ -321,7 +321,7 @@ class VampiroController extends Controller{
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
             ->getForm();
 
-        $pj = new Personaje();
+        $pj = new vPersonaje();
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
@@ -385,7 +385,7 @@ class VampiroController extends Controller{
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
             ->getForm();
 
-        $pj = new Personaje();
+        $pj = new vPersonaje();
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
