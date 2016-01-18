@@ -356,7 +356,7 @@ class DD35Controller extends Controller{
         $plList = NULL;
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
+        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Plantilla p ORDER BY p.ID ASC')->getResult();
 
         for($i=0;$i<count($List);$i++){
             $aux = $List[$i]['nombre'];
