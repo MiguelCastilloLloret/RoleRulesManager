@@ -4,9 +4,9 @@
 parameters:
     database_host: db4free.net
     database_port: 3306
-    database_name: reglas
+    database_name: reglasf
     database_nameV: reglasv
-    database_user: reglasroot
+    database_user: reglasrootf
     database_userV: reglasrootv
     database_password: reglasroot
     mailer_transport: smtp
