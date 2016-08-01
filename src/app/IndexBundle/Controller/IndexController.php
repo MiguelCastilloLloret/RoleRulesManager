@@ -16,6 +16,7 @@ use app\IndexBundle\Entity\Vampiro\vPlantilla;
 
 class formExecutor{
     public $game;
+    public $party;
     public $pj1;
     public $pj2;
     public $action;
@@ -40,6 +41,7 @@ class IndexController extends Controller{
 
         $var = $this->createFormBuilder($executor)
             ->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true))
+            ->add('party','text', array('required' => true))
             ->addEventSubscriber($this->get('my_form_editor'))
             ->getForm();
 

@@ -48,6 +48,7 @@ class DD35Controller extends Controller{
             ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
             ->add('nivel')
             ->add('puntosVida')
+            ->add('vidaMaxima')
             ->add('claseArmadura')
             ->add('bonusFuerza')
             ->add('bonusDestreza')
@@ -62,6 +63,7 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma')
+            ->add('partida')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -70,11 +72,14 @@ class DD35Controller extends Controller{
                 if($plantilla->isValid()){
                     $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Plantilla')->find($id->id);
                     $pj = $personajePlantilla;
+                    $pj->vidaMaxima = $pj->puntosVida;
+                    $pj->partida = "Introduzca Partida";
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
                         ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
                         ->add('nivel')
                         ->add('puntosVida')
+                        ->add('vidaMaxima')
                         ->add('claseArmadura')
                         ->add('bonusFuerza')
                         ->add('bonusDestreza')
@@ -89,6 +94,7 @@ class DD35Controller extends Controller{
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
                         ->add('arma')
+                        ->add('partida')
                         ->getForm();
                     }
             }

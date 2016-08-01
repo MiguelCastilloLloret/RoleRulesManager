@@ -47,6 +47,12 @@ class Personaje{
      * @ORM\Column(type="integer")
      */
 
+	public $vidaMaxima;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
 	public $claseArmadura;
 
 	/**
@@ -126,6 +132,12 @@ class Personaje{
      */
 
 	public $arma;
+
+		 /**
+     * @ORM\Column(type="string", length=15)
+     */
+
+	public $partida;
 
 	/*function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
 		$this->nombre = $Nombre;

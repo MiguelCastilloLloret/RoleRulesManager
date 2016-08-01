@@ -32,15 +32,15 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         $data = $event->getData();
         //data es un array que en este caso contiene el juego seleccionado por el usuario.
 
-        $this->addField($event->getForm(), $data['game']);
+        $this->addField($event->getForm(), $data['game'], $data['party']);
     }
 
-    protected function addField(Form $form, $game){
+    protected function addField(Form $form, $game, $party){
 
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
 
         if($game=="DD35"){
-            $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p ORDER BY p.ID ASC')->getResult();
+            $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' ORDER BY p.ID ASC')->getResult();
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['ID'];
@@ -82,7 +82,8 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
             $acciones = array("Ataque" => 'Ataque', "AtaqueMultiple" => 'AtaqueMultiple', "TiradaDificultad" => 'TiradaDificultad', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
-        $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true))
+        $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'disabled' => true))
+             ->add('party','text', array('required' => true, 'disabled' => true, 'data' => $party))
              ->add('pj1','choice', array('choices' => $pjList))
              ->add('pj2','choice', array('choices' => $pjList, 'required' => false))
              ->add('action','choice', array('choices' => $acciones, 'required' => true));
