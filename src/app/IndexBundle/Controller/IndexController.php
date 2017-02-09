@@ -45,11 +45,6 @@ class IndexController extends Controller{
             ->addEventSubscriber($this->get('my_form_editor'))
             ->getForm();
 
-
-        $html = $this->container->get('templating')->render(
-            'index/index.html.twig', array('form' => $var->createView(), 'hola' => '')
-        );
-
         if ($request->isMethod('POST')) {
             $var->bind($request);
             if ($var->isValid()) {
@@ -60,6 +55,11 @@ class IndexController extends Controller{
                  );
                 return new Response($html);
             }
+        }
+        else{
+            $html = $this->container->get('templating')->render(
+            'index/index.html.twig', array('form' => $var->createView(), 'hola' => '')
+        );
         }
 
         return new Response($html);

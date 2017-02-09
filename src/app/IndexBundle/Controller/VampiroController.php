@@ -65,6 +65,7 @@ class VampiroController extends Controller{
             ->add('sangre')
             ->add('arma')
             ->add('habilidades', 'text')
+            ->add('partida')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -96,6 +97,7 @@ class VampiroController extends Controller{
                         ->add('sangre')
                         ->add('arma')
                         ->add('habilidades', 'text')
+                        ->add('partida')
                         ->getForm();
                     }
             }
@@ -252,6 +254,7 @@ class VampiroController extends Controller{
             ->add('sangre')
             ->add('arma')
             ->add('habilidades', 'text')
+            ->add('partida')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -284,6 +287,7 @@ class VampiroController extends Controller{
                         ->add('sangre')
                         ->add('arma')
                         ->add('habilidades', 'text')
+                        ->add('partida')
                         ->getForm();
                     }
             }
@@ -346,6 +350,7 @@ class VampiroController extends Controller{
             ->add('sangre')
             ->add('arma')
             ->add('habilidades', 'text')
+            ->add('partida')
             ->getForm();
 
         if ($request->isMethod('POST')) {
