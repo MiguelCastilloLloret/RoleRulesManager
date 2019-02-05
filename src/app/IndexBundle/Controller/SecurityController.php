@@ -1,6 +1,17 @@
 <?php
 
 namespace app\IndexBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use app\IndexBundle\Controller\Listener\AddGamesFieldSubscriber;
+use app\IndexBundle\Controller\SistemaReglas\SistemaReglas;
+use app\IndexBundle\Entity\DD35\Personaje;
+use app\IndexBundle\Entity\DD35\Plantilla;
+use app\IndexBundle\Entity\Vampiro\vPersonaje;
+use app\IndexBundle\Entity\Vampiro\vPlantilla;
  
 class SecurityController extends Controller{
      /** @Route("/login", name="login")
