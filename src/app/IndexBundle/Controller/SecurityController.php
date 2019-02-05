@@ -14,8 +14,7 @@ use app\IndexBundle\Entity\Vampiro\vPersonaje;
 use app\IndexBundle\Entity\Vampiro\vPlantilla;
  
 class SecurityController extends Controller{
-     /** @Route("/login", name="login")
-     */
+
     public function loginAction(Request $request)
     {
 
@@ -36,17 +35,12 @@ class SecurityController extends Controller{
             'error'         => $error,
         ));
     }
-    /**
-     * @Route("/logout", name="logout")
-     */
+
     public function logoutAction(Request $request)
     {
     // UNREACHABLE CODE
     }
 
-    /**
-     * @Route("/registro", name="register")
-     */
     public function registerAction(Request $request)
     {
     // Creamos el formulario y le enviamos un usuario como molde
