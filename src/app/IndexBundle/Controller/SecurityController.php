@@ -18,6 +18,9 @@ class SecurityController extends Controller{
      */
     public function loginAction(Request $request)
     {
+
+        $html = $this->container->get('templating')->render('index/login.html.twig');
+
         // Recupera el servicio de autenticación
         $authenticationUtils = $this->get('security.authentication_utils');
 
