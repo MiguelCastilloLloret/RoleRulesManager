@@ -56,12 +56,12 @@ app_VampiroDeleteP_screen:
 
 app_login_screen:
     path:     /login
-    defaults: { _controller: appIndexBundle:SecurityController:login }
+    defaults: { _controller: appIndexBundle:Security:login }
 
 app_logout_screen:
     path:     /logout
-    defaults: { _controller: appIndexBundle:SecurityController:logout }
+    defaults: { _controller: appIndexBundle:Security:logout }
 
 app_registro_screen:
     path:     /registro
-    defaults: { _controller: appIndexBundle:SecurityController:register }
+    defaults: { _controller: appIndexBundle:Security:register }
