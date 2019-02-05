@@ -53,3 +53,15 @@ app_VampiroDelete_screen:
 app_VampiroDeleteP_screen:
     path:     /VampiroMaster/eliminarPlantilla
     defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteP }
+
+app_login_screen:
+    path:     /login
+    defaults: { _controller: appIndexBundle:SecurityController:login }
+
+app_logout_screen:
+    path:     /logout
+    defaults: { _controller: appIndexBundle:SecurityController:logout }
+
+app_registro_screen:
+    path:     /registro
+    defaults: { _controller: appIndexBundle:SecurityController:register }

@@ -139,6 +139,12 @@ class Personaje{
 
 	public $partida;
 
+		/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $usuario;
+
 	/*function __construct($Nombre, $Clase, $Nivel, $PuntosVida, $ClaseArmadura, $BonusFuerza, $BonusDestreza, $BonusConstitucion, $BonusInteligencia, $BonusSabiduria, $BonusCarisma, $SalvacionVoluntad, $SalvacionFortaleza, $SalvacionReflejos, $Estado, $ResistenciaMagica, $ReduccionDano, $Arma){
 		$this->nombre = $Nombre;
 		$this->clase = $Clase;

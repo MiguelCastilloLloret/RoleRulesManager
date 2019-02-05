@@ -12,6 +12,7 @@ use app\IndexBundle\Entity\Vampiro\vPlantilla;
 use app\IndexBundle\Controller\idPlantilla;	
 
 class VampiroController extends Controller{
+    
 	public function VampiroAction(Request $request){
 
         $html = $this->container->get('templating')->render(
