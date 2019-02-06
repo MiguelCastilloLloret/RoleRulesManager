@@ -12,7 +12,7 @@ security:
             memory: ~
 
     encoders:
-        AppBundle\Entity\User:
+        app\IndexBundle\Entity\Common\User:
             algorithm: bcrypt
 
     firewalls:
