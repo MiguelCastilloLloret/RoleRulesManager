@@ -17,7 +17,7 @@ class SecurityController extends Controller{
     public function loginAction(Request $request)
     {
 
-        $html = $this->container->get('templating')->render('index/login.html.twig');
+        $html = $this->container->get('templating')->render('security/login.html.twig');
 
         // Recupera el servicio de autenticación
         $authenticationUtils = $this->get('security.authentication_utils');
@@ -70,7 +70,7 @@ class SecurityController extends Controller{
     }
  
     return $this->render(
-        'page/register.html.twig',
+        'security/register.html.twig',
         array('form' => $form->createView())
     );
 }
