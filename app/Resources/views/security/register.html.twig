@@ -8,10 +8,14 @@
 
 {% block body %}
 {% include './views/index/header.html' %}
-    {{ form_start(form) }}
+  <div class="container contenedor">
+    <div class="block bloque">
+      {{ form_start(form) }}
         {{ form_widget(form) }}
         <button type="submit">Registrarse</button>
-    {{ form_end(form) }}
+      {{ form_end(form) }}
+    </div>
+  </div>
    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Include all JavaScripts, compiled by Assetic -->
