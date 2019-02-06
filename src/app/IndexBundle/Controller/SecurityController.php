@@ -44,8 +44,8 @@ class SecurityController extends Controller{
     {
     // Creamos el formulario y le enviamos un usuario como molde
     $user = new User();
-    $form = $this->createForm(UserType::class, $user);
-    
+    $form = $this->createForm(new UserType(), $user);
+
     
     // Hacemos que el formulario maneje la petición
     $form->handleRequest($request);
