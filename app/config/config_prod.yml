@@ -17,7 +17,7 @@ monolog:
     handlers:
         main:
             type:         fingers_crossed
-            action_level: info
+            action_level: debug
             handler:      nested
         nested:
             type:  stream
