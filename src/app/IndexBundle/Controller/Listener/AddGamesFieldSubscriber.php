@@ -43,6 +43,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
 
         if($game=="DD35"){
             $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
+            var_dump($List);
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['ID'];
