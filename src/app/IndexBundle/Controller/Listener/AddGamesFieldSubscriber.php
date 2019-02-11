@@ -43,12 +43,6 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
 
         if($game=="DD35"){
             $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
-            ob_start();                    // start buffer capture
-            var_dump( $List );           // dump the values
-            $contents = ob_get_contents(); // put the buffer into a variable
-            ob_end_clean();                // end capture
-            error_log('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC');
-            error_log( $contents );        // log contents of the result of var_dump( $object )
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['ID'];
