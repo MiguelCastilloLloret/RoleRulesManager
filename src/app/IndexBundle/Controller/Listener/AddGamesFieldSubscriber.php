@@ -6,6 +6,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Security\Core\User\UserInterface\UserInterface;
 use Doctrine\ORM\EntityManager;
 
 class AddGamesFieldSubscriber implements EventSubscriberInterface{
@@ -40,7 +41,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
         $pjList = NULL;
 
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $user = $this->container->getUser()->getId();
 
         if($game=="DD35"){
             $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
