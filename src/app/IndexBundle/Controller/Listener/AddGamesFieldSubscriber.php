@@ -33,10 +33,10 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         $data = $event->getData();
         //data es un array que en este caso contiene el juego seleccionado por el usuario.
 
-        $this->addField($event->getForm(), $data['game'], $data['party']);
+        $this->addField($event->getForm(), $data['game'], $data['party'], $data['user']);
     }
 
-    protected function addField(Form $form, $game, $party){
+    protected function addField(Form $form, $game, $party, $user){
 
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
         $pjList = NULL;

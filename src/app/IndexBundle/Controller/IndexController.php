@@ -23,6 +23,7 @@ class formExecutor{
     public $spell;
     public $CD;
     public $skill;
+    public $id;
 }
 
 class game{
@@ -35,15 +36,18 @@ class IndexController extends Controller{
      */
     public function indexAction(Request $request){
 
-        $user = $this->getUser()->getId();
+        $userId = $this->getUser()->getId();
 
         $executor = new formExecutor();
+
+        $executor->id = $userId;
 
         //Se crea el formulario de selección de juego
 
         $var = $this->createFormBuilder($executor)
             ->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true))
             ->add('party','text', array('required' => true))
+            ->add('id','integer', 'hidden')
             ->addEventSubscriber($this->get('my_form_editor'))
             ->getForm();
 
