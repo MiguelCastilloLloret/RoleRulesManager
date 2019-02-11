@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-	{% include './views/index/header.html.twig' %}
+	{% include './index/header.html.twig' %}
 	<div class="container contenedor">
 	 {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
