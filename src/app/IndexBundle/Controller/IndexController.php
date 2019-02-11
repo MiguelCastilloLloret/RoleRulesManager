@@ -35,7 +35,7 @@ class IndexController extends Controller{
      */
     public function indexAction(Request $request){
 
-        $user = $this->container->getUser()->getId();
+        $user = $this->getUser()->getId();
 
         $executor = new formExecutor();
 
