@@ -47,7 +47,7 @@ class IndexController extends Controller{
         $var = $this->createFormBuilder($executor)
             ->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true))
             ->add('party','text', array('required' => true))
-            ->add('id','hidden', array('required' => true, 'hidden' => true))
+            ->add('id','hidden', array('required' => true))
             ->addEventSubscriber($this->get('my_form_editor'))
             ->getForm();
 
