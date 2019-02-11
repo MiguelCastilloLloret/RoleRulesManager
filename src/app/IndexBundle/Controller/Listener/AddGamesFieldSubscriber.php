@@ -40,8 +40,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
         $pjList = NULL;
 
-        $token = $this->container->get('security.context')->getToken();
-        $user = $token->getId();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         if($game=="DD35"){
             $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
