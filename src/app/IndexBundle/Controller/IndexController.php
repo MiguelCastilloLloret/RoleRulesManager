@@ -35,6 +35,8 @@ class IndexController extends Controller{
      */
     public function indexAction(Request $request){
 
+        $user = $this->container->getUser()->getId();
+
         $executor = new formExecutor();
 
         //Se crea el formulario de selección de juego
