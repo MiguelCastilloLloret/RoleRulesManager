@@ -6,7 +6,7 @@ security:
     providers:
         user_provider:
             entity:
-                class: IndexBundle:User
+                class: appIndexBundle:User
                 property: email
         in_memory:
             memory: ~
