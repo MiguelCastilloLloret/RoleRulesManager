@@ -65,6 +65,7 @@ class DD35Controller extends Controller{
             ->add('arma')
             ->add('partida')
             ->getForm();
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
 
         if ($request->isMethod('POST')) {
             if(isset($request->request->all()['form']['id'])){
@@ -74,7 +75,7 @@ class DD35Controller extends Controller{
                     $pj = $personajePlantilla;
                     $pj->vidaMaxima = $pj->puntosVida;
                     $pj->partida = "Introduzca Partida";
-                    $pj->usuario = $user = $this->get('security.token_storage')->getToken()->getUser()->getId();
+                    $pj->usuario = $userId;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
                         ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
