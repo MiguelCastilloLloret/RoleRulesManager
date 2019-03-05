@@ -20,8 +20,9 @@ class DD35Controller extends Controller{
         $html = $this->container->get('templating')->render(
             'index/rolManage.html.twig', array('hola' => '', 'juego' => 'DD35Master')
         );
-
-        $userId = $this->getUser()->getId();
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
 
         return new Response($html);
     }
