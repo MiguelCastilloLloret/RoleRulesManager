@@ -11,6 +11,8 @@ use app\IndexBundle\Entity\DD35\Personaje;
 use app\IndexBundle\Entity\DD35\Plantilla;
 use app\IndexBundle\Controller\idPlantilla;	
 
+$userId = NULL;
+
 class DD35Controller extends Controller{
 
     public function DD35Action(Request $request){
@@ -18,6 +20,8 @@ class DD35Controller extends Controller{
         $html = $this->container->get('templating')->render(
             'index/rolManage.html.twig', array('hola' => '', 'juego' => 'DD35Master')
         );
+
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
 
         return new Response($html);
     }
@@ -65,7 +69,6 @@ class DD35Controller extends Controller{
             ->add('arma')
             ->add('partida')
             ->getForm();
-        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
 
         if ($request->isMethod('POST')) {
             if(isset($request->request->all()['form']['id'])){
