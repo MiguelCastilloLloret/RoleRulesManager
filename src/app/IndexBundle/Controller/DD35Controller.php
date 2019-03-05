@@ -11,9 +11,10 @@ use app\IndexBundle\Entity\DD35\Personaje;
 use app\IndexBundle\Entity\DD35\Plantilla;
 use app\IndexBundle\Controller\idPlantilla;	
 
-$userId = NULL;
 
 class DD35Controller extends Controller{
+
+    public $userId;
 
     public function DD35Action(Request $request){
 
