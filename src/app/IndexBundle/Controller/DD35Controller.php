@@ -54,6 +54,11 @@ class DD35Controller extends Controller{
             ->getForm();
 
         $pj = new Personaje();
+        ob_start();                    // start buffer capture
+        var_dump( $userId );        // dump the values
+        $contents = ob_get_contents(); // put the buffer into a variable
+        ob_end_clean();                // end capture
+        error_log( $contents );
         $pj->usuario = $userId;
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
