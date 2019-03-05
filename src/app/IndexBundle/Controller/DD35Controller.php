@@ -53,6 +53,7 @@ class DD35Controller extends Controller{
             ->getForm();
 
         $pj = new Personaje();
+        $pj->usuario = $userId;
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
             ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
@@ -74,6 +75,7 @@ class DD35Controller extends Controller{
             ->add('reduccionDano')
             ->add('arma')
             ->add('partida')
+            ->add('usuario','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -105,13 +107,13 @@ class DD35Controller extends Controller{
                         ->add('reduccionDano')
                         ->add('arma')
                         ->add('partida')
+                        ->add('usuario','hidden')
                         ->getForm();
                     }
             }
             else{
                 $var->bind($request);
                 if($var->isValid()){
-                    $pj->usuario = $userId;
                     $em->persist($pj);
                     $em->flush();
                     $hola = "Se introdujo correctamente el personaje en la BD";
