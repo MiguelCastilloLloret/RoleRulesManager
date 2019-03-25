@@ -3,7 +3,7 @@
 }
 
 .contenedor{
-	margin-top: 3%;
+	margin-top: 3.5%;
 	display: flex;
    	justify-content: center;
    	align-items: center;
@@ -17,8 +17,17 @@
 	margin-bottom: 2%;
 }
 
-.form-group{
-	display: inline-block;
-	width: 20%;
-	margin: 0 2%;
+.form-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    align-content: stretch;
+    width: 15%;
+    margin: 0.5% 2.5%;
+}
+
+.btn {
+    margin-left: 2.5%;
+    margin-top: 1%;
 }
