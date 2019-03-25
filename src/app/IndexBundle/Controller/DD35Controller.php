@@ -21,14 +21,6 @@ class DD35Controller extends Controller{
         $html = $this->container->get('templating')->render(
             'index/rolManage.html.twig', array('hola' => '', 'juego' => 'DD35Master')
         );
-        $security_context = $this->get('security.context');
-        $security_token = $security_context->getToken();
-        $userId = $security_token->getUser()->getId();
-        ob_start();                    // start buffer capture
-        var_dump( $userId );        // dump the values
-        $contents = ob_get_contents(); // put the buffer into a variable
-        ob_end_clean();                // end capture
-        error_log( $contents );
 
         return new Response($html);
     }
@@ -57,11 +49,6 @@ class DD35Controller extends Controller{
         $security_context = $this->get('security.context');
         $security_token = $security_context->getToken();
         $userId = $security_token->getUser()->getId();
-        ob_start();                    // start buffer capture
-        var_dump( $userId );        // dump the values
-        $contents = ob_get_contents(); // put the buffer into a variable
-        ob_end_clean();                // end capture
-        error_log( $contents );
         $pj->usuario = $userId;
         $var = $this->createFormBuilder($pj)
             ->add('nombre')

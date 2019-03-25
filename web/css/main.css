@@ -14,3 +14,8 @@
 #plantilla{
 	margin-bottom: 2%;
 }
+
+#plantilla > div{
+	display: inline-block;
+	width: 20%;
+}
