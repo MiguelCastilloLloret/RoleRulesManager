@@ -4,6 +4,9 @@
 
 .contenedor{
 	margin-top: 3%;
+	display: flex;
+   	justify-content: center;
+   	align-items: center;
 }
 
 .oculto{
@@ -17,4 +20,5 @@
 .form-group{
 	display: inline-block;
 	width: 20%;
+	margin: 2% auto;
 }
