@@ -1,5 +1,4 @@
 .bloque{
-	width: 50%;
 	margin: 0 auto;
 }
 
@@ -15,7 +14,7 @@
 	margin-bottom: 2%;
 }
 
-#plantilla > div{
+.form-group{
 	display: inline-block;
 	width: 20%;
 }
