@@ -18,12 +18,20 @@
 	margin-bottom: 2%;
 }
 
-.form-group {
-    display: inline-flex;
+#form{
+	width: 100%;
+	display: inline-flex;
     align-items: center;
-    justify-content: center;
-    flex-flow: column wrap;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
     align-content: stretch;
+}
+
+#form>div:first-child{
+  flex: 0 1 75%;
+}
+
+.form-group {
     width: 20%;
     margin: 0.5% 2.5%;
 }
