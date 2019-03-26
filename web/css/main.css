@@ -27,7 +27,7 @@
     align-content: stretch;
 }
 
-#form>div:first-child{
+#form>div:first-of-type{
   flex: 0 1 75%;
 }
 

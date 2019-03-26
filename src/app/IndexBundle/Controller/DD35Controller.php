@@ -140,8 +140,6 @@ class DD35Controller extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
-        var_dump($plList);
-
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -262,7 +260,6 @@ class DD35Controller extends Controller{
                 $plantilla->bind($request);
                 if($plantilla->isValid()){
                     $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($id->id);
-                    var_dump($personajePlantilla);
                     $tipo = "";
                     $var = $this->createFormBuilder($personajePlantilla)
                         ->add('ID', 'hidden')
