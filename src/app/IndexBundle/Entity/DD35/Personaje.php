@@ -33,84 +33,154 @@ class Personaje{
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $nivel;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $puntosVida;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $vidaMaxima;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $claseArmadura;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusFuerza;
 	
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusDestreza;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusConstitucion;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusInteligencia;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusSabiduria;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $bonusCarisma;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $salvacionVoluntad;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $salvacionFortaleza;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $salvacionReflejos;
 
 	/**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $estado;
@@ -123,6 +193,11 @@ class Personaje{
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas"
+     * )
      */
 
 	public $reduccionDano;
