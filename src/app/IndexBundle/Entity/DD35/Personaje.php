@@ -37,7 +37,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -48,7 +48,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -59,7 +59,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -70,7 +70,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -81,7 +81,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -92,7 +92,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -103,7 +103,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -114,7 +114,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -125,7 +125,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -136,7 +136,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -147,7 +147,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -158,7 +158,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -169,7 +169,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
@@ -177,17 +177,17 @@ class Personaje{
 
 	/**
      * @ORM\Column(type="string", length=30)
-     * @Assert\Range(
-     *      min = "0",
-     *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
-     * )
      */
 
 	public $estado;
 
 	/**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $resistenciaMagica;
@@ -197,7 +197,7 @@ class Personaje{
      * @Assert\Range(
      *      min = "0",
      *      max = "100",
-     *      minMessage = "No se pueden tener estadísticas negativas"
+     *      minMessage = "No se pueden tener estadísticas negativas."
      * )
      */
 
