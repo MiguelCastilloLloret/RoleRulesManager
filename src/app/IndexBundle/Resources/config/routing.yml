@@ -32,7 +32,15 @@ app_DD35Delete_screen:
 
 app_DD35DeleteP_screen:
     path:     /DD35Master/eliminarPlantilla
-    defaults: { _controller: appIndexBundle:DD35:DD35Delete }
+    defaults: { _controller: appIndexBundle:DD35:DD35DeleteP }
+
+app_DD35CreateW_screen:
+    path:     /DD35Master/crearArma
+    defaults: { _controller: appIndexBundle:DD35:DD35CreateW }
+
+app_DD35DeleteW_screen:
+    path:     /DD35Master/eliminarArma
+    defaults: { _controller: appIndexBundle:DD35:DD35DeleteW }
 
 app_VampiroCreate_screen:
     path:     /VampiroMaster/crear

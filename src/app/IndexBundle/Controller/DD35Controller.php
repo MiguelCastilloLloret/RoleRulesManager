@@ -421,4 +421,83 @@ class DD35Controller extends Controller{
         return new Response($html);
     }
 
+    public function DD35CreateWAction(Request $request){ 
+        $hola = "";
+        $tipo = "";
+        $link = "crearArma";
+        $inputValue = "Importar";
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+
+        $w = new Arma();
+        $security_context = $this->get('security.context');
+        $var = $this->createFormBuilder($w)
+            ->add('nombre')
+            ->add('dado')
+            ->add('dano')
+            ->add('bonus')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            $var->bind($request);
+            if($var->isValid()){
+                $em->persist($w);
+                $em->flush();
+                $hola = "Se introdujo correctamente el arma en la BD";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
+    public function DD35DeleteWAction(Request $request){ 
+        $hola = "";
+        $tipo = "oculto";
+        $link = "eliminarArma";
+        $inputValue = "Eliminar";
+        $plList = NULL;
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Arma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
+
+        $w = new Arma();
+        $var = $this->createFormBuilder($w)
+            ->add('ID', 'hidden')
+            ->add('nombre')
+            ->add('dado')
+            ->add('dano')
+            ->add('bonus')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                $armaPlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Arma')->find($id->id);
+                $em->remove($armaPlantilla);
+                $em->flush();
+                $hola = "El arma se borró correctamente";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
 }
