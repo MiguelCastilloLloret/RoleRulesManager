@@ -10,12 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 class Arma{
-	function __construct($Nombre, $Dado, $Dano, $Bonus){
+	/**function __construct($Nombre, $Dado, $Dano, $Bonus){
 		$this->nombre = $Nombre;
 		$this->dado = $Dado;
 		$this->dano = $Dano;
 		$this->bonus = $Bonus;
 	}
+	*/
 
 	/**
      * @ORM\Column(type="integer")

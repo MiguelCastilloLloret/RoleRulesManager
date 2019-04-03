@@ -7,9 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormView;
 use app\IndexBundle\Entity\DD35\Personaje;
 use app\IndexBundle\Entity\DD35\Plantilla;
-use app\IndexBundle\Controller\idPlantilla;	
+use app\IndexBundle\Controller\idPlantilla;
+use app\IndexBundle\Entity\DD35\Arma;
 
 
 class DD35Controller extends Controller{
@@ -448,7 +450,7 @@ class DD35Controller extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+            'index/masterDD35.html.twig', array('plantilla' => new FormView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);
