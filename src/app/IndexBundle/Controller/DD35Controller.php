@@ -427,16 +427,21 @@ class DD35Controller extends Controller{
         $hola = "";
         $tipo = "";
         $link = "crearArma";
-        $inputValue = "Importar";
+        $inputValue = "";
         $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id')
+            ->getForm();
 
 
         $w = new Arma();
         $security_context = $this->get('security.context');
         $var = $this->createFormBuilder($w)
             ->add('nombre')
-            ->add('dado')
-            ->add('dano')
+            ->add('dado','integer')
+            ->add('dano', 'integer', array('label' => 'Numero de Dados'))
             ->add('bonus')
             ->getForm();
 
@@ -450,7 +455,7 @@ class DD35Controller extends Controller{
         }
 
         $html = $this->container->get('templating')->render(
-            'index/masterDD35.html.twig', array('plantilla' => new FormView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
         );
 
         return new Response($html);

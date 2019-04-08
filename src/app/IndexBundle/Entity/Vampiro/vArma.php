@@ -10,13 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 class vArma{
-	function __construct($Nombre, $Ocultacion, $Dano, $Tipo, $Cadencia){
+	/**function __construct($Nombre, $Ocultacion, $Dano, $Tipo, $Cadencia){
 		$this->nombre = $Nombre;
 		$this->ocultacion = $Ocultacion;
 		$this->dano = $Dano;
 		$this->tipo = $Tipo;
 		$this->cadencia = $Cadencia;
 	}
+	*/
 
 	/**
      * @ORM\Column(type="integer")

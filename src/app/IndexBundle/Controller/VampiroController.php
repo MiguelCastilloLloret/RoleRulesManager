@@ -8,7 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use app\IndexBundle\Entity\Vampiro\vPersonaje;
-use app\IndexBundle\Entity\Vampiro\vPlantilla;	
+use app\IndexBundle\Entity\Vampiro\vPlantilla;
+use app\IndexBundle\Entity\Vampiro\vArma;
 use app\IndexBundle\Controller\idPlantilla;	
 
 class VampiroController extends Controller{
@@ -425,6 +426,91 @@ class VampiroController extends Controller{
                 $ev->remove($personajePlantilla);
                 $ev->flush();
                 $hola = "La plantilla se borró correctamente";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
+    public function VampiroCreateWAction(Request $request){ 
+        $hola = "";
+        $tipo = "";
+        $link = "crearArma";
+        $inputValue = "";
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id')
+            ->getForm();
+
+
+        $w = new vArma();
+        $security_context = $this->get('security.context');
+        $var = $this->createFormBuilder($w)
+            ->add('nombre')
+            ->add('ocultacion')
+            ->add('dano', 'integer', array('label' => 'Numero de Dados'))
+            ->add('tipo')
+            ->add('cadencia', 'integer')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            $var->bind($request);
+            if($var->isValid()){
+                $ev->persist($w);
+                $ev->flush();
+                $hola = "Se introdujo correctamente el arma en la BD";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
+    public function VampiroDeleteWAction(Request $request){ 
+        $hola = "";
+        $tipo = "oculto";
+        $link = "eliminarArma";
+        $inputValue = "Eliminar";
+        $plList = NULL;
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\vArma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
+
+        $w = new vArma();
+        $var = $this->createFormBuilder($w)
+            ->add('nombre')
+            ->add('ocultacion')
+            ->add('dano', 'integer', array('label' => 'Numero de Dados'))
+            ->add('tipo')
+            ->add('cadencia', 'integer')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                $armaPlantilla = $em->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->find($id->id);
+                $ev->remove($armaPlantilla);
+                $ev->flush();
+                $hola = "El arma se borró correctamente";
             }
         }
 

@@ -62,6 +62,14 @@ app_VampiroDeleteP_screen:
     path:     /VampiroMaster/eliminarPlantilla
     defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteP }
 
+app_VampiroCreateW_screen:
+    path:     /VampiroMaster/crearArma
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroCreateW }
+
+app_VampiroDeleteW_screen:
+    path:     /VampiroMaster/eliminarArma
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteW }
+
 login:
     path:     /login
     defaults: { _controller: appIndexBundle:Security:login }

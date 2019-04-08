@@ -12,10 +12,12 @@
 	<div class="container contenedor">
 	    <div class="block bloque">
 	    	<h1>Sistema intérprete de reglas Rol</h1>
+	    	{% if inputValue != "" %}
 	    	<form action="./{{ link }}" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
 	    		{{ form_widget(plantilla) }}
 	   			<input type="submit" class="btn btn-success" value="{{ inputValue }}" />
 			</form>
+			{% endif %}
 		</div>
 	    <div class="bloque {{ tipo }}">
 	    	<form action="./{{ link }}" method="post" {{ form_enctype(form) }}>
