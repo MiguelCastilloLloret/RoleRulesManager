@@ -293,10 +293,12 @@ class VampiroController extends Controller{
                         ->getForm();
                     }
             }
-            $var->bind($request);
-            if($var->isValid()){
-                $ev->flush();
-                $hola = "Se modificó correctamente el personaje en la BD";
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $ev->flush();
+                    $hola = "Se modificó correctamente el personaje en la BD";
+                }
             }
         }
 
@@ -475,11 +477,11 @@ class VampiroController extends Controller{
         return new Response($html);
     }
 
-    public function VampiroDeleteWAction(Request $request){ 
+    public function VampiroChangeWAction(Request $request){ 
         $hola = "";
         $tipo = "oculto";
-        $link = "eliminarArma";
-        $inputValue = "Eliminar";
+        $link = "modificarArma";
+        $inputValue = "Importar";
         $plList = NULL;
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
 
@@ -497,6 +499,7 @@ class VampiroController extends Controller{
 
         $w = new vArma();
         $var = $this->createFormBuilder($w)
+            ->add('ID', 'hidden')
             ->add('nombre')
             ->add('ocultacion')
             ->add('dano', 'integer', array('label' => 'Numero de Dados'))
@@ -507,10 +510,25 @@ class VampiroController extends Controller{
         if ($request->isMethod('POST')) {
             if(isset($request->request->all()['form']['id'])){
                 $plantilla->bind($request);
-                $armaPlantilla = $em->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->find($id->id);
-                $ev->remove($armaPlantilla);
-                $ev->flush();
-                $hola = "El arma se borró correctamente";
+                if($plantilla->isValid()){
+                    $w= $ev->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->find($id->id);
+                    $tipo = "";
+                    $var = $this->createFormBuilder($w)
+                        ->add('ID', 'hidden')
+                        ->add('nombre')
+                        ->add('ocultacion')
+                        ->add('dano', 'integer', array('label' => 'Numero de Dados'))
+                        ->add('tipo')
+                        ->add('cadencia', 'integer')
+                        ->getForm();
+                    }
+            }
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $ev->flush();
+                    $hola = "Se modificó correctamente el arma en la BD";
+                }
             }
         }
 
