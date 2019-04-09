@@ -461,11 +461,11 @@ class DD35Controller extends Controller{
         return new Response($html);
     }
 
-    public function DD35DeleteWAction(Request $request){ 
+    public function DD35ChangeWAction(Request $request){ 
         $hola = "";
         $tipo = "oculto";
-        $link = "eliminarArma";
-        $inputValue = "Eliminar";
+        $link = "modificarArma";
+        $inputValue = "Importar";
         $plList = NULL;
         $em = $this->get('doctrine.orm.default_entity_manager');
 
@@ -485,18 +485,32 @@ class DD35Controller extends Controller{
         $var = $this->createFormBuilder($w)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('dado')
-            ->add('dano')
+            ->add('dado','integer')
+            ->add('dano', 'integer', array('label' => 'Numero de Dados'))
             ->add('bonus')
             ->getForm();
 
         if ($request->isMethod('POST')) {
             if(isset($request->request->all()['form']['id'])){
                 $plantilla->bind($request);
-                $armaPlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Arma')->find($id->id);
-                $em->remove($armaPlantilla);
-                $em->flush();
-                $hola = "El arma se borró correctamente";
+                if($plantilla->isValid()){
+                    $w= $em->getRepository('app\IndexBundle\Entity\DD35\Arma')->find($id->id);
+                    $tipo = "";
+                    $var = $this->createFormBuilder($w)
+                        ->add('ID', 'hidden')
+                        ->add('nombre')
+                        ->add('dado','integer')
+                        ->add('dano', 'integer', array('label' => 'Numero de Dados'))
+                        ->add('bonus')
+                        ->getForm();
+                    }
+            }
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $em->flush();
+                    $hola = "Se modificó correctamente el arma en la BD";
+                }
             }
         }
 

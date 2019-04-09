@@ -38,9 +38,9 @@ app_DD35CreateW_screen:
     path:     /DD35Master/crearArma
     defaults: { _controller: appIndexBundle:DD35:DD35CreateW }
 
-app_DD35DeleteW_screen:
-    path:     /DD35Master/eliminarArma
-    defaults: { _controller: appIndexBundle:DD35:DD35DeleteW }
+app_DD35ChangeW_screen:
+    path:     /DD35Master/modificarArma
+    defaults: { _controller: appIndexBundle:DD35:DD35ChangeW }
 
 app_VampiroCreate_screen:
     path:     /VampiroMaster/crear
@@ -66,9 +66,9 @@ app_VampiroCreateW_screen:
     path:     /VampiroMaster/crearArma
     defaults: { _controller: appIndexBundle:Vampiro:VampiroCreateW }
 
-app_VampiroDeleteW_screen:
-    path:     /VampiroMaster/eliminarArma
-    defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteW }
+app_VampiroChangeW_screen:
+    path:     /VampiroMaster/modificarArma
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroChangeW }
 
 login:
     path:     /login
