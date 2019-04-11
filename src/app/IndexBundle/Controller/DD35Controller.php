@@ -42,6 +42,13 @@ class DD35Controller extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Arma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -71,7 +78,7 @@ class DD35Controller extends Controller{
             ->add('estado')
             ->add('resistenciaMagica')
             ->add('reduccionDano')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->add('partida')
             ->add('usuario','hidden')
             ->getForm();
@@ -104,7 +111,7 @@ class DD35Controller extends Controller{
                         ->add('estado')
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->add('partida')
                         ->add('usuario','hidden')
                         ->getForm();
@@ -142,6 +149,13 @@ class DD35Controller extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Arma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -166,7 +180,7 @@ class DD35Controller extends Controller{
             ->add('estado')
             ->add('resistenciaMagica')
             ->add('reduccionDano')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -193,7 +207,7 @@ class DD35Controller extends Controller{
                         ->add('estado')
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->getForm();
                     }
             }
@@ -229,6 +243,13 @@ class DD35Controller extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Arma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -254,7 +275,7 @@ class DD35Controller extends Controller{
             ->add('estado')
             ->add('resistenciaMagica')
             ->add('reduccionDano')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -282,7 +303,7 @@ class DD35Controller extends Controller{
                         ->add('estado')
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->getForm();
                     }
             }

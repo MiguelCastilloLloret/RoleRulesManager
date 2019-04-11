@@ -38,6 +38,13 @@ class VampiroController extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\\vArma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -65,7 +72,7 @@ class VampiroController extends Controller{
             ->add('estado')
             ->add('fuerzaVoluntad')
             ->add('sangre')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
             ->add('partida')
             ->getForm();
@@ -97,7 +104,7 @@ class VampiroController extends Controller{
                         ->add('estado')
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
                         ->add('partida')
                         ->getForm();
@@ -133,6 +140,13 @@ class VampiroController extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\\vArma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -160,7 +174,7 @@ class VampiroController extends Controller{
             ->add('estado')
             ->add('fuerzaVoluntad')
             ->add('sangre')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
             ->getForm();
 
@@ -191,7 +205,7 @@ class VampiroController extends Controller{
                         ->add('estado')
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
                         ->getForm();
                     }
@@ -226,6 +240,13 @@ class VampiroController extends Controller{
             $plList[$List[$i]['ID']] = $aux;
         }
 
+        $List = $ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\\vArma p ORDER BY p.ID ASC')->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $wepList[$aux] =  $aux;
+        }
+
         $id = new idPlantilla();
         $plantilla = $this->createFormBuilder($id)
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
@@ -254,7 +275,7 @@ class VampiroController extends Controller{
             ->add('estado')
             ->add('fuerzaVoluntad')
             ->add('sangre')
-            ->add('arma')
+            ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
             ->add('partida')
             ->getForm();
@@ -287,7 +308,7 @@ class VampiroController extends Controller{
                         ->add('estado')
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
-                        ->add('arma')
+                        ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
                         ->add('partida')
                         ->getForm();
