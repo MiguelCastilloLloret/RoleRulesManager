@@ -3,6 +3,7 @@
 namespace app\IndexBundle\Entity\DD35;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -33,18 +34,33 @@ class Hechizo{
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $dado;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $danoBase;
 
 	/**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $danoNivel;
