@@ -14,6 +14,7 @@ use app\IndexBundle\Controller\idPlantilla;
 use app\IndexBundle\Entity\DD35\Arma;
 
 
+
 class DD35Controller extends Controller{
 
     public $userId;
@@ -62,7 +63,7 @@ class DD35Controller extends Controller{
         $pj->usuario = $userId;
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
-            ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+            ->add('clase', 'choice', array('choices' => $this->clases))
             ->add('nivel')
             ->add('puntosVida')
             ->add('vidaMaxima')
@@ -95,7 +96,7 @@ class DD35Controller extends Controller{
                     $pj->usuario = $userId;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
-                        ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+                        ->add('clase', 'choice', array('choices' => $this->clases))
                         ->add('nivel')
                         ->add('puntosVida')
                         ->add('vidaMaxima')
@@ -165,7 +166,7 @@ class DD35Controller extends Controller{
         $pj = new Plantilla();
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
-            ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+            ->add('clase', 'choice', array('choices' => $this->clases))
             ->add('nivel')
             ->add('puntosVida')
             ->add('claseArmadura')
@@ -192,7 +193,7 @@ class DD35Controller extends Controller{
                     $pj = $personajePlantilla;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
-                        ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+                        ->add('clase', 'choice', array('choices' => $this->clases))
                         ->add('nivel')
                         ->add('puntosVida')
                         ->add('claseArmadura')
@@ -260,7 +261,7 @@ class DD35Controller extends Controller{
         $var = $this->createFormBuilder($personajePlantilla)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+            ->add('clase', 'choice', array('choices' => $this->clases))
             ->add('nivel')
             ->add('puntosVida')
             ->add('claseArmadura')
@@ -288,7 +289,7 @@ class DD35Controller extends Controller{
                     $var = $this->createFormBuilder($personajePlantilla)
                         ->add('ID', 'hidden')
                         ->add('nombre')
-                        ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+                        ->add('clase', 'choice', array('choices' => $this->clases))
                         ->add('nivel')
                         ->add('puntosVida')
                         ->add('claseArmadura')
@@ -349,7 +350,7 @@ class DD35Controller extends Controller{
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+            ->add('clase', 'choice', array('choices' => $this->clases))
             ->add('nivel')
             ->add('puntosVida')
             ->add('claseArmadura')
@@ -409,7 +410,7 @@ class DD35Controller extends Controller{
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clase', 'choice', array('choices' => array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje')))
+            ->add('clase', 'choice', array('choices' => $this->clases))
             ->add('nivel')
             ->add('puntosVida')
             ->add('claseArmadura')
