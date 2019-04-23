@@ -17,6 +17,7 @@ use app\IndexBundle\Entity\DD35\Arma;
 class DD35Controller extends Controller{
 
     public $userId;
+    public $clases = array("Guerrero" => 'Guerrero', "Mago" => 'Mago', "Clerigo" => 'Clerigo', "Picaro" => 'Picaro', "Explorador" => 'Explorador', "Barbaro" => 'Barbaro', "Bardo" => 'Bardo', "Hechicero" => 'Hechicero', "Druida" => 'Druida', "Paladin" => 'Paladin', "Monje" => 'Monje');
 
     public function DD35Action(Request $request){
 
