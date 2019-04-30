@@ -13,6 +13,8 @@ use app\IndexBundle\Entity\Vampiro\vArma;
 use app\IndexBundle\Controller\idPlantilla;	
 
 class VampiroController extends Controller{
+
+    $clan = array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue');
     
 	public function VampiroAction(Request $request){
 
@@ -53,7 +55,7 @@ class VampiroController extends Controller{
         $pj = new vPersonaje();
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
-            ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+            ->add('clan', 'choice', array('choices' => $this->clan))
             ->add('generacion')
             ->add('puntosVida')
             ->add('armadura')
@@ -85,7 +87,7 @@ class VampiroController extends Controller{
                     $pj = $personajePlantilla;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
-                        ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+                        ->add('clan', 'choice', array('choices' => $this->clan))
                         ->add('generacion')
                         ->add('puntosVida')
                         ->add('armadura')
@@ -155,7 +157,7 @@ class VampiroController extends Controller{
         $pj = new vPlantilla();
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
-            ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+            ->add('clan', 'choice', array('choices' => $this->clan))
             ->add('generacion')
             ->add('puntosVida')
             ->add('armadura')
@@ -186,7 +188,7 @@ class VampiroController extends Controller{
                     $pj = $personajePlantilla;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
-                        ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+                        ->add('clan', 'choice', array('choices' => $this->clan))
                         ->add('generacion')
                         ->add('puntosVida')
                         ->add('armadura')
@@ -256,7 +258,7 @@ class VampiroController extends Controller{
         $var = $this->createFormBuilder($personajePlantilla)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+            ->add('clan', 'choice', array('choices' => $this->clan))
             ->add('generacion')
             ->add('puntosVida')
             ->add('armadura')
@@ -289,7 +291,7 @@ class VampiroController extends Controller{
                     $var = $this->createFormBuilder($personajePlantilla)
                         ->add('ID', 'hidden')
                         ->add('nombre')
-                        ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+                        ->add('clan', 'choice', array('choices' => $this->clan))
                         ->add('generacion')
                         ->add('puntosVida')
                         ->add('armadura')
@@ -354,7 +356,7 @@ class VampiroController extends Controller{
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+            ->add('clan', 'choice', array('choices' => $this->clan))
             ->add('generacion')
             ->add('puntosVida')
             ->add('armadura')
@@ -419,7 +421,7 @@ class VampiroController extends Controller{
         $var = $this->createFormBuilder($pj)
             ->add('ID', 'hidden')
             ->add('nombre')
-            ->add('clan', 'choice', array('choices' => array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue')))
+            ->add('clan', 'choice', array('choices' => $this->clan))
             ->add('generacion')
             ->add('puntosVida')
             ->add('armadura')
