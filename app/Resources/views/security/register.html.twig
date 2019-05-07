@@ -9,8 +9,8 @@
 {% block body %}
 {% include './index/header.html.twig' %}
   <div class="container contenedor">
-    <div class="block bloque">
-      {{ form_start(form) }}
+    <div class="block bloque" id="registro">
+      {{ form_start(form, {'attr': {'id': 'form_register'}}) }}
         {{ form_widget(form) }}
         <button type="submit">Registrarse</button>
       {{ form_end(form) }}
