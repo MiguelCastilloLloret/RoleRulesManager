@@ -40,7 +40,7 @@
     $(document).ready(function(){
     	console.log("Ready!");
 		$("#panel").hide();
-		if($("#panelbody").text()){
+		if($("#panelbody").text().length!=0){
 			$("#panel").show();
 		}
 	});
