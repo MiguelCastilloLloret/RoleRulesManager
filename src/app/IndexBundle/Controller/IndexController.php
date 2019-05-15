@@ -42,10 +42,6 @@ class IndexController extends Controller{
 
         $executor->id = $userId;
 
-        $panel1 = "<div class=\"panel panel-info\"><div class=\"panel-heading\"><h2 class=\"panel-title\">Resultado de la acción</h2><div class=\"panel-body\">";
-
-        $panel2 = "</div></div></div>";
-
         //Se crea el formulario de selección de juego
 
         $var = $this->createFormBuilder($executor)
@@ -60,7 +56,6 @@ class IndexController extends Controller{
             if ($var->isValid()) {
                 $SistemaReglas = $this->get('my_rules_manager');
                 $hola = $SistemaReglas->ejecutorReglas($executor);
-                $hola = $panel1.$hola.$panel2;
                 $html = $html = $this->container->get('templating')->render(
                     'index/index.html.twig', array('form' => $var->createView(), 'hola' => $hola)
                  );
