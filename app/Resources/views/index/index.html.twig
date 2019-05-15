@@ -21,11 +21,11 @@
 			</form>
 		</div>
 		<div class="block bloque">
-			<div class="panel panel-default">
+			<div class="panel panel-default" id="panel">
 				<div class="panel-heading">
 					<h3 class="panel-title">Resultado de la acción</h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body" id="panelbody">
 					{{ hola }}
 				</div>
 			</div>
@@ -35,4 +35,6 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <!-- Include hidden function for panels -->
+    <script src="{{ asset('js/index.js') }}"></script>
 {% endblock %}
