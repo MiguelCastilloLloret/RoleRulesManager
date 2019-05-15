@@ -36,8 +36,9 @@
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <!-- Include hidden function for panels -->
-    <script>
+    <script type="text/javascript">
     $(document).ready(function(){
+    	console.log("Ready!");
 		$("#panel").hide();
 		if($("#panelbody").text()){
 			$("#panel").show();
