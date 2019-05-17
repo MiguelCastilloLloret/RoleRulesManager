@@ -7,10 +7,9 @@
        <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-<body class="oculto">
 {% block body %}
 	{% include './index/header.html.twig' %}
-	<div class="container contenedor">
+	<div class="container contenedor oculto">
 	 {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -39,4 +38,3 @@
     <!-- Include hidden function for panels -->
     <script src="js/index.js"></script>
 {% endblock %}
-</body>
