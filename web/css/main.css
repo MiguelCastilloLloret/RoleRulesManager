@@ -1,5 +1,5 @@
 body{
-	background-color: #dbbba6
+	background-image: url("wallpaper.jpg");
 }
 
 .bloque{
@@ -20,6 +20,9 @@ body{
 	flex-direction: column;
    	justify-content: center;
    	align-items: center;
+   	border-style: hidden;
+   	border-radius: 3%;
+   	background-color: white;
 }
 
 .oculto{
