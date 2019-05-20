@@ -13,9 +13,9 @@
 	 {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-	    <div class="block bloque" id="select">
+	    <div class="block bloque formreglas">
 	    	<h1>Sistema intérprete de reglas Rol</h1>
-	    	<form action="./reglas" method="post" {{ form_enctype(form) }}>
+	    	<form action="./reglas" method="post" class="formreglas" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar"/>
 			</form>
