@@ -4,7 +4,6 @@ html{
 
 body{
 	background-image: url("wallpaper.jpg");
-	height: 50%;
 }
 
 .bloque{
@@ -72,5 +71,6 @@ body{
 .btn {
     margin-left: 2.5%;
     margin-top: 1%;
+    margin-bottom: 2%;
     flex: 0 0 30%;
 }
