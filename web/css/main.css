@@ -33,10 +33,6 @@ body{
 	display: none;
 }
 
-.login{
-	width: 50%;
-}
-
 #registro{
 	width: 50%;
 }
@@ -71,6 +67,10 @@ body{
 .form-group {
     width: 20%;
     margin: 0.5% 2.5%;
+}
+
+.login{
+	width: 50%;
 }
 
 .btn {
