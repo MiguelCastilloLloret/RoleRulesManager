@@ -18,14 +18,17 @@
             {% endif %}
             <div id="form">
     	    	<form action="{{ path('login') }}" method="post">
-     
-            		{# Input para el campo email #}
-            		<label for="username">Email:</label>
-            		<input type="text" id="username" name="_username" value="{{ last_username }}" />
-     
-            		{# Input para el campo contraseña #}
-            		<label for="password">Contraseña:</label>
-            		<input type="password" id="password" name="_password" />
+                    <div class="form-group">
+                		{# Input para el campo email #}
+                		<label for="username">Email:</label>
+                		<input type="text" id="username" name="_username" value="{{ last_username }}" />
+                    </div>
+                    
+                    <div class="form-group">
+                		{# Input para el campo contraseña #}
+                		<label for="password">Contraseña:</label>
+                		<input type="password" id="password" name="_password" />
+                    </div>
      
             		{# Ruta a la que redirige si hay éxito #}
             		<input type="hidden" name="_target_path" value="/" />
