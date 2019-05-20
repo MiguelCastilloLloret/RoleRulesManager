@@ -33,11 +33,15 @@ body{
 	display: none;
 }
 
-#registro .login{
+.login{
 	width: 50%;
 }
 
-#form_register{
+#registro{
+	width: 50%;
+}
+
+#form_register .form-group{
 	width: 100%;
 	margin-bottom: 2%;
 	margin-top: 2%;
