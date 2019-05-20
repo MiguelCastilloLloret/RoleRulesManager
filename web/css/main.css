@@ -37,9 +37,10 @@ body{
 	width: 50%;
 }
 
-#form_register .form-group{
+#form_register{
 	width: 100%;
 	margin-bottom: 2%;
+	margin-top: 2%;
 }
 
 #plantilla{
