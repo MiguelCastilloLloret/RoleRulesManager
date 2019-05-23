@@ -299,6 +299,11 @@ class VampiroController extends Controller{
                 $plantilla->bind($request);
                 if($plantilla->isValid()){
                     $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($id->id);
+                    ob_start();
+                    var_dump( $personajePlantilla);                    // start buffer capture
+                    $contents = ob_get_contents(); // put the buffer into a variable
+                    ob_end_clean();                // end capture
+                    error_log( $contents );
                     $tipo = "";
                     $var = $this->createFormBuilder($personajePlantilla)
                         ->add('ID', 'hidden')
