@@ -94,12 +94,6 @@ class DD35Controller extends Controller{
                     $pj->vidaMaxima = $pj->puntosVida;
                     $pj->partida = "Introduzca Partida";
                     $pj->usuario = $userId;
-                    ob_start();
-                    var_dump( $personajePlantilla);                    // start buffer capture
-                    var_dump( $pj );           // dump the values
-                    $contents = ob_get_contents(); // put the buffer into a variable
-                    ob_end_clean();                // end capture
-                    error_log( $contents );
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
                         ->add('clase', 'choice', array('choices' => $this->clases))

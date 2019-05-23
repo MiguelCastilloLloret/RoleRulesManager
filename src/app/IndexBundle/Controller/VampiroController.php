@@ -93,12 +93,6 @@ class VampiroController extends Controller{
                     $pj = $personajePlantilla;
                     $pj->partida = "Introduzca Partida";
                     $pj->usuario = $userId;
-                    ob_start();
-                    var_dump( $userId);                    // start buffer capture
-                    var_dump( $pj->usuario );           // dump the values
-                    $contents = ob_get_contents(); // put the buffer into a variable
-                    ob_end_clean();                // end capture
-                    error_log( $contents );
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
                         ->add('clan', 'choice', array('choices' => $this->clan))
@@ -127,11 +121,13 @@ class VampiroController extends Controller{
                         ->getForm();
                     }
             }
-            $var->bind($request);
-            if($var->isValid()){
-                $ev->persist($pj);
-                $ev->flush();
-                $hola = "Se introdujo correctamente el personaje en la BD";
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $ev->persist($pj);
+                    $ev->flush();
+                    $hola = "Se introdujo correctamente el personaje en la BD";
+                }
             }
         }
 
@@ -227,11 +223,13 @@ class VampiroController extends Controller{
                         ->getForm();
                     }
             }
-            $var->bind($request);
-            if($var->isValid()){
-                $ev->persist($pj);
-                $ev->flush();
-                $hola = "Se introdujo correctamente la plantilla en la BD";
+            else{
+                $var->bind($request);
+                if($var->isValid()){
+                    $ev->persist($pj);
+                    $ev->flush();
+                    $hola = "Se introdujo correctamente el personaje en la BD";
+                }
             }
         }
 
