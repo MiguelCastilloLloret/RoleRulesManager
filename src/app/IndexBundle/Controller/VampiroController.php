@@ -130,7 +130,7 @@ class VampiroController extends Controller{
     public function VampiroCreatePAction(Request $request){ 
         $hola = "";
         $tipo = "";
-        $link = "crear";
+        $link = "crearPlantilla";
         $inputValue = "Importar";
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
         $plList = NULL;
@@ -400,7 +400,7 @@ class VampiroController extends Controller{
     public function VampiroDeletePAction(Request $request){ 
         $hola = "";
         $tipo = "oculto";
-        $link = "eliminar";
+        $link = "eliminarPlantilla";
         $inputValue = "Eliminar";
         $plList = NULL;
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
