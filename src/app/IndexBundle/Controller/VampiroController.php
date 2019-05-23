@@ -19,7 +19,7 @@ class VampiroController extends Controller{
 	public function VampiroAction(Request $request){
 
         $html = $this->container->get('templating')->render(
-            'index/rolManage.html.twig', array('hola' => '', 'juego' => 'VampiroMaster')
+            'index/rolManage.html.twig', array('hola' => '', 'juego' => 'VampiroMaster', 'titulo' => "Menú del Master: Vampiro la Mascarada")
         );
 
         return new Response($html);

@@ -89,7 +89,7 @@ class IndexController extends Controller{
         }
         else{
             $html = $this->container->get('templating')->render(
-                'index/select.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola)
+                'index/select.html.twig', array('form' => $var->createView(), 'titulo' => "Menú del Master" , 'hola' => $hola)
             );
 
             return new Response($html);

@@ -23,7 +23,7 @@ class DD35Controller extends Controller{
     public function DD35Action(Request $request){
 
         $html = $this->container->get('templating')->render(
-            'index/rolManage.html.twig', array('hola' => '', 'juego' => 'DD35Master')
+            'index/rolManage.html.twig', array('hola' => '', 'juego' => 'DD35Master', 'titulo' => "Menú del Master: D&D 3.5")
         );
 
         return new Response($html);
