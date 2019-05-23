@@ -248,7 +248,7 @@ class VampiroController extends Controller{
         $plList = NULL;
         $ev = $this->get('doctrine.orm.vamp_entity_manager');
 
-        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPlantilla p ORDER BY p.ID ASC')->getResult();
+        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPersonaje p ORDER BY p.ID ASC')->getResult();
 
         for($i=0;$i<count($List);$i++){
             $aux = $List[$i]['nombre'];
