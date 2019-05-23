@@ -7,5 +7,6 @@
 		else if($pj1->clase == "Hechicero") $var = $pj1->aplicar_efecto($hechizo, $hechizo->efecto, $pj1->bonusCarisma);
 		else $var = $pj1->aplicar_efecto($hechizo, $hechizo->efecto, $pj1->bonusSabiduria);
 	}
-	return $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cambia su estado a ".$var;
+
+	return $res = "El jugador ".$executor->pj1." lanza un hechizo ".$executor->spell." y cambia su estado a ".$var;
 ?>

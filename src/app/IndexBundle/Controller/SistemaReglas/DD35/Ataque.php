@@ -33,6 +33,8 @@
 
 	if($danoFinal!=0) $var = $pj2->aplicar_efecto("Ataque", ($danoFinal*-1));
 
+	
+
 	if($danoFinal == 0) $res = "El jugador ".$pj1->nombre." falla el ataque(Tirada ".$impacto."+".$bonus." vs CA ".$pj2->claseArmadura.").";
 	else if($impacto == 20 && $critico == true) $res = "El jugador ".$pj1->nombre." acierta un golpe crítico(Tirada ".$impacto."+".$bonus.", comprobación ".$comprobacionCritico."+".$bonus.") y causa ".($var*-1)." puntos de daño a ".$pj2->nombre.".";
 	else if($impacto == 20) $res = "El jugador ".$pj1->nombre." falla una oportunidad de crítico(Tirada ".$impacto."+".$bonus.", comprobación ".$comprobacionCritico."+".$bonus."). Su ataque causa ".($var*-1)." puntos de daño a ".$pj2->nombre.".";

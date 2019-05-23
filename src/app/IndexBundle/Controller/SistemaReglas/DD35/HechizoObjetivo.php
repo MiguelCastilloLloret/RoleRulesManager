@@ -21,24 +21,29 @@
 		}
 	}
 
+	$res = array('Lanzador' => $pj1->nombre, 'Objetivo' => $pj2->nombre, 'Hechizo' => $executor->spell);
+
 	if($hechizo->curacion){
 		if($pj1->clase == "Mago") $var = $pj2->aplicar_efecto($hechizo, $var, $pj1->bonusInteligencia);
 		else if($pj1->clase == "Hechicero") $var = $pj2->aplicar_efecto($hechizo, $var, $pj1->bonusCarisma);
 		else $var = $pj2->aplicar_efecto($hechizo, $var, $pj1->bonusSabiduria);
+		$res['Curacion'] = $var;
 	}
 	else{
 		if($pj1->clase == "Mago") $var = $pj2->aplicar_efecto($hechizo, $var*-1, $pj1->bonusInteligencia);
 		else if($pj1->clase == "Hechicero") $var = $pj2->aplicar_efecto($hechizo, $var*-1, $pj1->bonusCarisma);
 		else $var = $pj2->aplicar_efecto($hechizo, $var*-1, $pj1->bonusSabiduria);
+		$res['Daño'] = $var*-1;
 	}
 
 	if($hechizo->efecto){
 		if($pj1->clase == "Mago") $var = $pj2->aplicar_efecto($hechizo, $hechizo->efecto, $pj1->bonusInteligencia);
 		else if($pj1->clase == "Hechicero") $var = $pj2->aplicar_efecto($hechizo, $hechizo->efecto, $pj1->bonusCarisma);
 		else $var = $pj2->aplicar_efecto($hechizo, $hechizo->efecto, $pj1->bonusSabiduria);
+		$res['Estado del objetivo'] = $var;
 	}
 
-	if($var < 0) $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y causa ".($var*-1)." puntos de daño a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
-	else if($var > 0) $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cura ".$var." puntos de vida a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
-	else $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cambia el estado de ".$pj2->nombre." a ".$var;
+	if($var < 0 || $var > 0) $res['Vida del objetivo'] = $pj2->puntosVida; //"El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y causa ".($var*-1)." puntos de daño a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
+	//else if($var > 0) $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cura ".$var." puntos de vida a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
+	//else $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cambia el estado de ".$pj2->nombre." a ".$var;
 ?>

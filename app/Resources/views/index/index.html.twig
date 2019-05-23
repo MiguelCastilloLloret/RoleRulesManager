@@ -25,9 +25,32 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Resultado de la acción</h3>
 				</div>
-				<div class="panel-body" id="panelbody">
-					{{ hola }}
-				</div>
+				<div class="panel-body" id="panelbody"></div>
+				<table class="table">
+					<tr>
+					{% for key in hola|keys %}
+            			<th>{{key}}</th>
+				    {% endfor %}
+				    </tr>
+				    {% if hola.Personaje is defined and hola.Personaje is iterable %}
+				    <tr>
+					    {% for value in hola %}
+					 		<td>{{value.1}}</td>
+					    {% endfor %}
+				    </tr>
+				    <tr>
+				    	{% for value in hola %}
+					 		<td>{{value.2}}</td>
+					    {% endfor %}
+				    </tr>
+				    {% else %}
+				    <tr>
+					    {% for value in hola %}
+					 		<td>{{value}}</td>
+					    {% endfor %}
+				    </tr>
+				    {% endif %}
+				</table>
 			</div>
 		</div>
 	</div>

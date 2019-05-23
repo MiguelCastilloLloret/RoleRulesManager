@@ -29,14 +29,19 @@
 			$bonus2 = $pj2->bonusCarisma;
 			break;
 	}
-	$var = rand(1,20)+$bonus1;
-	$var2 = rand(1,20)+$bonus2;
+	$tir = rand(1,20);
+	$var = $tir+$bonus1;
+	$tir2 = rand(1,20);
+	$var2 = $tir2+$bonus2;
 
-	if($var > $var2){
+	$res = array('Personaje' => array($pj1->nombre,$pj2->nombre), 'Tirada' => array($tir,$tir2), 'Bonus' => array($bonus1,$bonus2), 'Resultado' => array($var,$var2));
+
+	/*if($var > $var2){
 		$nom = $pj1->nombre;
 	}
 	else{
 		$nom = $pj2->nombre;
 	}
 	$res = "El jugador ".$nom." ha ganado la tirada de ".$executor->skill."(".$var."vs".$var2.")";
+	*/
 ?>
