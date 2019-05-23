@@ -1,11 +1,9 @@
 <?php
 	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
-	ob_start();                    // start buffer capture
-    var_dump( is_null($executor->pj2) );           // dump the values
-    $contents = ob_get_contents(); // put the buffer into a variable
-    ob_end_clean();                // end capture
-    error_log( $contents );
-	if(is_null($executor->pj2)) return "No se especificó contrincante";
+	if(is_null($executor->pj2)) $res = "No se especificó contrincante";
+	else if(is_null($executor->skill)) $res = "No se especificó habilidad";
+	else if(is_null($executor->skill) && is_null($executor->pj2)) $res = "No se especificaron contrincante ni habilidad";
+	else{ 
 	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
 	$hab = $this->em->getRepository('app\IndexBundle\Entity\DD35\Habilidad')->findOneByNombre($executor->skill);
 	switch ($hab->atributoAsociado) {
@@ -49,4 +47,5 @@
 	}
 	$res = "El jugador ".$nom." ha ganado la tirada de ".$executor->skill."(".$var."vs".$var2.")";
 	*/
+}
 ?>
