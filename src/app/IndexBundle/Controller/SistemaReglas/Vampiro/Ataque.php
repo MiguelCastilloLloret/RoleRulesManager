@@ -10,10 +10,11 @@
 		if(!isset($res)) $res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
 
 		if($arma->cadencia>0) $tipoAtaque = "Armas de Fuego";
-		else $tipoAtaque = "Armas Cac";
+		else $tipoAtaque = "Armas CaC";
 		if(!isset($FM)) $FM = 0;
 
-		$dados = $pj1->bonusDestreza+$pj1->habilidades[$tipoAtaque]-$FM;
+		if(array_key_exists($tipoAtaque, $pj1->habilidades)) $dados = $pj1->bonusDestreza+$pj1->habilidades[$tipoAtaque]-$FM;
+		else $dados = $pj1->bonusDestreza-$FM;
 		$fracaso = true;
 		$var = 0;
 
@@ -38,7 +39,7 @@
 				$res['Daño'] = $res['Daño'] + $var;
 			} 
 		}
-		else if($fracaso==true && $FM=0) $res['Fracaso'] = "Si";
+		else if($fracaso==true && $FM<=0) $res['Fracaso'] = "Si";
 		else if($FM==0) $res['Fallo'] = "Si";
 	}
 ?>
