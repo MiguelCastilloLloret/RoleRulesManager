@@ -50,6 +50,10 @@ class SistemaReglas{
 	}
 
 	public function subsistema_magia($executor){
+		if($executor->action == "AutoHechizo"){
+			$executor->action = "HechizoObjetivo";
+			$executor->pj2 = $executor->pj1;
+		}
 		$cadena = __DIR__."/".$executor->game."/".$executor->action.".php";
 		$var = 0;
 		require_once($cadena);
