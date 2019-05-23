@@ -63,7 +63,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
                 $habList[$aux] =  $aux;
             }
 
-            $acciones = array("AutoHechizo" => 'AutoHechizo', "Ataque" => 'Ataque', "HechizoObjetivo" => 'HechizoObjetivo', "TiradaDificultad" => 'TiradaDificultad', "TiradaEnfrentada" => 'TiradaEnfrentada');
+            $acciones = array("Ataque" => 'Ataque', "HechizoObjetivo" => 'HechizoObjetivo', "TiradaDificultad" => 'TiradaDificultad', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
         if($game=="Vampiro"){
@@ -81,7 +81,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
                 $habList[$aux] =  $aux;
             }
 
-            $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "AtaqueMultiple" => 'AtaqueMultiple', "TiradaEnfrentada" => 'TiradaEnfrentada');
+            $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
         $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true), 'label' => 'Juego'))
