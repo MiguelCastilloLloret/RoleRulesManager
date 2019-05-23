@@ -57,14 +57,14 @@ class IndexController extends Controller{
                 $SistemaReglas = $this->get('my_rules_manager');
                 $hola = $SistemaReglas->ejecutorReglas($executor);
                 $html = $html = $this->container->get('templating')->render(
-                    'index/index.html.twig', array('form' => $var->createView(), 'hola' => $hola)
+                    'index/index.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola)
                  );
                 return new Response($html);
             }
         }
         else{
             $html = $this->container->get('templating')->render(
-            'index/index.html.twig', array('form' => $var->createView(), 'hola' => '')
+            'index/index.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => '')
         );
         }
 
@@ -89,7 +89,7 @@ class IndexController extends Controller{
         }
         else{
             $html = $this->container->get('templating')->render(
-                'index/select.html.twig', array('form' => $var->createView(), 'hola' => $hola)
+                'index/select.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola)
             );
 
             return new Response($html);
