@@ -32,8 +32,7 @@
 		$res['Exitos'] = $res['Exitos'] + $var;
 
 		if($var > 0){
-			$var = $pj1->bonusFuerza+$arma->dano;
-			$res['Daño'] = $res['Daño'] + $var;
+			$var = $pj1->bonusFuerza+$arma->dano+$var-1;
 			if($FM==0){
 				$var = $pj2->aplicar_efecto("Ataque", ($var*-1), $arma);
 				$res['Daño'] = $res['Daño'] + $var;

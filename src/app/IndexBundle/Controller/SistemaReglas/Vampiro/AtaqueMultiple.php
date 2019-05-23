@@ -8,6 +8,7 @@
 
 	while($FM>0 || $fracaso == false){
 		require_once(__DIR__."/Vampiro/Ataque.php");
+		$res['Daño'] = $res['Daño'] + $var;
 		$FM--;
 	}
 
