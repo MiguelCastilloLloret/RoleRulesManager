@@ -14,6 +14,7 @@ use app\IndexBundle\Controller\idPlantilla;
 
 class VampiroController extends Controller{
 
+    public $userId;
     public $clan = array("Assamita" => 'Assamita', "Brujah" => 'Brujah', "Gangrel" => 'Gangrel', "Giovanni" => 'Giovanni', "Lasombra" => 'Lasombra', "Malkavian" => 'Malkavian', "Nosferatu" => 'Nosferatu', "Ravnos" => 'Ravnos', "Seguidores de Set" => 'Seguidores de Set', "Toreador" => 'Toreador', "Tremere" => 'Tremere', "Tzimisce" => 'Tzimisce', "Ventrue" => 'Ventrue');
     
 	public function VampiroAction(Request $request){
