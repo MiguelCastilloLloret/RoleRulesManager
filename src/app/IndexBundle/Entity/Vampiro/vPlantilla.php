@@ -157,10 +157,56 @@ class vPlantilla{
 	public $arma;
 
 	 /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="integer")
      */
 
-	public $habilidades;
+	public $fortaleza;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $armasDeFuego;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $informatica;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $armasCaC;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $diplomacia;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $atletismo;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $pelea;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $investigacion;
+
+		 /**
+     * @ORM\Column(type="string", length=15)
+     */
 
 	/*function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
 		$this->nombre = $Nombre;
