@@ -292,8 +292,6 @@ class VampiroController extends Controller{
             ->add('sangre')
             ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
-            ->add('partida')
-            ->add('usuario','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -326,8 +324,6 @@ class VampiroController extends Controller{
                         ->add('sangre')
                         ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
-                        ->add('partida')
-                        ->add('usuario','hidden')
                         ->getForm();
                     }
             }

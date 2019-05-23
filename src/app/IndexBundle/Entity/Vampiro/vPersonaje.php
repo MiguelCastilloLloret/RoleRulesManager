@@ -206,7 +206,7 @@ class vPersonaje{
 			$var = 0;
 			for($i = 0; $i<$dados; $i++){
 				$tirada = rand(1,10);
-				if($tirada>=$executor->CD){
+				if($tirada>=6){
 					$var++;
 				}
 				else if($tirada==1) $var--;
