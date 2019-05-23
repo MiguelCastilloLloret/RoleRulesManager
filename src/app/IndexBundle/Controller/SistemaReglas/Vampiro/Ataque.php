@@ -10,7 +10,7 @@
 		if(!isset($res)) $res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
 
 		if($arma->cadencia>0) $tipoAtaque = "Armas de Fuego";
-		else $tipoAtaque = "Armas CaC";
+		else $tipoAtaque = "Armas Cac";
 		if(!isset($FM)) $FM = 0;
 
 		$dados = $pj1->bonusDestreza+$pj1->habilidades[$tipoAtaque]-$FM;

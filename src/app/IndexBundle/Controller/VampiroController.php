@@ -330,6 +330,7 @@ class VampiroController extends Controller{
             else{
                 $var->bind($request);
                 if($var->isValid()){
+                    $ev->merge($personajePlantilla);
                     $ev->flush();
                     $hola = "Se modificó correctamente el personaje en la BD";
                 }
@@ -561,6 +562,7 @@ class VampiroController extends Controller{
             else{
                 $var->bind($request);
                 if($var->isValid()){
+                    $ev->merge($w);
                     $ev->flush();
                     $hola = "Se modificó correctamente el arma en la BD";
                 }

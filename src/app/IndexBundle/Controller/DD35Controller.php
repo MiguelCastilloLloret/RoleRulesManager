@@ -531,6 +531,7 @@ class DD35Controller extends Controller{
             else{
                 $var->bind($request);
                 if($var->isValid()){
+                    $em->merge($w);
                     $em->flush();
                     $hola = "Se modificó correctamente el arma en la BD";
                 }
