@@ -52,7 +52,6 @@ body{
 	width: 100%;
 	display: inline-flex;
     align-items: center;
-    justify-content: space-evenly;
     flex-flow: row wrap;
     align-content: stretch;
 }
