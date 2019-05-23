@@ -45,7 +45,8 @@ class SistemaReglas{
 		$cadena = __DIR__."/".$executor->game."/".$executor->action.".php";
 		$var = '';
 		require_once($cadena);
-		$this->em->flush();
+		if($executor->game="DD35") $this->em->flush();
+		else $this->ev->flush();
 		return $res;
 	}
 
@@ -57,7 +58,8 @@ class SistemaReglas{
 		$cadena = __DIR__."/".$executor->game."/".$executor->action.".php";
 		$var = 0;
 		require_once($cadena);
-		$this->em->flush();
+		if($executor->game="DD35") $this->em->flush();
+		else $this->ev->flush();
 		return $res;
 	}
 
@@ -65,7 +67,8 @@ class SistemaReglas{
 		$cadena = __DIR__."/".$executor->game."/".$executor->action.".php";
 		$var = 0;
 		require_once($cadena);
-		$this->em->flush();
+		if($executor->game="DD35") $this->em->flush();
+		else $this->ev->flush();
 		return $res;
 	}
 }
