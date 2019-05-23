@@ -56,6 +56,11 @@ class IndexController extends Controller{
             if ($var->isValid()) {
                 $SistemaReglas = $this->get('my_rules_manager');
                 $hola = $SistemaReglas->ejecutorReglas($executor);
+                ob_start();                    // start buffer capture
+                var_dump( $hola );           // dump the values
+                $contents = ob_get_contents(); // put the buffer into a variable
+                ob_end_clean();                // end capture
+                error_log( $contents );
                 $html = $html = $this->container->get('templating')->render(
                     'index/index.html.twig', array('form' => $var->createView(), 'hola' => $hola)
                  );
