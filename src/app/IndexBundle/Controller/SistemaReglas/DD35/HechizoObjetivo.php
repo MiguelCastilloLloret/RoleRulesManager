@@ -1,7 +1,8 @@
 <?php
 
 	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
-	if(is_null($executor->pj2)) return "No se especificó contrincante"; 
+	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
+	else{
 	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
 	$hechizo = $this->em->getRepository('app\IndexBundle\Entity\DD35\Hechizo')->findOneByNombre($executor->spell);
 
@@ -46,4 +47,5 @@
 	if($var < 0 || $var > 0) $res['Vida del objetivo'] = $pj2->puntosVida; //"El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y causa ".($var*-1)." puntos de daño a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
 	//else if($var > 0) $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cura ".$var." puntos de vida a los objetivos. La vida de ".$pj2->nombre." es de ".$pj2->puntosVida." puntos.";
 	//else $res = "El jugador ".$pj1->nombre." lanza un hechizo ".$executor->spell." y cambia el estado de ".$pj2->nombre." a ".$var;
+	}
 ?>

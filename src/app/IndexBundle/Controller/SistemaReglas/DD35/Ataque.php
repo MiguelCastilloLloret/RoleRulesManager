@@ -1,5 +1,7 @@
 <?php
 	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
+	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
+	else{
 	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
 	$arma = $this->em->getRepository('app\IndexBundle\Entity\DD35\Arma')->findOneByNombre($pj1->arma);
 
@@ -49,4 +51,5 @@
 	else if($impacto == 20) $res = "El jugador ".$pj1->nombre." falla una oportunidad de crítico(Tirada ".$impacto."+".$bonus.", comprobación ".$comprobacionCritico."+".$bonus."). Su ataque causa ".($var*-1)." puntos de daño a ".$pj2->nombre.".";
 	else $res = "El jugador ".$pj1->nombre." acierta un ataque(Tirada ".$impacto."+".$bonus." vs CA ".$pj2->claseArmadura.") y causa ".($var*-1)." puntos de daño a ".$pj2->nombre.".";
 	*/
+	}
 ?>

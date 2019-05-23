@@ -84,15 +84,15 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
             $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "AtaqueMultiple" => 'AtaqueMultiple', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
-        $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true)))
+        $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true)), 'label' => 'Juego')
              ->add('party','text', array('required' => true, 'data' => $party, 'attr' => array('readonly' => true)))
-             ->add('pj1','choice', array('choices' => $pjList))
-             ->add('pj2','choice', array('choices' => $pjList, 'required' => false))
-             ->add('action','choice', array('choices' => $acciones, 'required' => true));
+             ->add('pj1','choice', array('choices' => $pjList, 'label' => 'Personaje'))
+             ->add('pj2','choice', array('choices' => $pjList, 'required' => false, 'label' => 'Personaje 2'))
+             ->add('action','choice', array('choices' => $acciones, 'required' => true, 'label' => 'Acción'));
 
-        if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null));
+        if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null, 'label' => 'Hechizo'));
 
-        $form->add('CD','integer', array('required' => false, 'data' => 0))
-             ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null));
+        $form->add('CD','integer', array('required' => false, 'data' => 0, 'label' => 'Clase de Dificultad'))
+             ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null, 'label' => 'Habilidad'));
     }
 }
