@@ -11,7 +11,7 @@
 	{% include './index/header.html.twig' %}
 	<div class="container contenedor">
 	    <div class="block bloque">
-	    	<h1>Sistema intérprete de reglas Rol</h1>
+	    	<h1>{{titulo}}</h1>
 	    	<form action="./" method="post" id="select" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar"/>
