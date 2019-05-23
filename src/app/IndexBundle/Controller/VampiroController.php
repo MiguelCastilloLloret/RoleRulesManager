@@ -67,12 +67,12 @@ class VampiroController extends Controller{
             ->add('bonusFuerza')
             ->add('bonusDestreza')
             ->add('bonusResistencia')
-            ->add('bonusInteligencia')
+            ->add('bonusCarisma')
             ->add('bonusManipulacion')
             ->add('bonusApariencia')
             ->add('bonusPercepcion')
+            ->add('bonusInteligencia')
             ->add('bonusAstucia')
-            ->add('bonusCarisma')
             ->add('conciencia')
             ->add('autocontrol')
             ->add('coraje')
@@ -94,8 +94,8 @@ class VampiroController extends Controller{
                     $pj->partida = "Introduzca Partida";
                     $pj->usuario = $userId;
                     ob_start();
-                    var_dump( $personajePlantilla);                    // start buffer capture
-                    var_dump( $pj );           // dump the values
+                    var_dump( $userId);                    // start buffer capture
+                    var_dump( $pj->usuario );           // dump the values
                     $contents = ob_get_contents(); // put the buffer into a variable
                     ob_end_clean();                // end capture
                     error_log( $contents );
@@ -108,12 +108,12 @@ class VampiroController extends Controller{
                         ->add('bonusFuerza')
                         ->add('bonusDestreza')
                         ->add('bonusResistencia')
-                        ->add('bonusInteligencia')
+                        ->add('bonusCarisma')
                         ->add('bonusManipulacion')
                         ->add('bonusApariencia')
                         ->add('bonusPercepcion')
+                        ->add('bonusInteligencia')
                         ->add('bonusAstucia')
-                        ->add('bonusCarisma')
                         ->add('conciencia')
                         ->add('autocontrol')
                         ->add('coraje')
@@ -179,12 +179,12 @@ class VampiroController extends Controller{
             ->add('bonusFuerza')
             ->add('bonusDestreza')
             ->add('bonusResistencia')
-            ->add('bonusInteligencia')
+            ->add('bonusCarisma')
             ->add('bonusManipulacion')
             ->add('bonusApariencia')
             ->add('bonusPercepcion')
+            ->add('bonusInteligencia')
             ->add('bonusAstucia')
-            ->add('bonusCarisma')
             ->add('conciencia')
             ->add('autocontrol')
             ->add('coraje')
@@ -210,12 +210,12 @@ class VampiroController extends Controller{
                         ->add('bonusFuerza')
                         ->add('bonusDestreza')
                         ->add('bonusResistencia')
-                        ->add('bonusInteligencia')
+                        ->add('bonusCarisma')
                         ->add('bonusManipulacion')
                         ->add('bonusApariencia')
                         ->add('bonusPercepcion')
+                        ->add('bonusInteligencia')
                         ->add('bonusAstucia')
-                        ->add('bonusCarisma')
                         ->add('conciencia')
                         ->add('autocontrol')
                         ->add('coraje')
@@ -280,12 +280,12 @@ class VampiroController extends Controller{
             ->add('bonusFuerza')
             ->add('bonusDestreza')
             ->add('bonusResistencia')
-            ->add('bonusInteligencia')
+            ->add('bonusCarisma')
             ->add('bonusManipulacion')
             ->add('bonusApariencia')
             ->add('bonusPercepcion')
+            ->add('bonusInteligencia')
             ->add('bonusAstucia')
-            ->add('bonusCarisma')
             ->add('conciencia')
             ->add('autocontrol')
             ->add('coraje')
@@ -295,6 +295,7 @@ class VampiroController extends Controller{
             ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
             ->add('partida')
+            ->add('usuario','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -313,12 +314,12 @@ class VampiroController extends Controller{
                         ->add('bonusFuerza')
                         ->add('bonusDestreza')
                         ->add('bonusResistencia')
-                        ->add('bonusInteligencia')
+                        ->add('bonusCarisma')
                         ->add('bonusManipulacion')
                         ->add('bonusApariencia')
                         ->add('bonusPercepcion')
+                        ->add('bonusInteligencia')
                         ->add('bonusAstucia')
-                        ->add('bonusCarisma')
                         ->add('conciencia')
                         ->add('autocontrol')
                         ->add('coraje')
@@ -328,6 +329,7 @@ class VampiroController extends Controller{
                         ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
                         ->add('partida')
+                        ->add('usuario','hidden')
                         ->getForm();
                     }
             }
@@ -378,12 +380,12 @@ class VampiroController extends Controller{
             ->add('bonusFuerza')
             ->add('bonusDestreza')
             ->add('bonusResistencia')
-            ->add('bonusInteligencia')
+            ->add('bonusCarisma')
             ->add('bonusManipulacion')
             ->add('bonusApariencia')
             ->add('bonusPercepcion')
+            ->add('bonusInteligencia')
             ->add('bonusAstucia')
-            ->add('bonusCarisma')
             ->add('conciencia')
             ->add('autocontrol')
             ->add('coraje')
@@ -393,6 +395,7 @@ class VampiroController extends Controller{
             ->add('arma')
             ->add('habilidades', 'text')
             ->add('partida')
+            ->add('usuario','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -443,12 +446,12 @@ class VampiroController extends Controller{
             ->add('bonusFuerza')
             ->add('bonusDestreza')
             ->add('bonusResistencia')
-            ->add('bonusInteligencia')
+            ->add('bonusCarisma')
             ->add('bonusManipulacion')
             ->add('bonusApariencia')
             ->add('bonusPercepcion')
+            ->add('bonusInteligencia')
             ->add('bonusAstucia')
-            ->add('bonusCarisma')
             ->add('conciencia')
             ->add('autocontrol')
             ->add('coraje')
