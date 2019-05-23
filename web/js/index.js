@@ -34,9 +34,11 @@ $(document).ready(function(){
 			$("#form_pj2").parent().addClass("oculto");
 			$("#form_skill").parent().addClass("oculto");
 			if($("#form_action").val()!="TiradaDificultad"){
+				$("#form_CD").parent().removeClass("oculto");
 				$("#form_pj2").parent().removeClass("oculto");
 				if($("#form_action").val()==="TiradaEnfrentada"){
 					$("#form_skill").parent().removeClass("oculto");
+					$("#form_CD").parent().addClass("oculto");
 				}
 			}else{
 				$("#form_skill").parent().removeClass("oculto");
