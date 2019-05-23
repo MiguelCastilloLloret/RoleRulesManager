@@ -13,6 +13,12 @@
 		else $tipoAtaque = "Armas CaC";
 		if(!isset($FM)) $FM = 0;
 
+		ob_start();
+        var_dump( $pj1->habilidades);                    // start buffer capture
+        $contents = ob_get_contents(); // put the buffer into a variable
+        ob_end_clean();                // end capture
+        error_log( $contents );
+
 		if(array_key_exists($tipoAtaque, $pj1->habilidades)) $dados = $pj1->bonusDestreza+$pj1->habilidades[$tipoAtaque]-$FM;
 		else $dados = $pj1->bonusDestreza-$FM;
 		$fracaso = true;
