@@ -6,7 +6,7 @@
 	$impacto = rand(1,20);
 	//$critico = false;
 
-	$res = array('Atacante' => $executor->pj1, 'Arma' => $arma->nombre, 'Valor de Impacto' => "", 'Defensor' => $executor->pj2, 'Armadura Defensor' => $pj2->claseArmadura, 'Critico' => "No");
+	$res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Valor de Impacto' => "", 'Defensor' => $pj2->nombre, 'Armadura Defensor' => $pj2->claseArmadura, 'Critico' => "No");
 	
 	if($arma->bonus == "Fuerza") $bonus = $pj1->bonusFuerza;
 	else $bonus = $pj1->bonusDestreza;
