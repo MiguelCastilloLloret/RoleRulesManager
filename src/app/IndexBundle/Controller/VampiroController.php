@@ -80,7 +80,14 @@ class VampiroController extends Controller{
             ->add('fuerzaVoluntad')
             ->add('sangre')
             ->add('arma','choice', array('choices' => $wepList))
-            ->add('habilidades', 'text')
+            ->add('fortaleza')
+            ->add('armasDeFuego')
+            ->add('armasCaC')
+            ->add('informatica')
+            ->add('diplomacia')
+            ->add('atletismo')
+            ->add('pelea')
+            ->add('investigacion')
             ->add('partida')
             ->add('usuario','hidden')
             ->getForm();
@@ -115,7 +122,14 @@ class VampiroController extends Controller{
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
                         ->add('arma','choice', array('choices' => $wepList))
-                        ->add('habilidades', 'text')
+                        ->add('fortaleza')
+                        ->add('armasDeFuego')
+                        ->add('armasCaC')
+                        ->add('informatica')
+                        ->add('diplomacia')
+                        ->add('atletismo')
+                        ->add('pelea')
+                        ->add('investigacion')
                         ->add('partida')
                         ->add('usuario','hidden')
                         ->getForm();
@@ -188,7 +202,14 @@ class VampiroController extends Controller{
             ->add('fuerzaVoluntad')
             ->add('sangre')
             ->add('arma','choice', array('choices' => $wepList))
-            ->add('habilidades', 'text')
+            ->add('fortaleza')
+            ->add('armasDeFuego')
+            ->add('armasCaC')
+            ->add('informatica')
+            ->add('diplomacia')
+            ->add('atletismo')
+            ->add('pelea')
+            ->add('investigacion')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -219,7 +240,14 @@ class VampiroController extends Controller{
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
                         ->add('arma','choice', array('choices' => $wepList))
-                        ->add('habilidades', 'text')
+                        ->add('fortaleza')
+                        ->add('armasDeFuego')
+                        ->add('armasCaC')
+                        ->add('informatica')
+                        ->add('diplomacia')
+                        ->add('atletismo')
+                        ->add('pelea')
+                        ->add('investigacion')
                         ->getForm();
                     }
             }
@@ -291,7 +319,14 @@ class VampiroController extends Controller{
             ->add('fuerzaVoluntad')
             ->add('sangre')
             ->add('arma','choice', array('choices' => $wepList))
-            ->add('habilidades', 'text')
+            ->add('fortaleza')
+            ->add('armasDeFuego')
+            ->add('armasCaC')
+            ->add('informatica')
+            ->add('diplomacia')
+            ->add('atletismo')
+            ->add('pelea')
+            ->add('investigacion')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -328,7 +363,14 @@ class VampiroController extends Controller{
                         ->add('fuerzaVoluntad')
                         ->add('sangre')
                         ->add('arma','choice', array('choices' => $wepList))
-                        ->add('habilidades', 'text')
+                        ->add('fortaleza')
+                        ->add('armasDeFuego')
+                        ->add('armasCaC')
+                        ->add('informatica')
+                        ->add('diplomacia')
+                        ->add('atletismo')
+                        ->add('pelea')
+                        ->add('investigacion')
                         ->getForm();
                     }
             }
@@ -393,7 +435,14 @@ class VampiroController extends Controller{
             ->add('fuerzaVoluntad')
             ->add('sangre')
             ->add('arma')
-            ->add('habilidades', 'text')
+            ->add('fortaleza')
+            ->add('armasDeFuego')
+            ->add('armasCaC')
+            ->add('informatica')
+            ->add('diplomacia')
+            ->add('atletismo')
+            ->add('pelea')
+            ->add('investigacion')
             ->add('partida')
             ->add('usuario','hidden')
             ->getForm();
@@ -459,7 +508,14 @@ class VampiroController extends Controller{
             ->add('fuerzaVoluntad')
             ->add('sangre')
             ->add('arma')
-            ->add('habilidades', 'text')
+            ->add('fortaleza')
+            ->add('armasDeFuego')
+            ->add('armasCaC')
+            ->add('informatica')
+            ->add('diplomacia')
+            ->add('atletismo')
+            ->add('pelea')
+            ->add('investigacion')
             ->getForm();
 
         if ($request->isMethod('POST')) {

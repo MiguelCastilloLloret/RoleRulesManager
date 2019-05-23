@@ -157,10 +157,52 @@ class vPersonaje{
 	public $arma;
 
 	 /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="integer")
      */
 
-	public $habilidades;
+	public $fortaleza;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $armasDeFuego;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $informatica;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $armasCaC;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $diplomacia;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $atletismo;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $pelea;
+
+	/**
+     * @ORM\Column(type="integer")
+     */
+
+	public $investigacion;
 
 		 /**
      * @ORM\Column(type="string", length=15)
@@ -201,9 +243,8 @@ class vPersonaje{
 
 	public function aplicar_efecto($fuente, $efecto, $arma){
 		if($fuente == "Ataque"){
-			if($arma->tipo=="Agravado" && array_key_exists("Fortaleza", $this->habilidades)) $dados = $this->habilidades["Fortaleza"];
-			else if($arma->tipo=="Agravado") $dados = 0;
-			else if(array_key_exists("Fortaleza", $this->habilidades)) $dados = $this->habilidades["Fortaleza"]+$this->bonusResistencia;
+			if($arma->tipo=="Agravado") $dados = $this->fortaleza;
+			else if(array_key_exists("Fortaleza", $this->habilidades)) $dados = $this->fortaleza+$this->bonusResistencia;
 			$var = 0;
 			for($i = 0; $i<$dados; $i++){
 				$tirada = rand(1,10);

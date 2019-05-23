@@ -9,18 +9,12 @@
 		
 		if(!isset($res)) $res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
 
-		if($arma->cadencia>0) $tipoAtaque = "Armas de Fuego";
-		else $tipoAtaque = "Armas CaC";
+		if($arma->cadencia>0) $tipoAtaque = $pj1->armasDeFuego;
+		else $tipoAtaque = $pj1->armasCaC;
 		if(!isset($FM)) $FM = 0;
 
-		ob_start();
-        var_dump( $pj1->habilidades);                    // start buffer capture
-        $contents = ob_get_contents(); // put the buffer into a variable
-        ob_end_clean();                // end capture
-        error_log( $contents );
 
-		if(array_key_exists($tipoAtaque, $pj1->habilidades)) $dados = $pj1->bonusDestreza+$pj1->habilidades[$tipoAtaque]-$FM;
-		else $dados = $pj1->bonusDestreza-$FM;
+		$dados = $pj1->bonusDestreza+$tipoAtaque-$FM;
 		$fracaso = true;
 		$var = 0;
 
