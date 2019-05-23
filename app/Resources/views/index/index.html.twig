@@ -32,26 +32,22 @@
             			<th>{{key}}</th>
 				    {% endfor %}
 				    </tr>
-				   	{% if attribute(hola,'Personaje') is defined %}
-					   	{% if attribute(hola,'Personaje') is iterable %}
-					    <tr>
-						    {% for value in hola %}
-						 		<td>{{value[0]}}</td>
-						    {% endfor %}
-					    </tr>
-					    <tr>
-					    	{% for value in hola %}
-						 		<td>{{value[1]}}</td>
-						    {% endfor %}
-					    </tr>
-					    {% else %}
-					    <tr>
-						    {% for value in hola %}
-						 		<td>{{value}}</td>
-						    {% endfor %}
-					    </tr>
-					    {% endif %}
-				    {% endif %}
+				   	<tr>
+				   	{% for value in hola %}
+				   		{% if value is iterable %}
+            			<td>{{value[0]}}</td>
+            			{% else %}
+            			<td>{{value}}</td>
+            			{% endif %}
+				    {% endfor %}
+				   	</tr>
+				   	<tr>
+				   	{% for value in hola %}
+				   		{% if value is iterable %}
+            			<td>{{value[1]}}</td>
+            			{% endif %}
+				    {% endfor %}
+				   	</tr>
 				</table>
 			</div>
 		</div>
