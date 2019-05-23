@@ -79,7 +79,7 @@ class IndexController extends Controller{
         //Se crea el formulario de selección de juego
 
         $var = $this->createFormBuilder($game)
-            ->add('game','choice', array('choices' => array("DD35Master" => 'D&D35', "VampiroMaster" => 'Vampiro'), 'required' => true), 'label' => 'Juego')
+            ->add('game','choice', array('choices' => array("DD35Master" => 'D&D35', "VampiroMaster" => 'Vampiro'), 'required' => true, 'label' => 'Juego'))
             ->getForm();
 
         if ($request->isMethod('POST')) {
