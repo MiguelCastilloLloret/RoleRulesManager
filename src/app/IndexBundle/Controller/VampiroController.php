@@ -84,6 +84,12 @@ class VampiroController extends Controller{
             ->add('usuario','hidden')
             ->getForm();
 
+            ob_start();                    // start buffer capture
+                        var_dump( $var->getExtraData() );           // dump the values
+                        $contents = ob_get_contents(); // put the buffer into a variable
+                        ob_end_clean();                // end capture
+                        error_log( $contents );
+
         if ($request->isMethod('POST')) {
             if(isset($request->request->all()['form']['id'])){
                 $plantilla->bind($request);
@@ -119,11 +125,6 @@ class VampiroController extends Controller{
                         ->add('usuario','hidden')
                         ->getForm();
                     }
-                    ob_start();                    // start buffer capture
-                        var_dump( $var->getExtraData() );           // dump the values
-                        $contents = ob_get_contents(); // put the buffer into a variable
-                        ob_end_clean();                // end capture
-                        error_log( $contents );
             }
             $var->bind($request);
             if($var->isValid()){
