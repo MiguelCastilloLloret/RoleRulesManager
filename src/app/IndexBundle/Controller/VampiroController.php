@@ -119,6 +119,13 @@ class VampiroController extends Controller{
                         ->add('usuario','hidden')
                         ->getForm();
                     }
+                    else{
+                        ob_start();                    // start buffer capture
+                        var_dump( $var->getExtraData() );           // dump the values
+                        $contents = ob_get_contents(); // put the buffer into a variable
+                        ob_end_clean();                // end capture
+                        error_log( $contents );
+                    }
             }
             $var->bind($request);
             if($var->isValid()){
