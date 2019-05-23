@@ -1,6 +1,11 @@
 <?php
 	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
-	if(is_null($executor->pj2)) return "No se especificó contrincante"; 
+	ob_start();                    // start buffer capture
+    var_dump( is_null($executor->pj2) );           // dump the values
+    $contents = ob_get_contents(); // put the buffer into a variable
+    ob_end_clean();                // end capture
+    error_log( $contents );
+	if(is_null($executor->pj2)) return "No se especificó contrincante";
 	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
 	$hab = $this->em->getRepository('app\IndexBundle\Entity\DD35\Habilidad')->findOneByNombre($executor->skill);
 	switch ($hab->atributoAsociado) {
