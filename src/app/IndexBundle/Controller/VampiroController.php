@@ -53,6 +53,10 @@ class VampiroController extends Controller{
             ->getForm();
 
         $pj = new vPersonaje();
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
+        $pj->usuario = $userId;
         $var = $this->createFormBuilder($pj)
             ->add('nombre')
             ->add('clan', 'choice', array('choices' => $this->clan))
@@ -77,6 +81,7 @@ class VampiroController extends Controller{
             ->add('arma','choice', array('choices' => $wepList))
             ->add('habilidades', 'text')
             ->add('partida')
+            ->add('usuario','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -85,6 +90,8 @@ class VampiroController extends Controller{
                 if($plantilla->isValid()){
                     $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPlantilla')->find($id->id);
                     $pj = $personajePlantilla;
+                    $pj->partida = "Introduzca Partida";
+                    $pj->usuario = $userId;
                     $var = $this->createFormBuilder($pj)
                         ->add('nombre')
                         ->add('clan', 'choice', array('choices' => $this->clan))
@@ -109,6 +116,7 @@ class VampiroController extends Controller{
                         ->add('arma','choice', array('choices' => $wepList))
                         ->add('habilidades', 'text')
                         ->add('partida')
+                        ->add('usuario','hidden')
                         ->getForm();
                     }
             }
