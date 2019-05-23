@@ -36,7 +36,8 @@
 				   	{% for value in hola %}
 				   		{% if value is iterable %}
             			<td>{{value[0]}}</td>
-            			{% else %}
+            			{% endif %}
+            			{% if value is not iterable %}
             			<td>{{value}}</td>
             			{% endif %}
 				    {% endfor %}
