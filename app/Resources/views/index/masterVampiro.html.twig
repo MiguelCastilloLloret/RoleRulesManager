@@ -11,7 +11,7 @@
 	{% include './index/header.html.twig' %}
 	<div class="container contenedor">
 	    <div class="block bloque">
-	    	<h1>Sistema intérprete de reglas Rol</h1>
+	    	<h1>Menú del Master: Vampiro la Mascarada</h1>
 	    	{% if inputValue != "" %}
 	    	<form action="./{{ link }}" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
 	    		{{ form_widget(plantilla) }}
@@ -25,9 +25,14 @@
 	   			<input type="submit" class="btn btn-success" value="Enviar" />
 			</form>
 		</div>
-		<div class="bloque">
-			{{ hola }}
-		</div>
+		{% if hola %}
+		<div class="panel panel-default" id="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Éxito</h3>
+                </div>
+                <div class="panel-body" id="panelbody">{{ hola }}</div>
+            </div>
+		{% endif %}
 	</div>
 	<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>
