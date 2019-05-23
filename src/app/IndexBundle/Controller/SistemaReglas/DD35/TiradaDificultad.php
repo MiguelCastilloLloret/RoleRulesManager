@@ -27,7 +27,7 @@
 	$res = array('Personaje' => $pj1->nombre, 'Tirada' => $var, 'Bonus' => $bonus, 'Clase de Dificultad' => $executor->CD, 'Resultado' => "");
 
 	if($var > $executor->CD) $res['Resultado'] = "Acierto";
-	else $res = $res['Resultado'] = "Fallo";
+	else $res['Resultado'] = "Fallo";
 
 	//if($var > $executor->CD) $res = "El jugador ".$pj1->nombre." paso el chequeo de dificultad(tirada ".$var." vs CD ".$executor->CD.")";
 	//else $res = "El jugador ".$pj1->nombre." fallo el chequeo de dificultad(tirada ".$var." vs CD ".$executor->CD.")";
