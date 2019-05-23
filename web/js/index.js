@@ -44,7 +44,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-	if($("#paneltable").text().length>20){
+	if($("#paneltable").text().length>70){
 		$("#panel").removeClass("oculto");
 	}
 	$(".contenedor").removeClass("oculto");
