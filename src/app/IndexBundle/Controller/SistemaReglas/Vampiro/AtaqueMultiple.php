@@ -4,19 +4,20 @@
 	$arma = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->findOneByNombre($pj1->arma);
 
 	$FM=$executor->ataques;
-	$danoFinal = 0;
 	$fracaso = false;
 
-	for($i = 0; $i<$FM || $fracaso = true; i++){
+	while($FM>0 || $fracaso == false){
 		require_once(__DIR__."/Vampiro/Ataque.php");
 		$FM--;
-		$danoFinal = $danoFinal+$var; 
 	}
 
-	if($fracaso==true) $res = "Fracaso en el ataque.";
-	else if($danoFinal>0){
-		$danoFinal = $pj2->aplicar_efecto("Ataque", ($danoFinal*-1), $arma);
-		$res = $pj1->nombre." acierta los ataques, y ".$pj2->nombre." sufre ".$var." puntos de daño."
+	if($fracaso==true){
+		$res['Fracaso'] = "Si";
+		unset($res['Fallo']);
+		unset($res['Daño']);
+		unset($res['Exitos']);
 	}
-	else $res = "El jugador ".$pj1->nombre." falló los ataques.";
+	else{
+		$res['Daño'] = $pj2->aplicar_efecto("Ataque", ($res['Daño']*-1), $arma);
+	}
 ?>
