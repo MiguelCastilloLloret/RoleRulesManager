@@ -47,5 +47,5 @@
 	$res = array('Personaje' => $pj1->nombre, 'Dados' => $dados, 'Clase de Dificultad' => $executor->CD, 'Éxitos' => $var);
 
 	if($fracaso==true) $res['Fracaso'] = "Si";
-	else $res['Fallo'] = "Si";
+	else if($var==0) $res['Fallo'] = "Si";
 ?>

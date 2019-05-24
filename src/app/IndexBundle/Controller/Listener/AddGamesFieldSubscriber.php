@@ -78,7 +78,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
 
             for($i=0;$i<count($List);$i++){
                 $aux = $List[$i]['nombre'];
-                $habList[$aux] =  $aux;
+                $habList[ucfirst($aux)] =  $aux;
             }
 
             $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "TiradaEnfrentada" => 'TiradaEnfrentada');
