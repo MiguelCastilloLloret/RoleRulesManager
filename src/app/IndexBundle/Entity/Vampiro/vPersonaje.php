@@ -166,43 +166,43 @@ class vPersonaje{
      * @ORM\Column(type="integer")
      */
 
-	public $armasDeFuego;
+	public $ArmasDeFuego;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $informatica;
+	public $Informatica;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $armasCaC;
+	public $ArmasCaC;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $diplomacia;
+	public $Diplomacia;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $atletismo;
+	public $Atletismo;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $pelea;
+	public $Pelea;
 
 	/**
      * @ORM\Column(type="integer")
      */
 
-	public $investigacion;
+	public $Investigacion;
 
 		 /**
      * @ORM\Column(type="string", length=15)
