@@ -44,8 +44,8 @@
 	
 	$var = 0;
 	$var2 = 0;
-	$dados = $bonus+$pj1->habilidades[$hab->nombre];
-	$dados2 = $bonus2+$pj2->habilidades[$hab->nombre];
+	$dados = $bonus+$pj1->{$hab->nombre};
+	$dados2 = $bonus2+$pj2->{$hab->nombre};
 
 	for($i = 0; $i<$dados; $i++){
 		$tirada = rand(1,10);
@@ -63,6 +63,8 @@
 		else if($tirada==1) $var2--;
 	}
 
-	if($var-$var2 > 0) $res = "El jugador ".$pj1->nombre." gana el chequeo de dificultad con ".$var-$var2." éxitos.";
-	else $res = "El jugador ".$pj1->nombre." gana el chequeo de dificultad con ".$var2-$var." éxitos.";
+	$res = array('Personaje' => array($pj1->nombre,$pj2->nombre), 'Dados' => array($dados,$dados2), 'Exitos' => array($var,$var2));
+
+	/*if($var-$var2 > 0) $res = "El jugador ".$pj1->nombre." gana el chequeo de dificultad con ".$var-$var2." éxitos.";
+	else $res = "El jugador ".$pj1->nombre." gana el chequeo de dificultad con ".$var2-$var." éxitos.";*/
 ?>

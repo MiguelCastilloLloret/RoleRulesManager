@@ -34,7 +34,7 @@
 
 	$var = 0;
 	$fracaso = true;
-	$dados = $bonus+$pj1->habilidades[$hab->nombre];
+	$dados = $bonus+$pj1->{$hab->nombre};
 	for($i = 0; $i<$dados; $i++){
 		$tirada = rand(1,10);
 		if($tirada>=$executor->CD){
@@ -43,7 +43,9 @@
 		}
 		else if($tirada==1) $var--;
 	}
-	if($var > 0) $res = "El jugador ".$pj1->nombre." paso el chequeo de dificultad con ".$var." éxitos.";
-	else if($fracaso==true) $res = "El jugador ".$pj1->nombre." fracasó totalmente.";
-	else $res = "El jugador ".$pj1->nombre." falló el chequeo de dificultad";
+
+	$res = array('Personaje' => $pj1->nombre, 'Dados' => $dados, 'Clase de Dificultad' => $executor->CD, 'Éxitos' => $var);
+
+	if($fracaso==true) $res['Fracaso'] = "Si";
+	else $res['Fallo'] = "Si";
 ?>

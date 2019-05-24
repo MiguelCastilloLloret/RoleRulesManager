@@ -3,11 +3,11 @@
 	if(!isset($pj1)) $pj1 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj1);
 	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
 	else{
-		if(!isset($pj2)) $pj2 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj2);
-		if(!isset($arma)) $arma = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->findOneByNombre($pj1->arma);
+		$pj2 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj2);
+		$arma = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->findOneByNombre($pj1->arma);
 	
 		
-		if(!isset($res)) $res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
+		$res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
 
 		if($arma->cadencia>0) $tipoAtaque = $pj1->armasDeFuego;
 		else $tipoAtaque = $pj1->armasCaC;
@@ -27,15 +27,15 @@
 			else if($tirada==1) $var--;
 		}
 
-		if(!isset($res['Daño'])) $res['Daño'] = 0;
-		if(!isset($res['Exitos'])) $res['Exitos'] = 0;
-		$res['Exitos'] = $res['Exitos'] + $var;
+		$res['Daño'] = 0;
+		$res['Exitos'] = 0;
+		$res['Exitos'] = $var;
 
 		if($var > 0){
 			$var = $pj1->bonusFuerza+$arma->dano+$var-1;
 			if($FM==0){
 				$var = $pj2->aplicar_efecto("Ataque", ($var*-1), $arma);
-				$res['Daño'] = $res['Daño'] + $var;
+				$res['Daño'] = $var;
 			} 
 		}
 		else if($fracaso==true && $FM<=0) $res['Fracaso'] = "Si";
