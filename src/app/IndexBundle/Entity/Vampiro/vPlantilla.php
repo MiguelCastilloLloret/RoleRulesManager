@@ -156,57 +156,93 @@ class vPlantilla{
 
 	public $arma;
 
-	 /**
+	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $fortaleza;
+	public $Fortaleza;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $armasDeFuego;
+	public $ArmasDeFuego;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $informatica;
+	public $Informatica;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $armasCaC;
+	public $ArmasCaC;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $diplomacia;
+	public $Diplomacia;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $atletismo;
+	public $Atletismo;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $pelea;
+	public $Pelea;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $investigacion;
-
-		 /**
-     * @ORM\Column(type="string", length=15)
-     */
+	public $Investigacion;
 
 	/*function __construct($Nombre, $Clan, $Generacion, $PuntosVida, $Armadura, $BonusFuerza, $BonusDestreza, $BonusResistencia, $BonusCarisma, $BonusManipulacion, $BonusApariencia, $BonusPercepcion, $BonusInteligencia, $BonusAstucia, $Conciencia, $Autocontrol, $Coraje, $Estado, $FuerzaVoluntad, $Sangre, $Arma, $Habilidades){
 		$this->nombre = $Nombre;

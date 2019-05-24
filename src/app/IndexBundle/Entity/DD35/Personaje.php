@@ -209,11 +209,99 @@ class Personaje{
 
 	public $arma;
 
-		 /**
+	/**
      * @ORM\Column(type="string", length=15)
      */
 
 	public $partida;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $Robar;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $AbrirCerraduras;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $Diplomacia;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $Nadar;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $SaberArcano;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $SaberReligion;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $Sanar;
+
+     /**
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
+     */
+
+     public $Trepar;
 
 		/**
      * @ORM\Column(type="integer")

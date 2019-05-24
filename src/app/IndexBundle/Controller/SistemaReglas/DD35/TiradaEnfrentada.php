@@ -31,11 +31,11 @@
 			break;
 	}
 	$tir = rand(1,20);
-	$var = $tir+$bonus1;
+	$var = $tir+$bonus1+$pj1->{$hab->nombre};
 	$tir2 = rand(1,20);
-	$var2 = $tir2+$bonus2;
+	$var2 = $tir2+$bonus2+$pj2->{$hab->nombre};
 
-	$res = array('Personaje' => array($pj1->nombre,$pj2->nombre), 'Tirada' => array($tir,$tir2), 'Bonus' => array($bonus1,$bonus2), 'Resultado' => array($var,$var2));
+	$res = array('Personaje' => array($pj1->nombre,$pj2->nombre), 'Tirada' => array($tir,$tir2), 'Bonus' => array($bonus1,$bonus2), $hab->nombre => array($pj1->{$hab->nombre},$pj2->{$hab->nombre}), 'Total' => array($var,$var2), 'Resultado' => array($var,$var2));
 
 	/*if($var > $var2){
 		$nom = $pj1->nombre;

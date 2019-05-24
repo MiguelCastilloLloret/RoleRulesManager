@@ -22,9 +22,9 @@
 			break;
 	}
 	$tir = rand(1,20);
-	$var = $tir+$bonus;
+	$var = $tir+$bonus+$pj1->{$hab->nombre};
 
-	$res = array('Personaje' => $pj1->nombre, 'Tirada' => $var, 'Bonus' => $bonus, 'Clase de Dificultad' => $executor->CD, 'Resultado' => "");
+	$res = array('Personaje' => $pj1->nombre, 'Tirada' => $tir, 'Bonus' => $bonus, $hab->nombre => $pj1->{$hab->nombre}, 'Total' => $var, 'Clase de Dificultad' => $executor->CD, 'Resultado' => "");
 
 	if($var > $executor->CD) $res['Resultado'] = "Acierto";
 	else $res['Resultado'] = "Fallo";

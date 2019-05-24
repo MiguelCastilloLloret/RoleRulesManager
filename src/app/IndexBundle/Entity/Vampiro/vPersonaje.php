@@ -62,6 +62,11 @@ class vPersonaje{
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $bonusFuerza;
@@ -146,6 +151,11 @@ class vPersonaje{
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $sangre;
@@ -158,48 +168,88 @@ class vPersonaje{
 
 	 /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
-	public $fortaleza;
+	public $Fortaleza;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $ArmasDeFuego;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $Informatica;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $ArmasCaC;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $Diplomacia;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $Atletismo;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $Pelea;
 
 	/**
      * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *      min = "0",
+     *      max = "100",
+     *      minMessage = "No se pueden tener estadísticas negativas."
+     * )
      */
 
 	public $Investigacion;

@@ -81,6 +81,14 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma','choice', array('choices' => $wepList))
+            ->add('robar')
+            ->add('abrirCerraduras')
+            ->add('diplomacia')
+            ->add('nadar')
+            ->add('saberArcano')
+            ->add('saberReligion')
+            ->add('sanar')
+            ->add('trepar')
             ->add('partida')
             ->add('usuario','hidden')
             ->getForm();
@@ -114,6 +122,14 @@ class DD35Controller extends Controller{
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
                         ->add('arma','choice', array('choices' => $wepList))
+                        ->add('robar')
+                        ->add('abrirCerraduras')
+                        ->add('diplomacia')
+                        ->add('nadar')
+                        ->add('saberArcano')
+                        ->add('saberReligion')
+                        ->add('sanar')
+                        ->add('trepar')
                         ->add('partida')
                         ->add('usuario','hidden')
                         ->getForm();
@@ -183,6 +199,14 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma','choice', array('choices' => $wepList))
+            ->add('robar')
+            ->add('abrirCerraduras')
+            ->add('diplomacia')
+            ->add('nadar')
+            ->add('saberArcano')
+            ->add('saberReligion')
+            ->add('sanar')
+            ->add('trepar')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -210,6 +234,14 @@ class DD35Controller extends Controller{
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
                         ->add('arma','choice', array('choices' => $wepList))
+                        ->add('robar')
+                        ->add('abrirCerraduras')
+                        ->add('diplomacia')
+                        ->add('nadar')
+                        ->add('saberArcano')
+                        ->add('saberReligion')
+                        ->add('sanar')
+                        ->add('trepar')
                         ->getForm();
                     }
             }
@@ -278,6 +310,14 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma','choice', array('choices' => $wepList))
+            ->add('robar')
+            ->add('abrirCerraduras')
+            ->add('diplomacia')
+            ->add('nadar')
+            ->add('saberArcano')
+            ->add('saberReligion')
+            ->add('sanar')
+            ->add('trepar')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -306,6 +346,14 @@ class DD35Controller extends Controller{
                         ->add('resistenciaMagica')
                         ->add('reduccionDano')
                         ->add('arma','choice', array('choices' => $wepList))
+                        ->add('robar')
+                        ->add('abrirCerraduras')
+                        ->add('diplomacia')
+                        ->add('nadar')
+                        ->add('saberArcano')
+                        ->add('saberReligion')
+                        ->add('sanar')
+                        ->add('trepar')
                         ->getForm();
                     }
             }
@@ -367,6 +415,14 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma')
+            ->add('robar')
+            ->add('abrirCerraduras')
+            ->add('diplomacia')
+            ->add('nadar')
+            ->add('saberArcano')
+            ->add('saberReligion')
+            ->add('sanar')
+            ->add('trepar')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -427,6 +483,14 @@ class DD35Controller extends Controller{
             ->add('resistenciaMagica')
             ->add('reduccionDano')
             ->add('arma')
+            ->add('robar')
+            ->add('abrirCerraduras')
+            ->add('diplomacia')
+            ->add('nadar')
+            ->add('saberArcano')
+            ->add('saberReligion')
+            ->add('sanar')
+            ->add('trepar')
             ->getForm();
 
         if ($request->isMethod('POST')) {
