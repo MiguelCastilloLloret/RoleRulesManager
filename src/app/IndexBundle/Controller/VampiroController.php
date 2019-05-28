@@ -140,7 +140,7 @@ class VampiroController extends Controller{
                 if($var->isValid()){
                     $ev->persist($pj);
                     $ev->flush();
-                    $hola = "Se introdujo correctamente el personaje en la BD";
+                    $hola = "Has creado el personaje";
                 }
             }
         }
@@ -256,7 +256,7 @@ class VampiroController extends Controller{
                 if($var->isValid()){
                     $ev->persist($pj);
                     $ev->flush();
-                    $hola = "Se introdujo correctamente el personaje en la BD";
+                    $hola = "Has creado la plantilla de personaje";
                 }
             }
         }
@@ -373,7 +373,7 @@ class VampiroController extends Controller{
                 if($var->isValid()){
                     $ev->merge($personajePlantilla);
                     $ev->flush();
-                    $hola = "Se modificó correctamente el personaje en la BD";
+                    $hola = "Has modificado el personaje";
                 }
             }
         }
@@ -447,7 +447,7 @@ class VampiroController extends Controller{
                 $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($id->id);
                 $ev->remove($personajePlantilla);
                 $ev->flush();
-                $hola = "El personaje se borró correctamente";
+                $hola = "Personaje borrado";
             }
         }
 
@@ -518,7 +518,7 @@ class VampiroController extends Controller{
                 $personajePlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPlantilla')->find($id->id);
                 $ev->remove($personajePlantilla);
                 $ev->flush();
-                $hola = "La plantilla se borró correctamente";
+                $hola = "Plantilla borrada";
             }
         }
 
@@ -557,7 +557,7 @@ class VampiroController extends Controller{
             if($var->isValid()){
                 $ev->persist($w);
                 $ev->flush();
-                $hola = "Se introdujo correctamente el arma en la BD";
+                $hola = "Has creado el arma correctamente";
             }
         }
 
@@ -619,7 +619,7 @@ class VampiroController extends Controller{
                 if($var->isValid()){
                     $ev->merge($w);
                     $ev->flush();
-                    $hola = "Se modificó correctamente el arma en la BD";
+                    $hola = "Has modificado el arma";
                 }
             }
         }

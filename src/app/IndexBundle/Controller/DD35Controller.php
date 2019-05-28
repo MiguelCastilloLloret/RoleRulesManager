@@ -140,7 +140,7 @@ class DD35Controller extends Controller{
                 if($var->isValid()){
                     $em->persist($pj);
                     $em->flush();
-                    $hola = "Se introdujo correctamente el personaje en la BD";
+                    $hola = "Has creado el personaje";
                 }
             }
         }
@@ -250,7 +250,7 @@ class DD35Controller extends Controller{
                 if($var->isValid()){
                     $em->persist($pj);
                     $em->flush();
-                    $hola = "Se introdujo correctamente la plantilla en la BD";
+                    $hola = "Has creado la plantilla de personaje";
                 }
             }
         }
@@ -362,7 +362,7 @@ class DD35Controller extends Controller{
                 if($var->isValid()){
                     $em->merge($personajePlantilla);
                     $em->flush();
-                    $hola = "Se modificó correctamente el personaje en la BD";
+                    $hola = "Has modificado el personaje";
                 }
             }
         }
@@ -431,7 +431,7 @@ class DD35Controller extends Controller{
                 $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($id->id);
                 $em->remove($personajePlantilla);
                 $em->flush();
-                $hola = "El personaje se borró correctamente";
+                $hola = "Personaje borrado";
             }
         }
 
@@ -499,7 +499,7 @@ class DD35Controller extends Controller{
                 $personajePlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Plantilla')->find($id->id);
                 $em->remove($personajePlantilla);
                 $em->flush();
-                $hola = "La plantilla se borró correctamente";
+                $hola = "Plantilla borrada";
             }
         }
 
@@ -537,7 +537,7 @@ class DD35Controller extends Controller{
             if($var->isValid()){
                 $em->persist($w);
                 $em->flush();
-                $hola = "Se introdujo correctamente el arma en la BD";
+                $hola = "Has creado el arma correctamente";
             }
         }
 
@@ -597,7 +597,7 @@ class DD35Controller extends Controller{
                 if($var->isValid()){
                     $em->merge($w);
                     $em->flush();
-                    $hola = "Se modificó correctamente el arma en la BD";
+                    $hola = "Has modificado el arma";
                 }
             }
         }
