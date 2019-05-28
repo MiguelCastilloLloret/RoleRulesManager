@@ -9,8 +9,8 @@
 		
 		$res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
 
-		if($arma->cadencia>0) $tipoAtaque = $pj1->armasDeFuego;
-		else $tipoAtaque = $pj1->armasCaC;
+		if($arma->cadencia>0) $tipoAtaque = $pj1->ArmasDeFuego;
+		else $tipoAtaque = $pj1->ArmasCaC;
 		if(!isset($FM)) $FM = 0;
 
 

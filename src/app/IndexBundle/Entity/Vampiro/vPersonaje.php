@@ -293,8 +293,8 @@ class vPersonaje{
 
 	public function aplicar_efecto($fuente, $efecto, $arma){
 		if($fuente == "Ataque"){
-			if($arma->tipo=="Agravado") $dados = $this->fortaleza;
-			else $dados = $this->fortaleza+$this->bonusResistencia;
+			if($arma->tipo=="Agravado") $dados = $this->Fortaleza;
+			else $dados = $this->Fortaleza+$this->bonusResistencia;
 			$var = 0;
 			for($i = 0; $i<$dados; $i++){
 				$tirada = rand(1,10);
