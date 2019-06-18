@@ -14,7 +14,8 @@ class PartidaEncoder implements PasswordEncoderInterface{
 
     public function isPasswordValid($encoded, $raw, $salt){
     	ob_start();
-        var_dump( $encoded === $this->encodePassword($raw, $salt) );                    // start buffer capture
+        var_dump($encoded);
+        var_dump($this->encodePassword($raw, $salt))                    // start buffer capture
         $contents = ob_get_contents(); // put the buffer into a variable
         ob_end_clean();                // end capture
         error_log( $contents );
