@@ -11,4 +11,4 @@ services:
        arguments: ["@doctrine.orm.default_entity_manager", "@doctrine.orm.vamp_entity_manager"]
     my_form_editor:
        class: app\IndexBundle\Controller\Listener\AddGamesFieldSubscriber
-       arguments: ["@doctrine.orm.default_entity_manager", "@doctrine.orm.vamp_entity_manager"]
+       arguments: ["@doctrine.orm.default_entity_manager", "@doctrine.orm.vamp_entity_manager", "@security.password_encoder"]

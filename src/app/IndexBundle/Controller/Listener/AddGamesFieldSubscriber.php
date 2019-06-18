@@ -13,10 +13,12 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
 
     public $em;
     public $ev;
+    public $encoder;
 
-    public function __construct($EM, $EV){
+    public function __construct($EM, $EV, $ENCODER){
         $this->em = $EM;
         $this->ev = $EV;
+        $this->encoder = $ENCODER;
     }
 
     public static function getSubscribedEvents(){
@@ -42,7 +44,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         $pjList = NULL;
         $check = false;
 
-        $password = $this->get('security.password_encoder')->encodePassword($password);
+        $password = $this->encoder->encodePassword($password);
         $DD35Password = $this->em->getRepository('app\IndexBundle\Entity\DD35\Partida')->findOneByNombre($party)->password;
         $VampiroPassword = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPartida')->findOneByNombre($party)->password;
 
