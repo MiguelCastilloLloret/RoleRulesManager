@@ -43,6 +43,10 @@
         "sensio/generator-bundle": "~2.3"
     },
     "scripts": {
+        "warmup": [
+        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache"
+        ],
         "post-root-package-install": [
             "SymfonyStandard\\Composer::hookRootPackageInstall"
         ],
