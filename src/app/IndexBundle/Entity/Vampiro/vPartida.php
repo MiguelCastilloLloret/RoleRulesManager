@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="vPartida", schema="reglasv")
  */
 
-class Partida{
+class vPartida{
 
 	/**
      * @ORM\Column(type="integer")
