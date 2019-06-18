@@ -24,6 +24,7 @@ class formExecutor{
     public $CD;
     public $skill;
     public $id;
+    public $password;
 }
 
 class game{
