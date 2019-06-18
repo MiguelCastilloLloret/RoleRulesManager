@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 class PartidaEncoder implements PasswordEncoderInterface{
 
-	public $salt = 'salt5678901234567890123456789012';
+	public $salt = '';
 
     public function encodePassword($raw, $salt){
 		return hash('sha256', $salt . $raw); // Custom function for encrypt with sha256
