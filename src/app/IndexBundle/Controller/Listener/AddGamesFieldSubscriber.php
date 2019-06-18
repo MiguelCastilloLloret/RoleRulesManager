@@ -33,66 +33,79 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         $data = $event->getData();
         //data es un array que en este caso contiene el juego seleccionado por el usuario.
 
-        $this->addField($event->getForm(), $data['game'], $data['party'], $data['id']);
+        $this->addField($event->getForm(), $data['game'], $data['party'], $data['password'], $data['id']);
     }
 
-    protected function addField(Form $form, $game, $party, $user){
+    protected function addField(Form $form, $game, $party, $password, $user){
 
         //En este método se añaden los campos del formulario correspondientes al juego elegido.
         $pjList = NULL;
+        $check = false;
 
-        if($game=="DD35"){
-            $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
+        $password = $this->get('security.password_encoder')->encodePassword($password);
+        $DD35Password = $this->em->getRepository('app\IndexBundle\Entity\DD35\Partida')->findOneByNombre($party)->password;
+        $VampiroPassword = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPartida')->findOneByNombre($party)->password;
 
-            for($i=0;$i<count($List);$i++){
-                $aux = $List[$i]['ID'];
-                $pjList["$aux"] = $List[$i]['nombre'];
+        if($game == "DD35"){
+            if($password == $DD35Password){
+                $check = true;
+                $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
+
+                for($i=0;$i<count($List);$i++){
+                    $aux = $List[$i]['ID'];
+                    $pjList["$aux"] = $List[$i]['nombre'];
+                }
+
+                $List = $this->em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Hechizo p ORDER BY p.ID ASC')->getResult();
+
+                for($i=0;$i<count($List);$i++){
+                    $aux = $List[$i]['nombre'];
+                    $spellList[$aux] =  $aux;
+                }
+
+                $List = $this->em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Habilidad p ORDER BY p.ID ASC')->getResult();
+
+                for($i=0;$i<count($List);$i++){
+                    $aux = $List[$i]['nombre'];
+                    $habList[$aux] =  $aux;
+                }
+
+                $acciones = array("Ataque" => 'Ataque', "HechizoObjetivo" => 'HechizoObjetivo', "TiradaDificultad" => 'TiradaDificultad', "TiradaEnfrentada" => 'TiradaEnfrentada');
             }
-
-            $List = $this->em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Hechizo p ORDER BY p.ID ASC')->getResult();
-
-            for($i=0;$i<count($List);$i++){
-                $aux = $List[$i]['nombre'];
-                $spellList[$aux] =  $aux;
-            }
-
-            $List = $this->em->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\DD35\Habilidad p ORDER BY p.ID ASC')->getResult();
-
-            for($i=0;$i<count($List);$i++){
-                $aux = $List[$i]['nombre'];
-                $habList[$aux] =  $aux;
-            }
-
-            $acciones = array("Ataque" => 'Ataque', "HechizoObjetivo" => 'HechizoObjetivo', "TiradaDificultad" => 'TiradaDificultad', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
-        if($game=="Vampiro"){
-            $List = $this->ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\vPersonaje p WHERE p.partida = \''.$party.'\' ORDER BY p.ID ASC')->getResult();
+        if($game == "Vampiro"){
+            if($password == $VampiroPassword){
+                $check = true;
+                $List = $this->ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\vPersonaje p WHERE p.partida = \''.$party.'\' ORDER BY p.ID ASC')->getResult();
 
-            for($i=0;$i<count($List);$i++){
-                $aux = $List[$i]['ID'];
-                $pjList["$aux"] = $List[$i]['nombre'];
+                for($i=0;$i<count($List);$i++){
+                    $aux = $List[$i]['ID'];
+                    $pjList["$aux"] = $List[$i]['nombre'];
+                }
+
+                $List = $this->ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\vHabilidad p ORDER BY p.ID ASC')->getResult();
+
+                for($i=0;$i<count($List);$i++){
+                    $aux = $List[$i]['nombre'];
+                    $habList[$aux] =  $aux;
+                }
+
+                $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "TiradaEnfrentada" => 'TiradaEnfrentada');
             }
-
-            $List = $this->ev->createQuery('SELECT p.nombre FROM app\IndexBundle\Entity\Vampiro\vHabilidad p ORDER BY p.ID ASC')->getResult();
-
-            for($i=0;$i<count($List);$i++){
-                $aux = $List[$i]['nombre'];
-                $habList[$aux] =  $aux;
-            }
-
-            $acciones = array("TiradaDificultad" => 'TiradaDificultad', "Ataque" => 'Ataque', "TiradaEnfrentada" => 'TiradaEnfrentada');
         }
 
-        $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true), 'label' => 'Juego'))
-             ->add('party','text', array('required' => true, 'data' => $party, 'attr' => array('readonly' => true)))
-             ->add('pj1','choice', array('choices' => $pjList, 'label' => 'Personaje'))
-             ->add('pj2','choice', array('choices' => $pjList, 'required' => false, 'label' => 'Personaje 2'))
-             ->add('action','choice', array('choices' => $acciones, 'required' => true, 'label' => 'Acción'));
+        if($check == true){
+            $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true), 'label' => 'Juego'))
+                 ->add('party','text', array('required' => true, 'data' => $party, 'attr' => array('readonly' => true)))
+                 ->add('pj1','choice', array('choices' => $pjList, 'label' => 'Personaje'))
+                 ->add('pj2','choice', array('choices' => $pjList, 'required' => false, 'label' => 'Personaje 2'))
+                 ->add('action','choice', array('choices' => $acciones, 'required' => true, 'label' => 'Acción'));
 
-        if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null, 'label' => 'Hechizo'));
+            if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null, 'label' => 'Hechizo'));
 
-        $form->add('CD','integer', array('required' => false, 'data' => 0, 'label' => 'Clase de Dificultad'))
-             ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null, 'label' => 'Habilidad'));
+            $form->add('CD','integer', array('required' => false, 'data' => 0, 'label' => 'Clase de Dificultad'))
+                 ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null, 'label' => 'Habilidad'));
+        }
     }
 }
