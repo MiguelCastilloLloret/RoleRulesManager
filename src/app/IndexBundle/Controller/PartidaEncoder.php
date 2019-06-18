@@ -4,7 +4,7 @@ namespace app\IndexBundle\Controller;
 
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
-class Sha256Salted implements PasswordEncoderInterface{
+class PartidaEncoder implements PasswordEncoderInterface{
 
 	public $salt = 'salt5678901234567890123456789012';
 
