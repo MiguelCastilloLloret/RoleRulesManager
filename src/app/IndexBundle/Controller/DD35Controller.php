@@ -674,7 +674,7 @@ class DD35Controller extends Controller{
             ->add('id', 'choice', array('choices' => $plList, 'required' => true))
             ->getForm();
 
-        $party = new vPartida();
+        $party = new Partida();
         $var = $this->createFormBuilder($party)
             ->add('nombre')
             ->add('password','password')
