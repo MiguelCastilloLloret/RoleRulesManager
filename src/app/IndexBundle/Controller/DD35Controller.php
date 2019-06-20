@@ -12,6 +12,7 @@ use app\IndexBundle\Entity\DD35\Personaje;
 use app\IndexBundle\Entity\DD35\Plantilla;
 use app\IndexBundle\Controller\idPlantilla;
 use app\IndexBundle\Entity\DD35\Arma;
+use app\IndexBundle\Entity\DD35\Partida;
 
 
 
