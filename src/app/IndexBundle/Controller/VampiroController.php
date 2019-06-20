@@ -652,7 +652,7 @@ class VampiroController extends Controller{
         $party->creador = $userId;
         $var = $this->createFormBuilder($party)
             ->add('nombre')
-            ->add('password')
+            ->add('password','password')
             ->add('creador','hidden')
             ->getForm();
 

@@ -609,4 +609,92 @@ class DD35Controller extends Controller{
         return new Response($html);
     }
 
+    public function DD35CreatePartyAction(Request $request){ 
+        $hola = "";
+        $tipo = "";
+        $link = "crearPartida";
+        $inputValue = "";
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id')
+            ->getForm();
+
+
+        $party = new Partida();
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
+        $party->creador = $userId;
+        $var = $this->createFormBuilder($party)
+            ->add('nombre')
+            ->add('password','password')
+            ->add('creador','hidden')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            $var->bind($request);
+            if($var->isValid()){
+                $em->persist($party);
+                $em->flush();
+                $hola = "Has creado la partida correctamente";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
+    public function DD35DeletePartyAction(Request $request){ 
+        $hola = "";
+        $tipo = "oculto";
+        $link = "eliminarPartida";
+        $inputValue = "Eliminar";
+        $plList = NULL;
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
+
+        $List = $em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Partida p WHERE p.creador = :creador ORDER BY p.ID ASC')->setParameter('creador', $userId)->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
+
+        $party = new vPartida();
+        $var = $this->createFormBuilder($party)
+            ->add('nombre')
+            ->add('password','password')
+            ->add('creador','hidden')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                $partidaPlantilla = $em->getRepository('app\IndexBundle\Entity\DD35\Partida')->find($id->id);
+                $em->remove($partidaPlantilla);
+                $em->flush();
+                $hola = "Partida borrada";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterDD35.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
 }
