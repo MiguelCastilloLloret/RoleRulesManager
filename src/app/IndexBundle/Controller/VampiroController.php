@@ -649,11 +649,11 @@ class VampiroController extends Controller{
         $security_context = $this->get('security.context');
         $security_token = $security_context->getToken();
         $userId = $security_token->getUser()->getId();
-        $party->usuario = $userId;
+        $party->creador = $userId;
         $var = $this->createFormBuilder($party)
             ->add('nombre')
             ->add('password')
-            ->add('usuario','hidden')
+            ->add('creador','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -699,8 +699,8 @@ class VampiroController extends Controller{
         $party = new vPartida();
         $var = $this->createFormBuilder($party)
             ->add('nombre')
-            ->add('password')
-            ->add('usuario','hidden')
+            ->add('password','password')
+            ->add('creador','hidden')
             ->getForm();
 
         if ($request->isMethod('POST')) {
