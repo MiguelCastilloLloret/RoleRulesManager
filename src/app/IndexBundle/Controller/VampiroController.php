@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use app\IndexBundle\Entity\Vampiro\vPersonaje;
 use app\IndexBundle\Entity\Vampiro\vPlantilla;
 use app\IndexBundle\Entity\Vampiro\vArma;
+use app\IndexBundle\Entity\Vampiro\vPartida;
 use app\IndexBundle\Controller\idPlantilla;	
 
 class VampiroController extends Controller{
@@ -544,7 +545,6 @@ class VampiroController extends Controller{
 
 
         $w = new vArma();
-        $security_context = $this->get('security.context');
         $var = $this->createFormBuilder($w)
             ->add('nombre')
             ->add('ocultacion')
@@ -631,4 +631,93 @@ class VampiroController extends Controller{
 
         return new Response($html);
     }
+
+    public function VampiroCreatePartyAction(Request $request){ 
+        $hola = "";
+        $tipo = "";
+        $link = "crearPartida";
+        $inputValue = "";
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id')
+            ->getForm();
+
+
+        $party = new vPartida();
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
+        $party->usuario = $userId;
+        $var = $this->createFormBuilder($party)
+            ->add('nombre')
+            ->add('password')
+            ->add('usuario','hidden')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            $var->bind($request);
+            if($var->isValid()){
+                $ev->persist($party);
+                $ev->flush();
+                $hola = "Has creado la partida correctamente";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
+    public function VampiroDeletePartyAction(Request $request){ 
+        $hola = "";
+        $tipo = "oculto";
+        $link = "eliminarPartida";
+        $inputValue = "Eliminar";
+        $plList = NULL;
+        $ev = $this->get('doctrine.orm.vamp_entity_manager');
+
+        $security_context = $this->get('security.context');
+        $security_token = $security_context->getToken();
+        $userId = $security_token->getUser()->getId();
+
+        $List = $ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\\vPartida p WHERE p.creador = :creador ORDER BY p.ID ASC')->setParameter('creador', $userId)->getResult();
+
+        for($i=0;$i<count($List);$i++){
+            $aux = $List[$i]['nombre'];
+            $plList[$List[$i]['ID']] = $aux;
+        }
+
+        $id = new idPlantilla();
+        $plantilla = $this->createFormBuilder($id)
+            ->add('id', 'choice', array('choices' => $plList, 'required' => true))
+            ->getForm();
+
+        $party = new vPartida();
+        $var = $this->createFormBuilder($party)
+            ->add('nombre')
+            ->add('password')
+            ->add('usuario','hidden')
+            ->getForm();
+
+        if ($request->isMethod('POST')) {
+            if(isset($request->request->all()['form']['id'])){
+                $plantilla->bind($request);
+                $partidaPlantilla = $ev->getRepository('app\IndexBundle\Entity\Vampiro\vPartida')->find($id->id);
+                $ev->remove($partidaPlantilla);
+                $ev->flush();
+                $hola = "Partida borrada";
+            }
+        }
+
+        $html = $this->container->get('templating')->render(
+            'index/masterVampiro.html.twig', array('plantilla' => $plantilla->createView(),'form' => $var->createView(), 'hola' => $hola, 'tipo' => $tipo, 'link' => $link, 'inputValue' => $inputValue)
+        );
+
+        return new Response($html);
+    }
+
 }

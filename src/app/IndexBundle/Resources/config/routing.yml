@@ -42,6 +42,14 @@ app_DD35ChangeW_screen:
     path:     /DD35Master/modificarArma
     defaults: { _controller: appIndexBundle:DD35:DD35ChangeW }
 
+app_DD35CreateParty_screen:
+    path:     /DD35Master/crearPartida
+    defaults: { _controller: appIndexBundle:DD35:DD35CreateParty }
+
+app_DD35DeleteParty_screen:
+    path:     /DD35Master/eliminarPartida
+    defaults: { _controller: appIndexBundle:DD35:DD35DeleteParty }
+
 app_VampiroCreate_screen:
     path:     /VampiroMaster/crear
     defaults: { _controller: appIndexBundle:Vampiro:VampiroCreate }
@@ -69,6 +77,14 @@ app_VampiroCreateW_screen:
 app_VampiroChangeW_screen:
     path:     /VampiroMaster/modificarArma
     defaults: { _controller: appIndexBundle:Vampiro:VampiroChangeW }
+
+app_VampiroCreateParty_screen:
+    path:     /VampiroMaster/crearPartida
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroCreateParty }
+
+app_VampiroDeleteParty_screen:
+    path:     /VampiroMaster/eliminarPartida
+    defaults: { _controller: appIndexBundle:Vampiro:VampiroDeleteParty }
 
 login:
     path:     /login

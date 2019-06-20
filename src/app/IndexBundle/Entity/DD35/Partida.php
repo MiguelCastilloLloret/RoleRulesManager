@@ -27,13 +27,13 @@ class Partida{
 	public $nombre;
 
 	/**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=64)
      */
 
 	public $password;
 
      /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="integer")
      */
 
      public $creador;
