@@ -1,9 +1,10 @@
 <?php
-	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
-	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
+	$pj2 = $var;
+	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj1);
+	if(is_null($pj2)) $res = "No se especificó contrincante.";
 	else{ 
-	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
-	$hab = $this->em->getRepository('app\IndexBundle\Entity\DD35\Habilidad')->findOneByNombre($executor->skill);
+	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj2);
+	$hab = $this->em->getRepository('app\IndexBundle\Entity\DD35\Habilidad')->findOneByNombre($skill);
 	switch ($hab->atributoAsociado) {
 		case 'Fuerza':
 			$bonus1 = $pj1->bonusFuerza;

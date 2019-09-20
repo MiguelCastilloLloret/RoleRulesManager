@@ -1,13 +1,13 @@
 <?php
 	
-	if(!isset($pj1)) $pj1 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj1);
-	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
+	if(!isset($pj1)) $pj1 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($pj1);
+	if(is_null($pj2)) $res = "No se especificó contrincante.";
 	else{
-		$pj2 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj2);
+		$pj2 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($pj2);
 		$arma = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vArma')->findOneByNombre($pj1->arma);
 	
 		
-		$res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $executor->CD, 'Defensor' => $pj2->nombre);
+		$res = array('Atacante' => $pj1->nombre, 'Arma' => $arma->nombre, 'Dificultad' => $CD, 'Defensor' => $pj2->nombre);
 
 		if($arma->cadencia>0) $tipoAtaque = $pj1->ArmasDeFuego;
 		else $tipoAtaque = $pj1->ArmasCaC;
@@ -20,7 +20,7 @@
 
 		for($i = 0; $i<$dados; $i++){
 			$tirada = rand(1,10);
-			if($tirada>=$executor->CD){
+			if($tirada>=$CD){
 				$var++;
 				$fracaso = false;
 			}

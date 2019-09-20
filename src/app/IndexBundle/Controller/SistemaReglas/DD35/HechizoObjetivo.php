@@ -1,10 +1,10 @@
 <?php
 
-	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj1);
-	if(is_null($executor->pj2)) $res = "No se especificó contrincante.";
+	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj1);
+	if(is_null($pj2)) $res = "No se especificó contrincante.";
 	else{
-	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($executor->pj2);
-	$hechizo = $this->em->getRepository('app\IndexBundle\Entity\DD35\Hechizo')->findOneByNombre($executor->spell);
+	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj2);
+	$hechizo = $this->em->getRepository('app\IndexBundle\Entity\DD35\Hechizo')->findOneByNombre($spell);
 
 	$i = 0;
 
@@ -22,7 +22,7 @@
 		}
 	}
 
-	$res = array('Lanzador' => $pj1->nombre, 'Objetivo' => $pj2->nombre, 'Hechizo' => $executor->spell);
+	$res = array('Lanzador' => $pj1->nombre, 'Objetivo' => $pj2->nombre, 'Hechizo' => $spell);
 
 	if($hechizo->curacion){
 		if($pj1->clase == "Mago") $var = $pj2->aplicar_efecto($hechizo, $var, $pj1->bonusInteligencia);

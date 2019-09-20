@@ -1,6 +1,7 @@
 <?php
-	$pj1 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($executor->pj1);
-	$hab = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vHabilidad')->findOneByNombre($executor->skill);
+	$pj1 = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPersonaje')->find($pj1);
+	$hab = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vHabilidad')->findOneByNombre($skill);
+	$CD = $var;
 
 	switch ($hab->atributoAsociado) {
 		case 'Fuerza':
@@ -37,14 +38,14 @@
 	$dados = $bonus+$pj1->{$hab->nombre};
 	for($i = 0; $i<$dados; $i++){
 		$tirada = rand(1,10);
-		if($tirada>=$executor->CD){
+		if($tirada>=$CD){
 			$var++;
 			$fracaso = false;
 		}
 		else if($tirada==1) $var--;
 	}
 
-	$res = array('Personaje' => $pj1->nombre, 'Dados' => $dados, 'Clase de Dificultad' => $executor->CD, 'Éxitos' => $var);
+	$res = array('Personaje' => $pj1->nombre, 'Dados' => $dados, 'Clase de Dificultad' => $CD, 'Éxitos' => $var);
 
 	if($fracaso==true) $res['Fracaso'] = "Si";
 	else if($var==0) $res['Fallo'] = "Si";
