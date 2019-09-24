@@ -12,6 +12,9 @@ use app\IndexBundle\Entity\Vampiro\vPlantilla;
 use app\IndexBundle\Entity\Vampiro\vArma;
 use app\IndexBundle\Entity\Vampiro\vPartida;
 use app\IndexBundle\Controller\idPlantilla;	
+use app\IndexBundle\Controller\PartidaEncoder;
+
+
 
 class VampiroController extends Controller{
 
@@ -659,6 +662,8 @@ class VampiroController extends Controller{
         if ($request->isMethod('POST')) {
             $var->bind($request);
             if($var->isValid()){
+                $encoder = new PartidaEncoder();
+                $party->password = $encoder->encodePassword($party->password,$encoder->salt);
                 $ev->persist($party);
                 $ev->flush();
                 $hola = "Has creado la partida correctamente";

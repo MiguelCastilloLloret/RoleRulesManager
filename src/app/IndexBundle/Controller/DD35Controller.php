@@ -13,6 +13,7 @@ use app\IndexBundle\Entity\DD35\Plantilla;
 use app\IndexBundle\Controller\idPlantilla;
 use app\IndexBundle\Entity\DD35\Arma;
 use app\IndexBundle\Entity\DD35\Partida;
+use app\IndexBundle\Controller\PartidaEncoder;
 
 
 
@@ -637,11 +638,8 @@ class DD35Controller extends Controller{
         if ($request->isMethod('POST')) {
             $var->bind($request);
             if($var->isValid()){
-                ob_start();
-                var_dump($party);                    // start buffer capture
-                $contents = ob_get_contents(); // put the buffer into a variable
-                ob_end_clean();                // end capture
-                error_log( $contents );
+                $encoder = new PartidaEncoder();
+                $party->password = $encoder->encodePassword($party->password,$encoder->salt);
                 $em->persist($party);
                 $em->flush();
                 $hola = "Has creado la partida correctamente";
