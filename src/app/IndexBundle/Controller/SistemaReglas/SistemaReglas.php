@@ -23,10 +23,7 @@ class SistemaReglas{
 
 	public function ejecutorReglas($executor){
 
-		error_reporting(E_ALL);
-		ini_set('display_errors', '1');
-
-		if(is_null($executor->pj1)) return "";
+		if(is_null($executor->pj1)) return "Falta por especificar personaje";
 
 		//Ejecucion de los subsistemas
 
@@ -39,7 +36,7 @@ class SistemaReglas{
 		}
 		else if($executor->action == "Ataque" && !is_null($executor->pj2)) return $this->subsistema_combate($executor->game, $executor->action, $executor->pj1, $executor->pj2);
 
-		else return "Faltó por especificar algún elemento necesario.";
+		else return "Faltó por especificar algún elemento necesario";
 	}
 
 	public function subsistema_tiradas($game, $action, $skill, $pj1, $var){

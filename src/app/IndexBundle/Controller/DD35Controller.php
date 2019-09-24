@@ -637,6 +637,11 @@ class DD35Controller extends Controller{
         if ($request->isMethod('POST')) {
             $var->bind($request);
             if($var->isValid()){
+                ob_start();
+                var_dump($party);                    // start buffer capture
+                $contents = ob_get_contents(); // put the buffer into a variable
+                ob_end_clean();                // end capture
+                error_log( $contents );
                 $em->persist($party);
                 $em->flush();
                 $hola = "Has creado la partida correctamente";
