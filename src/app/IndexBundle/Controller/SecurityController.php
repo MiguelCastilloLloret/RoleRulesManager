@@ -43,6 +43,7 @@ class SecurityController extends Controller{
     // Creamos el formulario y le enviamos un usuario como molde
     $user = new User();
     $form = $this->createForm(new UserType(), $user);
+    $em = $this->getDoctrine()->getManager();
 
     
     // Hacemos que el formulario maneje la petición
@@ -50,6 +51,12 @@ class SecurityController extends Controller{
     
     // Comprobamos que se ha enviado el formulario
     if ($form->isSubmitted() && $form->isValid()) {
+        if(!$em->getRepository('app\IndexBundle\Entity\Common\User')->findOneByEmail($form->email)){
+            return $this->render('security/register.html.twig', array(
+                'form' => $form->createView(),
+                'error' => "Este usuario ya existe"
+            ));
+        }
         
         // Codificamos la contraseña en texto plano accediendo al 'encoder' que habíamos indicado en la configuración
         $password = $this->get('security.password_encoder')
@@ -59,7 +66,6 @@ class SecurityController extends Controller{
         $user->setPassword($password);
         
         // Persistimos la entidad como cualquier otra
-        $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
         

@@ -11,6 +11,15 @@
   <div class="container contenedor">
     <div class="block bloque" id="registro">
     <h1>Registro</h1>
+    {# Muestra el error en caso de existir#}
+            {% if error %}
+            <div class="panel panel-default" id="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Error</h3>
+                </div>
+                <div class="panel-body" id="panelbody">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            </div>
+      {% endif %}
       {{ form_start(form, {'attr': {'id': 'form_register'}}) }}
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-success">Registrarse</button>
