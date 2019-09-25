@@ -26,6 +26,12 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "'{{ value }}' no es un correo válido.",
+     *     checkMX = true
+     * )
+     */
      */
     private $email;
 
@@ -33,6 +39,13 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", length=64)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 20,
+     *      minMessage = "La contraseña debe tener al menos {{ limit }} caracteres",
+     *      maxMessage = "La contraseña no puede tener más de {{ limit }} caracteres"
+     * )
      */
     private $password;
 
