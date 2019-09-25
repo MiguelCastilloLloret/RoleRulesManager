@@ -32,7 +32,6 @@ class User implements UserInterface
      *     checkMX = true
      * )
      */
-     */
     private $email;
 
     /**
