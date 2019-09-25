@@ -3,6 +3,7 @@
 namespace app\IndexBundle\Entity\Common;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
