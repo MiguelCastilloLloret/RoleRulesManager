@@ -96,16 +96,16 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         }
 
         if($check == true){
-            $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true), 'label' => 'Juego'))
-                 ->add('party','text', array('required' => true, 'data' => $party, 'attr' => array('readonly' => true)))
-                 ->add('pj1','choice', array('choices' => $pjList, 'label' => 'Personaje'))
-                 ->add('pj2','choice', array('choices' => $pjList, 'required' => false, 'label' => 'Personaje 2'))
-                 ->add('action','choice', array('choices' => $acciones, 'required' => true, 'label' => 'Acción'));
+            $form->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'attr' => array('readonly' => true), 'label' => 'Juego', 'attr' => array('class' => 'form-control')))
+                 ->add('party','text', array('required' => true, 'data' => $party, 'attr' => array('readonly' => true, 'class' => 'form-control')))
+                 ->add('pj1','choice', array('choices' => $pjList, 'label' => 'Personaje', 'attr' => array('class' => 'form-control')))
+                 ->add('pj2','choice', array('choices' => $pjList, 'required' => false, 'label' => 'Personaje 2', 'attr' => array('class' => 'form-control')))
+                 ->add('action','choice', array('choices' => $acciones, 'required' => true, 'label' => 'Acción', 'attr' => array('class' => 'form-control')));
 
-            if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null, 'label' => 'Hechizo'));
+            if(isset($spellList)) $form->add('spell','choice', array('choices' => $spellList, 'required' => false, 'empty_data' => null, 'label' => 'Hechizo', 'attr' => array('class' => 'form-control')));
 
-            $form->add('CD','integer', array('required' => false, 'data' => 0, 'label' => 'Clase de Dificultad'))
-                 ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null, 'label' => 'Habilidad'));
+            $form->add('CD','integer', array('required' => false, 'data' => 0, 'label' => 'Clase de Dificultad', 'attr' => array('class' => 'form-control')))
+                 ->add('skill','choice', array('choices' => $habList,'required' => false, 'empty_data' => null, 'label' => 'Habilidad', 'attr' => array('class' => 'form-control')));
         }
     }
 }
