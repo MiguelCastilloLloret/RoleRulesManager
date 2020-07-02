@@ -55,7 +55,7 @@ class IndexController extends Controller{
         //Se crea el formulario de selección de juego
 
         $var = $this->createFormBuilder($executor)
-            ->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'label' => 'Juego', 'attr' => array('class' => 'form-control'), 'row_attr' => array('class' => 'form-group')))
+            ->add('game','choice', array('choices' => array("DD35" => 'D&D35', "Vampiro" => 'Vampiro'), 'required' => true, 'label' => 'Juego', 'attr' => array('class' => 'form-control')))
             ->add('party','text', array('required' => true, 'attr' => array('class' => 'form-control')))
             ->add('password','text',array('required' => true, 'attr' => array('class' => 'form-control')))
             ->add('id','hidden', array('required' => true, 'attr' => array('class' => 'form-control')))
