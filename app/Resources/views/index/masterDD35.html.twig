@@ -13,6 +13,7 @@
 	    <div class="block bloque">
 	    	<h1>Menú del Master: D&D 3.5</h1>
 	    	{% if inputValue != "" %}
+	    	{% form_theme plantilla 'bootstrap_3_layout.html.twig' %}
 	    	<form action="./{{ link }}" method="post" id="plantilla" {{ form_enctype(plantilla) }}>
 	    		{{ form_widget(plantilla) }}
 	   			<input type="submit" class="btn btn-success" value="{{ inputValue }}" />
@@ -20,6 +21,7 @@
 			{% endif %}
 		</div>
 	    <div class="bloque {{ tipo }}">
+	    	{% form_theme form 'bootstrap_3_layout.html.twig' %}
 	    	<form action="./{{ link }}" method="post" {{ form_enctype(form) }}>
 	    		{{ form_widget(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar" />
