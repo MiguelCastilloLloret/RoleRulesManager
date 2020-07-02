@@ -13,6 +13,7 @@
 	    <div class="block bloque">
 	    	<h1>Sistema intérprete de reglas Rol</h1>
             {# Muestra el error en caso de existir#}
+            {% if error is defined %}
             {% if error %}
             <div class="panel panel-default" id="panel">
                 <div class="panel-heading">
@@ -20,6 +21,7 @@
                 </div>
                 <div class="panel-body" id="panelbody">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             </div>
+            {% endif %}
             {% endif %}           
     	    <form action="{{ path('login') }}" method="post" id="select">
                 <div>

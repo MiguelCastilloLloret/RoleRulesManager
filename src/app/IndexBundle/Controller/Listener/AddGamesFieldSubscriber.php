@@ -44,10 +44,8 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         $pjList = NULL;
         $check = false;
 
-        $DD35Password = $this->em->getRepository('app\IndexBundle\Entity\DD35\Partida')->findOneByNombre($party)->password;
-        $VampiroPassword = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPartida')->findOneByNombre($party)->password;
-
         if($game == "DD35"){
+            $DD35Password = $this->em->getRepository('app\IndexBundle\Entity\DD35\Partida')->findOneByNombre($party)->password;
             if($this->encoder->isPasswordValid($DD35Password, $password, $this->encoder->salt)){
                 $check = true;
                 $List = $this->em->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\DD35\Personaje p WHERE p.partida = \''.$party.'\' AND p.usuario = \''.$user.'\' ORDER BY p.ID ASC')->getResult();
@@ -76,6 +74,7 @@ class AddGamesFieldSubscriber implements EventSubscriberInterface{
         }
 
         if($game == "Vampiro"){
+            $VampiroPassword = $this->ev->getRepository('app\IndexBundle\Entity\Vampiro\vPartida')->findOneByNombre($party)->password;
             if($this->encoder->isPasswordValid($VampiroPassword, $password, $this->encoder->salt)){
                 $check = true;
                 $List = $this->ev->createQuery('SELECT p.ID, p.nombre FROM app\IndexBundle\Entity\Vampiro\vPersonaje p WHERE p.partida = \''.$party.'\' ORDER BY p.ID ASC')->getResult();

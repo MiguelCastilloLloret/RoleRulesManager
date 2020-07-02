@@ -5,6 +5,7 @@ namespace app\IndexBundle\Entity\Common;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Cunningsoft\ChatBundle\Entity\AuthorInterface;
 
 /**
  * User
@@ -12,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User implements UserInterface
+class User implements UserInterface, AuthorInterface
 {
     /**
      * @var int
@@ -141,5 +142,10 @@ class User implements UserInterface
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+    }
+
+    public function __toString()
+    {
+        return $this->email;
     }
 }

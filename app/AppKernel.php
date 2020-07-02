@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new AppBundle\AppBundle(),
             new app\IndexBundle\appIndexBundle(),
+            new Cunningsoft\ChatBundle\CunningsoftChatBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle()      
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

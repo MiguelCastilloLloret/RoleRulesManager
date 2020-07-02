@@ -6,6 +6,9 @@ parameters:
       debug: true
 
 services:
+    my_index_controller:
+      class: app\IndexBundle\Controller\IndexController
+      arguments: ["@doctrine.orm.default_entity_manager", "@doctrine.orm.vamp_entity_manager", "@my_password_encoder"]
     my_rules_manager:
        class: app\IndexBundle\Controller\SistemaReglas\SistemaReglas
        arguments: ["@doctrine.orm.default_entity_manager", "@doctrine.orm.vamp_entity_manager"]

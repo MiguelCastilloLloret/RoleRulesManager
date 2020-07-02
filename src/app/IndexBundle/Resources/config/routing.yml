@@ -97,3 +97,7 @@ logout:
 register:
     path:     /registro
     defaults: { _controller: appIndexBundle:Security:register }
+
+cunningsoft_chat_bundle:
+    resource: "@CunningsoftChatBundle/Controller"
+    type: annotation

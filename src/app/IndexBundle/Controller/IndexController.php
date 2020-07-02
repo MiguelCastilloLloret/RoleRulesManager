@@ -9,10 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use app\IndexBundle\Controller\Listener\AddGamesFieldSubscriber;
 use app\IndexBundle\Controller\SistemaReglas\SistemaReglas;
+use app\IndexBundle\Controller\PartidaEncoder;
 use app\IndexBundle\Entity\DD35\Personaje;
 use app\IndexBundle\Entity\DD35\Plantilla;
 use app\IndexBundle\Entity\Vampiro\vPersonaje;
 use app\IndexBundle\Entity\Vampiro\vPlantilla;
+use Cunningsoft\ChatBundle\Controller\ChatController;
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
 class formExecutor{
     public $game;
@@ -32,6 +36,7 @@ class game{
 }
 
 class IndexController extends Controller{
+
     /**
      * @Route("/reglas")
      */
@@ -42,6 +47,10 @@ class IndexController extends Controller{
         $executor = new formExecutor();
 
         $executor->id = $userId;
+
+        $em = $this->getDoctrine()->getEntityManager('default');
+        $ev = $this->getDoctrine()->getEntityManager('vamp');
+        $encoder = new PartidaEncoder();
 
         //Se crea el formulario de selección de juego
 
@@ -56,12 +65,20 @@ class IndexController extends Controller{
         if ($request->isMethod('POST')) {
             $var->bind($request);
             if ($var->isValid()) {
-                $SistemaReglas = $this->get('my_rules_manager');
-                $hola = $SistemaReglas->ejecutorReglas($executor);
-                $html = $html = $this->container->get('templating')->render(
-                    'index/index.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola)
-                 );
-                return new Response($html);
+                    $SistemaReglas = $this->get('my_rules_manager');
+                    $hola = $SistemaReglas->ejecutorReglas($executor);
+                    if(($executor->game == "DD35" && $encoder->isPasswordValid($em->getRepository('app\IndexBundle\Entity\DD35\Partida')->findOneByNombre($executor->party)->password, $executor->password, $encoder->salt)) || ($executor->game == "Vampiro" && $encoder->isPasswordValid($ev->getRepository('app\IndexBundle\Entity\Vampiro\Partida')->findOneByNombre($executor->party)->password, $executor->password, $encoder->salt))){
+                        $html = $html = $this->container->get('templating')->render(
+                            'index/index.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola, 'party' => $executor->party)
+                         );
+                        return new Response($html);
+                    }
+                    else{
+                        $html = $html = $this->container->get('templating')->render(
+                            'index/index.html.twig', array('form' => $var->createView(), 'titulo' => "Intérprete de Reglas" , 'hola' => $hola)
+                         );
+                        return new Response($html);
+                    }
             }
         }
         else{

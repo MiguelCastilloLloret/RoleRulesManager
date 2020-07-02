@@ -64,8 +64,17 @@ body{
 	width: 100%;
 }
 
+#chat{
+	padding-left: 2%;
+}
+
 .form-group {
     width: 20%;
+    margin: 0.5% 2.5%;
+}
+
+.form-chat{
+	width: 100%;
     margin: 0.5% 2.5%;
 }
 
@@ -81,5 +90,42 @@ body{
 }
 
 .formreglas{
+	width: 100%;
+}
+
+.chat{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    flex-basis: 17%;
+    border-style: hidden;
+    border-radius: 3%;
+    background-color: white;
+    margin-left: 2%;
+}
+
+#main{
+	display: flex;
+}
+
+#chatMessage{
+	width: 80%;
+}
+
+#reglas{
+	margin-left: 10%;
+}
+
+#chat{
+	list-style: none;
+	overflow-y: auto;
+	margin-top: 2%;
+	height: 75%;
+}
+
+#chatForm{
+	position: absolute;
+	bottom: 0;
 	width: 100%;
 }

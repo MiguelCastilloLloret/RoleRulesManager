@@ -9,9 +9,24 @@
 
 {% block body %}
 	{% include './index/header.html.twig' %}
-	<div class="container contenedor oculto">
+	<div id="main">
+		{% if party is defined %}
+		<div class="chat">
+			{% render(controller('CunningsoftChatBundle:Chat:list', {'channel': party})) %}
+			<form id="chatForm" action="{{ path('cunningsoft_chat_post', {'channel': party}) }}" method="post">
+				<div class="form-chat">
+    				<label for="chatMessage" class="control-label">Chat:</label>
+    				<input type="text" name="message" class="form-control" id="chatMessage" />
+    				<input type="submit" class="btn" value="Enviar" />
+    			</div>
+			</form>
+		</div>
+		{% endif %}
+	<div class="container contenedor oculto" id="reglas">
+	 {% if error is defined %}
 	 {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
     {% endif %}
 	    <div class="block bloque formreglas">
 	    	<h1>{{titulo}}</h1>
@@ -56,10 +71,46 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
 	<!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <!-- Include all JavaScripts, compiled by Assetic -->
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <!-- Include hidden function for panels -->
     <script src="js/index.js"></script>
+	<script type="text/javascript">
+		$("#chatForm").submit(function() {
+		    postMessage();
+		    return false;
+		});
+		function postMessage()
+		{
+			{% if party is defined %}
+		    $.post('{{ path('cunningsoft_chat_post', {'channel': party}) }}', 
+		           { 'message': $("#chatMessage").val() },
+		           function(data) {
+		             // Check that the post function completed
+		             if (data === 'Successful') {
+		               updateChat();
+		             }
+		           }
+		          );
+		    $("#chatMessage").val('');
+		    {% endif %}
+		}
+		function updateChat()
+		{
+			{% if party is defined and hola is iterable %}
+		    if (this.timer)
+		        clearTimeout(this.timer);
+		    $.post('{{ path('cunningsoft_chat_list', {'channel': party}) }}', function(data) {
+		        $('#chat').html(data);
+		    });
+		    this.timer = setTimeout('updateChat()', 5000);
+		    {% endif %}
+		}
+		updateChat();
+	</script>
 {% endblock %}

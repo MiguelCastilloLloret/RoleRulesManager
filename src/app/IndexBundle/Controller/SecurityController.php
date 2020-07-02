@@ -51,7 +51,7 @@ class SecurityController extends Controller{
     
     // Comprobamos que se ha enviado el formulario
     if ($form->isSubmitted() && $form->isValid()) {
-        if(!$em->getRepository('app\IndexBundle\Entity\Common\User')->findOneByEmail($form->email)){
+        if($em->getRepository('app\IndexBundle\Entity\Common\User')->findOneByEmail($user->getEmail())){
             return $this->render('security/register.html.twig', array(
                 'form' => $form->createView(),
                 'error' => "Este usuario ya existe"

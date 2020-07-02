@@ -17,13 +17,14 @@ class SistemaReglas{
 	public $ev;
 
 	public function __construct($EM, $EV){
+
 		$this->em = $EM;
 		$this->ev = $EV;
 	}
 
 	public function ejecutorReglas($executor){
 
-		if(is_null($executor->pj1)) return "Falta por especificar personaje";
+		if(is_null($executor->pj1)) $error = "Falta por especificar personaje";
 
 		//Ejecucion de los subsistemas
 
@@ -36,14 +37,17 @@ class SistemaReglas{
 		}
 		else if($executor->action == "Ataque" && !is_null($executor->pj2)) return $this->subsistema_combate($executor->game, $executor->action, $executor->pj1, $executor->pj2);
 
-		else return "Faltó por especificar algún elemento necesario";
+		else $error = "Faltó por especificar algún elemento necesario";
+
+		return $error;
+
 	}
 
 	public function subsistema_tiradas($game, $action, $skill, $pj1, $var){
 		$cadena = __DIR__."/".$game."/".$action.".php";
 		$var = '';
 		require_once($cadena);
-		if($executor->game="DD35") $this->em->flush();
+		if($game=="DD35") $this->em->flush();
 		else $this->ev->flush();
 		return $res;
 	}
@@ -52,16 +56,16 @@ class SistemaReglas{
 		$cadena = __DIR__."/".$game."/".$action.".php";
 		$var = 0;
 		require_once($cadena);
-		if($executor->game="DD35") $this->em->flush();
+		if($game=="DD35") $this->em->flush();
 		else $this->ev->flush();
 		return $res;
 	}
 
-	public function subsistema_combate($game, $action, $pj1, $pj2, $CD){
+	public function subsistema_combate($game, $action, $pj1, $pj2){
 		$cadena = __DIR__."/".$game."/".$action.".php";
 		$var = 0;
 		require_once($cadena);
-		if($executor->game="DD35") $this->em->flush();
+		if($game=="DD35") $this->em->flush();
 		else $this->ev->flush();
 		return $res;
 	}
