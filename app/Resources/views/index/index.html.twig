@@ -31,7 +31,8 @@
 	    <div class="block bloque formreglas">
 	    	<h1>{{titulo}}</h1>
 	    	<form action="./reglas" method="post" class="formreglas" {{ form_enctype(form) }}>
-	    		{% for entity in form %}
+	    		<div id="form">
+				{% for entity in form %}
 		    		<div class = "form-group">
 					    {{ form_label(entity) }}
 					    {{ form_errors(entity) }}
@@ -39,6 +40,7 @@
 					</div>
 	    		{% endfor %}
 	   			<input type="submit" class="btn btn-success" value="Enviar"/>
+	   			</div>
 			</form>
 		</div>
 		<div class="block bloque">
