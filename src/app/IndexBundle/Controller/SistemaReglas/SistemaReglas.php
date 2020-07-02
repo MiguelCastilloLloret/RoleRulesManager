@@ -37,6 +37,8 @@ class SistemaReglas{
 		}
 		else if($executor->action == "Ataque" && !is_null($executor->pj2)) return $this->subsistema_combate($executor->game, $executor->action, $executor->pj1, $executor->pj2);
 
+		else if(!is_null($executor->party) && !is_null($executor->password) && is_null($executor->action)) $error = "";
+
 		else $error = "Faltó por especificar algún elemento necesario";
 
 		return $error;

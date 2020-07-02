@@ -40,7 +40,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Resultado de la acción</h3>
 				</div>
-				{% if hola is iterable %}
+				{% if hola is not null and hola is iterable %}
 				<table class="table" id="paneltable">
 					<tr>
 					{% for key in hola|keys %}

@@ -98,7 +98,7 @@ body{
     flex-direction: column;
     justify-content: center;
     position: relative;
-    flex-basis: 17%;
+    flex-basis: 20%;
     border-style: hidden;
     border-radius: 3%;
     background-color: white;
@@ -121,7 +121,10 @@ body{
 	list-style: none;
 	overflow-y: auto;
 	margin-top: 2%;
-	height: 75%;
+	height: 65%;
+	width: 100%;
+	position: absolute;
+	top: 0;
 }
 
 #chatForm{
