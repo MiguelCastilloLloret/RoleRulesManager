@@ -31,7 +31,7 @@
 	    <div class="block bloque formreglas">
 	    	<h1>{{titulo}}</h1>
 	    	<form action="./reglas" method="post" class="formreglas" {{ form_enctype(form) }}>
-	    		{{ form_widget(form) }}
+	    		{{ form(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar"/>
 			</form>
 		</div>
