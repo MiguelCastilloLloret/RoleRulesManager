@@ -18,6 +18,10 @@ body{
 	background-color: #804000;
 }
 
+.navbar-inverse .navbar-nav > li > a{
+	color: #c69b7c;
+}
+
 .wrap{
 	display: flex;
 	flex-wrap: wrap;
