@@ -30,15 +30,9 @@
     {% endif %}
 	    <div class="block bloque formreglas">
 	    	<h1>{{titulo}}</h1>
+	    	{% form_theme form 'bootstrap_3_layout.html.twig' %}
 	    	<form action="./reglas" method="post" class="formreglas" {{ form_enctype(form) }}>
-	    		<div id="form">
-				{% for entity in form %}
-		    		<div class = "form-group">
-					    {{ form_label(entity) }}
-					    {{ form_errors(entity) }}
-					    {{ form_widget(entity) }}
-					</div>
-	    		{% endfor %}
+				{{ form_widget(form) }}
 	   			<input type="submit" class="btn btn-success" value="Enviar"/>
 	   			</div>
 			</form>
