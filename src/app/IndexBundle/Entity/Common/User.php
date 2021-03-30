@@ -29,7 +29,7 @@ class User implements UserInterface, AuthorInterface
      *
      * @ORM\Column(name="email", unique=true)
      * @Assert\Email(
-     *     message = "'{{ value }}' no es un correo válido.",
+     *     message = "{{ value }} no es un correo válido",
      *     checkMX = true
      * )
      */

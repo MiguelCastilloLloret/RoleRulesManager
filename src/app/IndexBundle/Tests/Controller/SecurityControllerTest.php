@@ -115,8 +115,6 @@ class SecurityControllerTest extends WebTestCase{
 
 		$crawler = $client->submit($form);
 
-		//var_dump($client->getResponse()->getContent());
-
 		$this->assertTrue($client->getResponse()->isRedirect('/login'));
 
 		$crawler = $client->followRedirect();
@@ -145,20 +143,39 @@ class SecurityControllerTest extends WebTestCase{
 
 		$form = $crawler->filter('form')->form();
 
+		$form['app_indexbundle_user[email]'] = 'anikiladorDX@gmail.com';
+		$form['app_indexbundle_user[plainPassword][first]'] = 'pardos';
+		$form['app_indexbundle_user[plainPassword][second]'] = 'pardos';
+
+		$crawler = $client->submit($form);
+
+		$this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+		$this->assertGreaterThan(0, $crawler->filter('div:contains("Este usuario ya existe")')->count());
+
+		$form = $crawler->filter('form')->form();
+
 		$form['app_indexbundle_user[email]'] = 'miguel.castillolloret@gmail.com';
 		$form['app_indexbundle_user[plainPassword][first]'] = 'pardo';
 		$form['app_indexbundle_user[plainPassword][second]'] = 'pardo';
 
 		$crawler = $client->submit($form);
 
-		//var_dump($client->getResponse()->getContent());
+		$this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-		$this->assertTrue($client->getResponse()->isRedirect('/registro'));
+		$this->assertGreaterThan(0, $crawler->filter('li:contains("La contraseña debe tener al menos 6 caracteres")')->count());
 
-		$crawler = $client->followRedirect();
+		$form = $crawler->filter('form')->form();
+
+		$form['app_indexbundle_user[email]'] = 'anikiladorDX';
+		$form['app_indexbundle_user[plainPassword][first]'] = 'pardos';
+		$form['app_indexbundle_user[plainPassword][second]'] = 'pardos';
+
+		$crawler = $client->submit($form);
 
 		$this->assertEquals(200, $client->getResponse()->getStatusCode());
 
+		$this->assertGreaterThan(0, $crawler->filter('li:contains(""anikiladorDX" no es un correo válido.")')->count());
 	}
 }
 

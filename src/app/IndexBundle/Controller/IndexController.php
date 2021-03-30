@@ -103,7 +103,7 @@ class IndexController extends Controller{
 
         if ($request->isMethod('POST')) {
             $var->bind($request);
-            $cad = "./".$game->game;
+            $cad = "/".$game->game;
             return $this->redirect($cad,301);
         }
         else{

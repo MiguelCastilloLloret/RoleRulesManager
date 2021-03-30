@@ -22,7 +22,7 @@
           </div>
         {% endif %}
       {% endif %}
-      {{ form_start(form, {'attr': {'id': 'form_register'}}) }}
+      {{ form_start(form, {'attr': {'id': 'form_register' , 'novalidate': 'novalidate'}}) }}
         {{ form_widget(form) }}
         <button type="submit" class="btn btn-success">Registrarse</button>
       {{ form_end(form) }}
