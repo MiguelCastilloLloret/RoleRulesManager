@@ -1,6 +1,7 @@
 <?php
 	$pj1 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj1);
 	if(is_null($pj2)) $res = "No se especificó contrincante.";
+
 	else{
 	$pj2 = $this->em->getRepository('app\IndexBundle\Entity\DD35\Personaje')->find($pj2);
 	$arma = $this->em->getRepository('app\IndexBundle\Entity\DD35\Arma')->findOneByNombre($pj1->arma);

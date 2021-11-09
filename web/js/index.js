@@ -6,9 +6,13 @@ $(document).ready(function(){
 		$("#form_skill").parent().addClass("oculto");
 		$("#form_action").change(function(){
 			$("#form_CD").parent().addClass("oculto");
+			$("#form_CD").val(0);
 			$("#form_pj2").parent().addClass("oculto");
+			$("#form_pj2").val(null);
 			$("#form_spell").parent().addClass("oculto");
+			$("#form_spell").val(null);
 			$("#form_skill").parent().addClass("oculto");
+			$("#form_skill").val(null);
 			if($("#form_action").val()!="AutoHechizo" && $("#form_action").val()!="TiradaDificultad"){
 				$("#form_pj2").parent().removeClass("oculto");
 				if($("#form_action").val()==="TiradaEnfrentada"){
@@ -31,8 +35,11 @@ $(document).ready(function(){
 		$("#form_skill").parent().addClass("oculto");
 		$("#form_action").change(function(){
 			$("#form_CD").parent().addClass("oculto");
+			$("#form_CD").val(0);
 			$("#form_pj2").parent().addClass("oculto");
+			$("#form_pj2").val(null);
 			$("#form_skill").parent().addClass("oculto");
+			$("#form_skill").val(null);
 			if($("#form_action").val()!="TiradaDificultad"){
 				$("#form_CD").parent().removeClass("oculto");
 				$("#form_pj2").parent().removeClass("oculto");

@@ -4,9 +4,9 @@ namespace app\IndexBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DD35ControllerTest extends WebTestCase
+class VampiroControllerTest extends WebTestCase
 {
-    public function testDD35LoggedReach()
+public function testVampiroLoggedReach()
     {
         $client = static::createClient();
 
@@ -28,17 +28,16 @@ class DD35ControllerTest extends WebTestCase
 		$this->assertEquals(1, $crawler->filter('label:contains("Juego")')->count());
 
         $form = $crawler->filter('form')->form();
-        $form['form[game]']->select('DD35Master');
+        $form['form[game]']->select('VampiroMaster');
 
         $crawler = $client->submit($form);
-        $this->assertTrue($client->getResponse()->isRedirect('/DD35Master'));
+        $this->assertTrue($client->getResponse()->isRedirect('/VampiroMaster'));
         $crawler = $client->followRedirect();
-        var_dump($client->getResponse());
 
 		$this->assertEquals(200, $client->getResponse()->getStatusCode());
 
 		$this->assertGreaterThan(0, $crawler->filter('h1')->count());
-		$this->assertequals(1, $crawler->filter('h1:contains("Menú del Master: D&D 3.5")')->count());
+		$this->assertequals(1, $crawler->filter('h1:contains("Menú del Master: Vampiro la Mascarada")')->count());
 		$this->assertGreaterThan(0, $crawler->filter('div.wrap')->count());
 		$this->assertEquals(9, $crawler->filter('a.btn-primary')->count());
 		$this->assertequals(1, $crawler->filter('a.btn-primary:contains("Crear Personaje")')->count());
@@ -52,16 +51,109 @@ class DD35ControllerTest extends WebTestCase
 		$this->assertequals(1, $crawler->filter('a.btn-primary:contains("Eliminar Partida")')->count());
     }
 
-    public function testDD35NotLoggedReach()
+    public function testVampiroNotLoggedReach()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET','/DD35Master');
+        $crawler = $client->request('GET','/VampiroMaster');
 
-		$this->assertFalse($client->getResponse()->isRedirect('http://localhost/DD35Master'));
+		$this->assertFalse($client->getResponse()->isRedirect('http://localhost/VampiroMaster'));
 		$this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
 		$crawler = $client->followRedirect();
 		$this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
+    public function testVampiroCrearPersonaje()
+    {
+    	$client = static::createClient();
+
+        $crawler = $client->request('GET','/VampiroMaster');
+    }
+
+    public function testVampiroCrearPersonajeFailed()
+    {
+
+    }
+
+    public function testVampiroModificarPersonaje()
+    {
+
+    }
+
+    public function testVampiroModificarPersonajeFailed()
+    {
+
+    }
+
+    public function testVampiroEliminarPersonaje()
+    {
+
+    }
+
+    public function testVampiroEliminarPersonajeFailed()
+    {
+
+    }
+
+    public function testVampiroCrearPlantilla()
+    {
+
+    }
+
+    public function testVampiroCrearPlantillaFailed()
+    {
+
+    }
+
+    public function testVampiroEliminarPlantilla()
+    {
+
+    }
+
+    public function testVampiroEliminarPlantillaFailed()
+    {
+
+    }
+
+    public function testVampiroCrearArma()
+    {
+
+    }
+
+    public function testVampiroCrearArmaFailed()
+    {
+
+    }
+
+    public function testVampiroModificarArma()
+    {
+
+    }
+
+    public function testVampiroModificarArmaFailed()
+    {
+
+    }
+
+    public function testVampiroCrearPartida()
+    {
+
+    }
+
+    public function testVampiroCrearPartidaFailed()
+    {
+
+    }
+
+    public function testVampiroEliminarPartida()
+    {
+
+    }
+
+    public function testVampiroEliminarPartidaFailed()
+    {
+
+    }
+
 }
+

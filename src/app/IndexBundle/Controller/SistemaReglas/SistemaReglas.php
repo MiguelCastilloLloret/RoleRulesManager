@@ -24,6 +24,8 @@ class SistemaReglas{
 
 	public function ejecutorReglas($executor){
 
+		dump($executor);
+
 		if(is_null($executor->pj1)) $error = "Falta por especificar personaje";
 
 		//Ejecucion de los subsistemas
@@ -64,6 +66,7 @@ class SistemaReglas{
 	}
 
 	public function subsistema_combate($game, $action, $pj1, $pj2){
+		dump($pj2);
 		$cadena = __DIR__."/".$game."/".$action.".php";
 		$var = 0;
 		require_once($cadena);
