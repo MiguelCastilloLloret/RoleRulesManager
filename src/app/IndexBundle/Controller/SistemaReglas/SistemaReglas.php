@@ -24,15 +24,13 @@ class SistemaReglas{
 
 	public function ejecutorReglas($executor){
 
-		dump($executor);
-
 		if(is_null($executor->pj1)) $error = "Falta por especificar personaje";
 
 		//Ejecucion de los subsistemas
 
 		if($executor->CD != 0 || !is_null($executor->skill)){
-			if ($executor->CD == 0) return $this->subsistema_tiradas($executor->game, $executor->action, $executor->skill, $executor->pj1, $executor->CD);
-			else return $this->subsistema_tiradas($executor->game, $executor->action, $executor->skill, $executor->pj1, $executor->pj2);
+			if ($executor->CD == 0) return $this->subsistema_tiradas($executor->game, $executor->action, $executor->skill, $executor->pj1, $executor->pj2);
+			else return $this->subsistema_tiradas($executor->game, $executor->action, $executor->skill, $executor->pj1, $executor->CD);
 		}
 		else if(!is_null($executor->spell)){
 			return $this->subsistema_magia($executor->game, $executor->action, $executor->pj1, $executor->pj2, $executor->spell);
@@ -49,10 +47,10 @@ class SistemaReglas{
 
 	public function subsistema_tiradas($game, $action, $skill, $pj1, $var){
 		$cadena = __DIR__."/".$game."/".$action.".php";
-		$var = '';
 		require_once($cadena);
 		if($game=="DD35") $this->em->flush();
 		else $this->ev->flush();
+		$var = '';
 		return $res;
 	}
 
@@ -66,7 +64,6 @@ class SistemaReglas{
 	}
 
 	public function subsistema_combate($game, $action, $pj1, $pj2){
-		dump($pj2);
 		$cadena = __DIR__."/".$game."/".$action.".php";
 		$var = 0;
 		require_once($cadena);
