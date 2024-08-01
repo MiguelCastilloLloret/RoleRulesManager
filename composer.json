@@ -35,7 +35,7 @@
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "twbs/bootstrap": "3.0.*",
+        "twbs/bootstrap": "3.4.*",
         "jquery/jquery":  "1.11.*",
         "oyejorge/less.php": "~1.5",
         "cunningsoft/chat-bundle": "0.5.*@dev"
